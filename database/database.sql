@@ -57,7 +57,7 @@ CREATE TABLE Ticket
 );
 
 
--- Tabela de Roles, ex: Admin, Client, Officer
+-- Tabela de Roles, ex: Admin, Client, Agent
 CREATE TABLE Role 
 (
   id INTEGER,
@@ -108,3 +108,33 @@ CREATE TABLE Department
   CONSTRAINT department_pk PRIMARY KEY (id),
   CONSTRAINT department_user_fk FOREIGN KEY (user_id) REFERENCES User
 );
+
+/*
+
+==========================================================
+|                     -- Inserts --                      |
+==========================================================
+
+*/
+
+-- Insert de Roles
+INSERT INTO Role VALUES (1, 'ADM');
+INSERT INTO Role VALUES (2, 'AGE');
+INSERT INTO Role VALUES (3, 'CLI');
+
+-- Insert de Status
+INSERT INTO Status VALUES (1, 'Open');
+INSERT INTO Status VALUES (2, 'Closed');
+
+
+/*
+
+==========================================================
+|                    -- Triggers --                      |
+==========================================================
+
+*/
+
+-- Trigger para inserir o usuário que criou o ticket
+
+
