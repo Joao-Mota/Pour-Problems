@@ -57,7 +57,7 @@ CREATE TABLE Ticket
 );
 
 
--- Tabela de Roles, ex: Admin, Client, Officer
+-- Tabela de Roles, ex: Admin, Client, Agent
 CREATE TABLE Role 
 (
   id INTEGER,
