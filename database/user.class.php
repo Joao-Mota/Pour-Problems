@@ -32,7 +32,7 @@
       $stmt->execute(array($id));
       $user = $stmt->fetch();
 
-      return new user(
+      return new User(
         $user['id'],
         $user['name'],
         $user['username'],
