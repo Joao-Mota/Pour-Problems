@@ -9,9 +9,8 @@
         public string $password;
         public int $role_id;
         public int $department_id;
-    }
 
-    public function __construct(int $id, string $name, string $username, string $email, string $password, int $role_id, int $department_id)
+        public function __construct(int $id, string $name, string $username, string $email, string $password, int $role_id, int $department_id)
     {
         $this->id = $id;
         $this->name = $name;
@@ -60,6 +59,9 @@
           );
         }
     
-        return $artists;
+        return $user;
     }
+    }
+
+    
 ?>
