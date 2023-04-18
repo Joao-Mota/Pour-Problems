@@ -5,7 +5,7 @@
 
 */
 
-DROP TABLE IF EXISTS Users;
+DROP TABLE IF EXISTS User;
 DROP TABLE IF EXISTS Ticket;
 DROP TABLE IF EXISTS Role;
 DROP TABLE IF EXISTS Status;
@@ -24,11 +24,11 @@ DROP TABLE IF EXISTS Department;
 
 
 -- Tabela de Usuários
-CREATE TABLE Users 
+CREATE TABLE User 
 (
   id INTEGER,
   name VARCHAR(50),
-  Usersname VARCHAR(50),
+  username VARCHAR(50),
   email VARCHAR(50),
   password VARCHAR(20),
   role_id INTEGER,
@@ -52,8 +52,8 @@ CREATE TABLE Ticket
   CONSTRAINT ticket_pk PRIMARY KEY (id),
   CONSTRAINT ticket_chat_fk FOREIGN KEY (chat_id) REFERENCES Chat,
   CONSTRAINT ticket_status_fk FOREIGN KEY (status_id) REFERENCES Status,
-  CONSTRAINT ticket_client_fk FOREIGN KEY (client_id) REFERENCES Users,
-  CONSTRAINT ticket_officer_fk FOREIGN KEY (officer_id) REFERENCES Users
+  CONSTRAINT ticket_client_fk FOREIGN KEY (client_id) REFERENCES User,
+  CONSTRAINT ticket_officer_fk FOREIGN KEY (officer_id) REFERENCES User
 );
 
 
@@ -95,7 +95,7 @@ CREATE TABLE Message
   user_id INTEGER,
   CONSTRAINT message_pk PRIMARY KEY (id),
   CONSTRAINT message_chat_fk FOREIGN KEY (chat_id) REFERENCES Chat,
-  CONSTRAINT message_user_fk FOREIGN KEY (user_id) REFERENCES Users
+  CONSTRAINT message_user_fk FOREIGN KEY (user_id) REFERENCES User
 );
 
 
@@ -106,5 +106,5 @@ CREATE TABLE Department
   name VARCHAR(25),
   user_id INTEGER,
   CONSTRAINT department_pk PRIMARY KEY (id),
-  CONSTRAINT department_user_fk FOREIGN KEY (user_id) REFERENCES Users
+  CONSTRAINT department_user_fk FOREIGN KEY (user_id) REFERENCES User
 );
