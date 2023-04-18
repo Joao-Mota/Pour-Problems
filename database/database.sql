@@ -125,6 +125,7 @@ INSERT INTO Role VALUES (3, 'CLI');
 -- Insert de Status
 INSERT INTO Status VALUES (1, 'Open');
 INSERT INTO Status VALUES (2, 'Closed');
+INSERT INTO Status VALUES (3, 'Solved');
 
 
 /*
