@@ -4,9 +4,8 @@
     class Role {
         public int $id;
         public string $sigla;
-    }
 
-    public function __construct(int $id, string $sigla)
+        public function __construct(int $id, string $sigla)
     {
         $this->id = $id;
         $this->sigla = $sigla;
@@ -27,6 +26,7 @@
         $role['sigla']
       );
     }
+    }  
 
     
 ?>
