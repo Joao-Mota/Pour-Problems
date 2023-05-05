@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>About</title>
+        <title>About Us</title>
 
         <!-- Swipper css link -->
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
@@ -38,7 +38,9 @@
         </header>
 
 
-
+        <div class="heading" style="background: url(/sources/heading_bg/about-slide-bg.jpg) no-repeat; background-size: cover;">
+            <h1>about us</h1>
+        </div>
 
 
 

@@ -37,10 +37,65 @@
             </section>
         </header>
 
+        <section class="home">
+
+            <div class="swiper home-slider">
+
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide slide" style="background: url(/sources/heading_bg/about-slide-bg.jpg) no-repeat;">
+                        <div class="content">
+                            <span>Wine Cellar</span>
+                            <h3>Porto</h3>
+                            <p>One of the best wine producers globally!</p>
+                            <a href="/pages/about.php" class="btn">More Info</a>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide slide" style="background: url(/sources/heading_bg/tickets-slide-bg.jpg) no-repeat;">
+                        <div class="content">
+                            <span>Support</span>
+                            <h3>Pour</h3>
+                            <h3>Problems</h3>
+                            <p>We answer every question you may have!</p>
+                            <a href="/pages/tickets.php" class="btn">Tickets!</a>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide slide" style="background: url(/sources/heading_bg/signup-slide-bg.jpg) no-repeat;">
+                        <div class="content">
+                            <h3>Join us!</h3>
+                            <a href="/pages/signup.php" class="btn">Sign Up!</a>
+                        </div>
+                    </div>
+
+                    
+                </div>
+
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                
+            </div>
+
+        </section>
 
 
 
+        <section class="home-fqa">
 
+        </section>
+
+        
+
+        <section class="home-about">
+
+            <div class="image">
+                <img src="../sources/heading_bg/home-about-us-troll.jpg" alt="">
+            </div>
+
+
+
+        </section>
 
 
 
