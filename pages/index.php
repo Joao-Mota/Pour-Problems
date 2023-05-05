@@ -1,44 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../css/login.css">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>PourProblems</title>
-        <link rel="script" href="../javascript/script.js">
+
+        <!-- Swipper css link -->
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+        <!-- Font Awesome cdnjs link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+        <!-- Custom CSS link -->
+        <link rel="stylesheet" href="../css/style.css">
+
     </head>
     <body>
-
-        <h1>PourProblems</h1>
-
-        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-
-        <div id="id01" class="modal">
         
-        <form class="modal-content animate" action="/profile.php" method="post">
-            <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <img src= "../sources/icon.png" alt="Avatar" class="avatar">
-            </div>
+        <header>
+            <section class="header">
 
-            <div class="container">
-            <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
+                <a href="index.php" class="logo">
+                    <img src="../sources/PourProblems_Logo_Gray.png" alt="PourProblems" width="140">
+                </a>
 
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
-                
-            <button type="submit">Login</button>
-            <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
-            </div>
+                <nav class="navbar">
+                    <a href="/pages/about.php">About</a>
+                    <a href="/pages/tickets.php">Tickets</a>
+                    <a href="/pages/signup.php">Sign Up</a>
+                    <a href="/pages/login.php">Login</a>
+                </nav>
 
-            <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-            <span class="psw">Forgot <a href="#">password?</a></span>
-            </div>
-        </form>
-        </div>
+                <div id="menu-bars" class="fas fa-bars"></div>
+
+            </section>
+        </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        <footer>
+            <section class="footer">
+
+                <div class="box-conteiner">
+
+                    <div class="box">
+                        <h3>Quick Links</h3>
+                        <a href="/pages/about.php"> <i class="fas fa-angle-right"></i> About</a>
+                        <a href="/pages/tickets.php"> <i class="fas fa-angle-right"></i> Tickets</a>
+                        <a href="/pages/signup.php"> <i class="fas fa-angle-right"></i> Sign Up</a>
+                        <a href="/pages/login.php"> <i class="fas fa-angle-right"></i> Login</a>
+                    </div>
+
+                    <div class="box">
+                        <h3>Extra Links</h3>
+                        <a href="/pages/faq.php"> <i class="fas fa-angle-right"></i> FAQ</a>
+                        <a href="/pages/pp.php"> <i class="fas fa-angle-right"></i> Privacy Policy</a>
+                        <a href="/pages/tos.php"> <i class="fas fa-angle-right"></i> Terms of Service</a>
+                    </div>
+
+                    <div class="box">
+                        <h3>Contact Info</h3>
+                        <a href="#"> <i class="fas fa-phone"></i> +351 220 000 000</a>
+                        <a href="#"> <i class="fas fa-envelope"></i> support@pourproblems.com </a>
+                        <a href="#"> <i class="fas fa-map"></i> Porto, Portugal - 4200-465</a>
+                    </div>
+
+                    <div class="box">
+                        <h3>Social</h3>
+                        <a href="#"> <i class="fab fa-facebook-f"></i> PourProblems</a>
+                        <a href="#"> <i class="fab fa-twitter"></i> @PourProblems</a>
+                        <a href="#"> <i class="fab fa-instagram"></i> @PourProblems</a>
+                        <a href="#"> <i class="fab fa-youtube"></i> PourProblems</a>
+                        <a href="#"> <i class="fab fa-linkedin"></i> PourProblems</a>
+                    </div>
+
+                    <div class="box">
+                        <img src="../sources/PourProblems_Logo_White.png" alt="PourProblems" width="150">
+                    </div>
+
+                </div>
+
+            </section>
+        </footer>
+
+        <!-- Swipper js link -->
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+        <!-- custom js file link -->
+        <script src="../javascript/script.js"></script>
 
     </body>
 </html>

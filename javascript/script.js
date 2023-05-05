@@ -1,9 +1,7 @@
-// Get the modal
-var modal = document.getElementById('id01');
+let menu = document.querySelector('#menu-bars');
+let navbar = document.querySelector('.header .navbar');
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+menu.onclick = () => {
+    menu.classList.toggle('fa-times');
+    navbar.classList.toggle('active');
 }
