@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Privacy Policy</title>
 
+        <link rel="shortcut icon" href="../sources/PourProblems_icon.png" type="image/x-icon">
+        
         <!-- Swipper css link -->
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
