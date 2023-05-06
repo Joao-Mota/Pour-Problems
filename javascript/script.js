@@ -6,6 +6,16 @@ menu.onclick = () => {
     navbar.classList.toggle('active');
 };
 
+
+const faqs = document.querySelectorAll('.faq');
+
+faqs.forEach(faq => {
+    faq.addEventListener('click', () => {
+        faq.classList.toggle('active');
+    });
+});
+
+
 var swiper = new Swiper(".home-slider", {
     loop:true,
     navigation: {
