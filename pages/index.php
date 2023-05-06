@@ -39,6 +39,8 @@
             </section>
         </header>
 
+
+
         <section class="home">
 
             <div class="swiper home-slider">
@@ -162,7 +164,7 @@
         <section class="home-about">
 
             <div class="image">
-                <img src="../sources/heading_bg/home-about-us-troll.jpg" alt="">
+                <img src="../sources/heading_bg/home-about-us.jpg" alt="">
             </div>
 
             <div class="content">
@@ -175,20 +177,10 @@
                 </p>
                 <a href="/pages/about.php" class="btn">read more!</a>
             <div>    
-
-
-
         </section>
 
 
 
-
-
-
-
-
-
-    
         <footer>
             <section class="footer">
 
