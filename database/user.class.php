@@ -61,7 +61,27 @@
     
         return $user;
     }
-    }
 
-    
+    static function getUserWithPassword(PDO $db, string $email, string $password) : ?User {
+      $stmt = $db->prepare('
+        SELECT id, name, username, email, password, role_id, department_id
+        FROM User 
+        WHERE email = ? AND password = ?
+      ');
+
+      $stmt->execute(array($email, $password));
+  
+      if ($user = $stmt->fetch()) {
+        return new User(
+          $user['id'],
+          $user['name'],
+          $user['username'],
+          $user['email'],
+          $user['password'],
+          $user['role_id'],
+          $user['department_id']
+        );
+      } else return null;
+    }
+  }
 ?>
