@@ -46,20 +46,11 @@
         </section>
 
     </header>
-  
-    <section id="messages">
-      <?php foreach ($session->getMessages() as $messsage) { ?>
-        <article class="<?=$messsage['type']?>">
-          <?=$messsage['text']?>
-        </article>
-      <?php } ?>
-    </section>
-
-    <main>
+    
 <?php } ?>
 
 <?php function drawFooter() { ?>
-    </main>
+    
 
     <footer>
         <section class="footer">
