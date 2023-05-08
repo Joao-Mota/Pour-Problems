@@ -107,14 +107,6 @@
 </html>
 <?php } ?>
 
-<?php function drawLoginForm() { ?>
-  <form action="../actions/action_login.php" method="post" class="login">
-    <input type="email" name="email" placeholder="email">
-    <input type="password" name="password" placeholder="password">
-    <button type="submit">Login</button>
-  </form>
-<?php } ?>
-
 <?php function drawRegisterForm() { ?>
   <form action="../actions/action_register.php" method="post" class="register">
   <input type="email" name="email" placeholder="email">

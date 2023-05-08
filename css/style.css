@@ -461,6 +461,152 @@ section{
 
 
 
+/* Login Page */
+.login{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:3rem;
+    justify-content: center;
+    margin : 5rem;
+}
+
+.login .logo{
+    flex: 1 1 41rem;
+    text-align: center;
+}
+
+.login .logo img{
+    width: 80%;
+}
+
+.login .login-input{
+    flex: 1 1 41rem;
+    text-align: center;
+    border-left: var(--main-color) 5px solid;
+    padding-left: 3rem;
+}
+
+.login .login-input h2{
+    font-size: 3.5rem;
+    color: var(--black);
+}
+
+.login .login-input .login-container{
+    margin: 2rem 0;
+}
+
+.login .login-input .login-container input{
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-size: 1.5rem;
+    border: 1px solid var(--light-black);
+    border-radius: 0.5rem;
+    outline: none;
+
+}
+
+.login .login-input .login-container input:focus{
+    border: 1px solid var(--main-color);
+}
+
+.login .login-input .login-container input::placeholder{
+    color: var(--light-black);
+}
+
+.login .login-input .login-container .login-options{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.login .login-input .login-container .login-options .stay-logged-in{
+    display: flex;
+    align-items: center;
+}
+
+.login .login-input .login-container .login-options .stay-logged-in input{
+    display: none;
+}
+
+.login .login-input .login-container .login-options .stay-logged-in input + label::before{
+    content: "";
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid var(--light-black);
+    border-radius: 0.4rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    background-color: var(--white);
+    vertical-align: middle;
+}
+
+.login .login-input .login-container .login-options .stay-logged-in input:checked + label::before{
+    background-color: var(--main-color);
+    content: "\f00c";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: var(--white);
+    text-align: center;
+    line-height: 1.5rem;
+    vertical-align: middle;
+}
+
+.login .login-input .login-container .login-options .stay-logged-in label{
+    font-size: 1.5rem;
+    color: var(--light-black);
+}
+
+.login .login-input .login-container .login-options button{
+    width: 10%;
+    padding: 1rem;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    outline: none;
+    background-color: var(--main-color);
+    color: var(--white);
+    cursor: pointer;
+}
+
+.login .login-input .login-options button:hover{
+    opacity: 0.8;
+}
+
+
+
+.login .login-input .login-container .login-links{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.login .login-input .login-container .login-links a{
+    font-size: 1.5rem;
+    color: var(--light-black);
+}
+
+.login .login-input .login-container .login-links a:hover{
+    color: var(--main-color);
+}
+
+.login .login-input .login-container .login-links a::after{
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: var(--main-color);
+    display: block;
+    transition: width 0.5s;
+}
+
+.login .login-input .login-container .login-links a:hover::after{
+    width: 100%;
+}
+
+
 
 
 
@@ -535,6 +681,14 @@ section{
         padding: 3rem 5%;
     }
 
+}
+
+@media (max-width: 1072px){
+
+    .login .login-input{
+        border-left: none;
+        padding-left: 0;
+    }
 }
 
 @media (max-width: 990px){
