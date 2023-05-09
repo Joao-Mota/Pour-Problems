@@ -607,6 +607,63 @@ section{
 }
 
 
+/* Sign Up */
+
+.signup .signup-title{
+    text-align: center;
+    font-size: 4.5rem;
+    color: var(--black);
+    padding-bottom: 5rem;
+}
+
+.signup .signup-form{
+    padding: 2rem;
+    background: var(--light-bg);
+}
+
+.signup .signup-form .flex{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.signup .signup-form .flex .input-box{
+    flex: 1 1 41rem;
+}
+
+.signup .signup-form .flex .input-box input{
+    width: 100%;
+    padding: 1.2rem 1.4rem;
+    font-size: 1.6rem;
+    color: var(--light-black);
+    text-transform: none;
+    margin-top: 1.5rem;
+    border: 1px solid var(--light-black);
+}
+
+.signup .signup-form .flex .input-box input:focus{
+    background-color: var(--main-color);
+    color: var(--white);
+}
+
+.signup .signup-form .flex .input-box input:focus::placeholder{
+    color: var(--white);
+}
+
+.signup .signup-form .flex .input-box input::placeholder{
+    color: var(--light-black);
+}
+
+.signup .signup-form .flex .input-box span{
+    font-size: 1.5rem;
+    color: var(--light-black);
+}
+
+.signup .signup-form .btn{
+    margin-top: 2rem;
+}
+
+
 
 
 

@@ -7,7 +7,7 @@
   require_once(__DIR__ . '/../database/connection.db.php');
 
 
-  require_once(__DIR__ . '/../templates/common.tpl.php');
+  require_once(__DIR__ . '/../temp/common.tpl.php');
   
 
   $db = getDatabaseConnection();
@@ -140,7 +140,7 @@
             At PourProblems, we pride ourselves on our attention to detail and commitment to customer satisfaction, so you can trust us to deliver exceptional service every time.
         </p>
         <a href="/pages/about.php" class="btn">read more!</a>
-    <div>    
+    </div>    
 </section>
 
 <?php
