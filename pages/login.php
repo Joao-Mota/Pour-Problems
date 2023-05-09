@@ -23,7 +23,7 @@
 
   <div class="login-input">
     <h2 class="title">Login</h2>
-    <form action="../actions/action_login.php" method="post" class="login-container">
+    <form action="/actions/action_login.php" method="post" class="login-container">
       
     <!-- Email and password -->
       <input type="email" name="email" placeholder="email">

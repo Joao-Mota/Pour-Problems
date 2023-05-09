@@ -9,13 +9,56 @@
 
   $db = getDatabaseConnection();
 
+
+  if(empty($_POST['first_name'] || $_POST['last_name'] || $_POST['email'] || $_POST['password'] || $_POST['confirm_password'])){
+    $session->addMessage('error', 'All fields are required!');
+    print_r('All fields are required!');
+    //header('Location: ' . $_SERVER['HTTP_REFERER']);
+    exit;
+  }
+
+  if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+    $session->addMessage('error', 'Invalid email!');
+    print_r('Invalid email!');
+    //header('Location: ' . $_SERVER['HTTP_REFERER']);
+    exit;
+  }
+
+  if(strlen($_POST['password']) < 8){
+    $session->addMessage('error', 'Password must be at least 8 characters long!');
+    print_r('Password must be at least 8 characters long!');
+    //header('Location: ' . $_SERVER['HTTP_REFERER']);
+    exit;
+  }
+
+  if($_POST['password'] != $_POST['confirm_password']){
+    $session->addMessage('error', 'Passwords do not match!');
+    print_r('Passwords do not match!');
+    //header('Location: ' . $_SERVER['HTTP_REFERER']);
+    exit;
+  }
+  
+  if(!preg_match('/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/', $_POST['password'])){
+    $session->addMessage('error', 'Password must contain at least one letter and one number!');
+    print_r('Password must contain at least one letter and one number!');
+    //header('Location: ' . $_SERVER['HTTP_REFERER']);
+    exit;
+  }
+
+  print_r('Register successful!');
+  print_r($_POST);
+  
+  
   $fullname = $_POST['first_name'] . ' ' . $_POST['last_name'];
   $username = $_POST['username'];
   $email = $_POST['email'];
-  $password = $_POST['password'];
-  $confirm_password = $_POST['confirm_password'];
+  $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
   $role_id = 1;
   $department_id = null;
+
+
+  $db = getDatabaseConnection();
+
 
   // Check if username already exists
   $user = getUserByUsername($username);
@@ -33,43 +76,9 @@
     exit;
   }
 
-  // Check if passwords match
-  if ($password != $confirm_password) {
-    $session->addMessage('error', 'Passwords do not match!');
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
-    exit;
-  }
 
-  // Check if password is strong enough
-  if (strlen($password) < 8) {
-    $session->addMessage('error', 'Password must be at least 8 characters long!');
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
-    exit;
-  }
-
-  // Check if password contains at least one number
-  if (!preg_match("#[0-9]+#", $password)) {
-    $session->addMessage('error', 'Password must contain at least one number!');
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
-    exit;
-  }
-
-  // Check if password contains at least one letter
-  if (!preg_match("#[a-zA-Z]+#", $password)) {
-    $session->addMessage('error', 'Password must contain at least one letter!');
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
-    exit;
-  }
-
-  // Check if password contains at least one special character
-  if (!preg_match("#\W+#", $password)) {
-    $session->addMessage('error', 'Password must contain at least one special character!');
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
-    exit;
-  }
 
   // Hash password
-  $password = password_hash($password, PASSWORD_DEFAULT); 
 
   try {
     $stmt = $db->prepare("INSERT INTO user ($fullname, username, email, password, role_id, department_id) VALUES (:$fullname, :username, :email, :password, :role_id, :department_id)");

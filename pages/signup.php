@@ -23,7 +23,7 @@
 
   <h1 class="signup-title">Sign Up Now!</h1>
 
-  <form action="../actions/action_register.php" method="post" class="signup-form">
+  <form action="/actions/action_register.php" method="post" class="signup-form">
 
     <div class="flex">
       <div class="input-box">

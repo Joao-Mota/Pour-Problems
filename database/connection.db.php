@@ -4,7 +4,7 @@
   
 
   function getDatabaseConnection() : PDO {
-    $db = new PDO('sqlite:' . __DIR__ . '/../database/database.db');
+    $db = new PDO('sqlite:' . __DIR__ . '/database.db');
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -12,25 +12,33 @@
   }
 
   /* Get user by username */
-  function getUserByUsername(string $username) : ?array {
-    global $db;
+  function getUserByUsername(string $username) : ?User {
+    $db = getDatabaseConnection();
 
     $stmt = $db->prepare('SELECT * FROM users WHERE username = ?');
-    $stmt->execute(array($username));
+    $stmt->execute([$username]);
     $user = $stmt->fetch();
 
-    return $user;
+    if($user === false){
+      return null;
+    }
+
+    return new User($user['id'], $user['fullname'], $user['username'], $user['email'], $user['password'], $user['role_id'], $user['department_id']);
   }
 
   /* Get user by email */
-  function getUserByEmail(string $email) : ?array {
-    global $db;
+  function getUserByEmail(string $email) : ?User {
+    $db = getDatabaseConnection();
 
     $stmt = $db->prepare('SELECT * FROM users WHERE email = ?');
-    $stmt->execute(array($email));
+    $stmt->execute([$email]);
     $user = $stmt->fetch();
 
-    return $user;
+    if($user === false){
+      return null;
+    }
+
+    return new User($user['id'], $user['fullname'], $user['username'], $user['email'], $user['password'], $user['role_id'], $user['department_id']);
   }
 
 ?>
