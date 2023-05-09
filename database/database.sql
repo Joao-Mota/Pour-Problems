@@ -27,10 +27,10 @@ DROP TABLE IF EXISTS Department;
 CREATE TABLE User 
 (
   id INTEGER,
-  fullname VARCHAR(50),
-  username VARCHAR(50),
-  email VARCHAR(50),
-  password VARCHAR(20),
+  fullname VARCHAR(255),
+  username VARCHAR(255) UNIQUE,
+  email VARCHAR(255) UNIQUE,
+  password VARCHAR(255),
   role_id INTEGER,
   department_id INTEGER,
   CONSTRAINT user_pk PRIMARY KEY (id),
