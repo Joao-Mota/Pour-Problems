@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS Department;
 CREATE TABLE User 
 (
   id INTEGER,
-  name VARCHAR(50),
+  fullname VARCHAR(50),
   username VARCHAR(50),
   email VARCHAR(50),
   password VARCHAR(20),
@@ -139,3 +139,4 @@ INSERT INTO Status VALUES (3, 'Solved');
 -- Trigger para inserir o usuário que criou o ticket
 
 
+SELECT * FROM User;
