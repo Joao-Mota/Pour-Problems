@@ -18,7 +18,7 @@
   $department_id = null;
 
   // Check if username already exists
-  $user = User::getUserByUsername($username);
+  $user = getUserByUsername($username);
   if ($user != null) {
     $session->addMessage('error', 'Username already exists!');
     header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -26,7 +26,7 @@
   }
 
   // Check if email already exists
-  $user = User::getUserByEmail($email);
+  $user = getUserByEmail($email);
   if ($user != null) {
     $session->addMessage('error', 'Email already exists!');
     header('Location: ' . $_SERVER['HTTP_REFERER']);
