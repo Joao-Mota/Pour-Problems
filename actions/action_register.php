@@ -44,16 +44,13 @@
     //header('Location: ' . $_SERVER['HTTP_REFERER']);
     exit;
   }
-
-  print_r('Register successful!');
-  print_r($_POST);
   
   
   $fullname = $_POST['first_name'] . ' ' . $_POST['last_name'];
   $username = $_POST['username'];
   $email = $_POST['email'];
   $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-  $role_id = 1;
+  $role_id = 3;
   $department_id = null;
 
 
@@ -81,14 +78,9 @@
   // Hash password
 
   try {
-    $stmt = $db->prepare("INSERT INTO user ($fullname, username, email, password, role_id, department_id) VALUES (:$fullname, :username, :email, :password, :role_id, :department_id)");
-    $stmt ->bindParam(':fullname', $fullname);
-    $stmt ->bindParam(':username', $username);
-    $stmt ->bindParam(':email', $email);
-    $stmt ->bindParam(':password', $password);
-    $stmt ->bindParam(':role_id', $role_id);
-    $stmt ->bindParam(':department_id', $department_id);
-    $stmt ->execute();
+    $stmt = $db->prepare('INSERT INTO User (fullname, username, email, password, role_id, department_id) VALUES (?, ?, ?, ?, ?, ?)');
+    $stmt->execute(array($fullname, $username, $email, $password, $role_id, $department_id));
+
     }     
     catch (PDOException $e) {
       $session->addMessage('fds', 'Register fds!');

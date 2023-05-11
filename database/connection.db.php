@@ -15,7 +15,7 @@
   function getUserByUsername(string $username) : ?User {
     $db = getDatabaseConnection();
 
-    $stmt = $db->prepare('SELECT * FROM users WHERE username = ?');
+    $stmt = $db->prepare('SELECT * FROM User WHERE username = ?');
     $stmt->execute([$username]);
     $user = $stmt->fetch();
 
@@ -30,7 +30,7 @@
   function getUserByEmail(string $email) : ?User {
     $db = getDatabaseConnection();
 
-    $stmt = $db->prepare('SELECT * FROM users WHERE email = ?');
+    $stmt = $db->prepare('SELECT * FROM User WHERE email = ?');
     $stmt->execute([$email]);
     $user = $stmt->fetch();
 
