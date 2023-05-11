@@ -51,7 +51,6 @@
   $email = $_POST['email'];
   $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
   $role_id = 3;
-  $department_id = null;
 
 
   $db = getDatabaseConnection();
@@ -78,8 +77,8 @@
   // Hash password
 
   try {
-    $stmt = $db->prepare('INSERT INTO User (fullname, username, email, password, role_id, department_id) VALUES (?, ?, ?, ?, ?, ?)');
-    $stmt->execute(array($fullname, $username, $email, $password, $role_id, $department_id));
+    $stmt = $db->prepare('INSERT INTO User (fullname, username, email, password, role_id, department_id) VALUES (?, ?, ?, ?, ?)');
+    $stmt->execute(array($fullname, $username, $email, $password, $role_id));
 
     }     
     catch (PDOException $e) {
