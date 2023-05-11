@@ -127,6 +127,10 @@ INSERT INTO Status VALUES (1, 'Open');
 INSERT INTO Status VALUES (2, 'Closed');
 INSERT INTO Status VALUES (3, 'Solved');
 
+-- Insert de Admins
+INSERT INTO User VALUES (1, 'Pedro Landolt', 'Landolt_admin', 'admin_pl@pourproblems.com', 'PourProblemsPL', 1, NULL);
+INSERT INTO User VALUES (2, 'João Mota', 'Mota_admin', 'admin_jm@pourproblems.com', 'PourProblemsJM', 1, NULL);
+INSERT INTO User VALUES (3, 'João Coelho', 'Coelho_admin', 'admin_jc@pourproblems.com', 'PourProblemsJC', 1, NULL);
 
 /*
 

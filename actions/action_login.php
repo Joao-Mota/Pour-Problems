@@ -13,7 +13,7 @@
 
   if ($user) {
     $session->setId($user->id);
-    $session->setName($user->name);
+    $session->setName($user->fullname);
     $session->addMessage('success', 'Login successful!');
   } 
   

@@ -3,17 +3,17 @@
 
     class User {
         public int $id;
-        public string $name;
+        public string $fullname;
         public string $username;
         public string $email;
         public string $password;
         public int $role_id;
         public int $department_id;
 
-        public function __construct(int $id, string $name, string $username, string $email, string $password, int $role_id, int $department_id)
+        public function __construct(int $id, string $fullname, string $username, string $email, string $password, int $role_id, int $department_id)
     {
         $this->id = $id;
-        $this->name = $name;
+        $this->fullname = $fullname;
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
@@ -23,7 +23,7 @@
 
     static function getUser(PDO $db, int $id) : User {
         $stmt = $db->prepare('
-            SELECT id, name, username, email, password, role_id, department_id
+            SELECT id, fullname, username, email, password, role_id, department_id
             FROM User 
             WHERE id = ?
       ');
@@ -33,7 +33,7 @@
 
       return new User(
         $user['id'],
-        $user['name'],
+        $user['fullname'],
         $user['username'],
         $user['email'],
         $user['password'],
@@ -43,14 +43,14 @@
     }
 
     static function getUsers(PDO$db, int $count) : array {
-        $stmt = $db->prepare('SELECT id, name, username, email, password, role_id, department_id FROM User LIMIT ?');
+        $stmt = $db->prepare('SELECT id, fullname, username, email, password, role_id, department_id FROM User LIMIT ?');
         $stmt->execute(array($count));
 
         $users = array();
         while ($user = $stmt->fetch()) {
           $users[] = new User(
             $user['id'],
-            $user['name'],
+            $user['fullname'],
             $user['username'],
             $user['email'],
             $user['password'],
@@ -64,7 +64,7 @@
 
     static function getUserWithPassword(PDO $db, string $email, string $password) : ?User {
       $stmt = $db->prepare('
-        SELECT id, name, username, email, password, role_id, department_id
+        SELECT id, fullname, username, email, password, role_id, department_id
         FROM User 
         WHERE email = ? AND password = ?
       ');
@@ -74,7 +74,7 @@
       if ($user = $stmt->fetch()) {
         return new User(
           $user['id'],
-          $user['name'],
+          $user['fullname'],
           $user['username'],
           $user['email'],
           $user['password'],
