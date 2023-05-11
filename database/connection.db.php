@@ -23,7 +23,7 @@
       return null;
     }
 
-    return new User($user['id'], $user['fullname'], $user['username'], $user['email'], $user['password'], $user['role_id'], $user['department_id']);
+    return new User($user['id'], $user['fullname'], $user['username'], $user['email'], $user['password'], $user['role_id']);
   }
 
   /* Get user by email */
@@ -38,7 +38,7 @@
       return null;
     }
 
-    return new User($user['id'], $user['fullname'], $user['username'], $user['email'], $user['password'], $user['role_id'], $user['department_id']);
+    return new User($user['id'], $user['fullname'], $user['username'], $user['email'], $user['password'], $user['role_id']);
   }
 
 ?>

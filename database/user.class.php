@@ -8,9 +8,8 @@
         public string $email;
         public string $password;
         public int $role_id;
-        public int $department_id;
 
-        public function __construct(int $id, string $fullname, string $username, string $email, string $password, int $role_id, int $department_id)
+        public function __construct(int $id, string $fullname, string $username, string $email, string $password, int $role_id)
     {
         $this->id = $id;
         $this->fullname = $fullname;
@@ -18,12 +17,11 @@
         $this->email = $email;
         $this->password = $password;
         $this->role_id = $role_id;
-        $this->department_id = $department_id;
     }
 
     static function getUser(PDO $db, int $id) : User {
         $stmt = $db->prepare('
-            SELECT id, fullname, username, email, password, role_id, department_id
+            SELECT id, fullname, username, email, password, role_id
             FROM User 
             WHERE id = ?
       ');
@@ -37,13 +35,12 @@
         $user['username'],
         $user['email'],
         $user['password'],
-        $user['role_id'],
-        $user['department_id']
+        $user['role_id']
       );
     }
 
     static function getUsers(PDO$db, int $count) : array {
-        $stmt = $db->prepare('SELECT id, fullname, username, email, password, role_id, department_id FROM User LIMIT ?');
+        $stmt = $db->prepare('SELECT id, fullname, username, email, password, role_id FROM User LIMIT ?');
         $stmt->execute(array($count));
 
         $users = array();
@@ -54,8 +51,7 @@
             $user['username'],
             $user['email'],
             $user['password'],
-            $user['role_id'],
-            $user['department_id']
+            $user['role_id']
           );
         }
     
@@ -64,7 +60,7 @@
 
     static function getUserWithPassword(PDO $db, string $email, string $password) : ?User {
       $stmt = $db->prepare('
-        SELECT id, fullname, username, email, password, role_id, department_id
+        SELECT id, fullname, username, email, password, role_id
         FROM User 
         WHERE email = ? AND password = ?
       ');
@@ -78,8 +74,7 @@
           $user['username'],
           $user['email'],
           $user['password'],
-          $user['role_id'],
-          $user['department_id']
+          $user['role_id']
         );
       } else return null;
     }
