@@ -12,37 +12,37 @@
 
   if(empty($_POST['first_name'] || $_POST['last_name'] || $_POST['email'] || $_POST['password'] || $_POST['confirm_password'])){
     $session->addMessage('error', 'All fields are required!');
-    print_r('All fields are required!');
+    //print_r('All fields are required!');
     //header('Location: ' . $_SERVER['HTTP_REFERER']);
-    exit;
+    //exit;
   }
 
   if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
     $session->addMessage('error', 'Invalid email!');
-    print_r('Invalid email!');
+    //print_r('Invalid email!');
     //header('Location: ' . $_SERVER['HTTP_REFERER']);
-    exit;
+    //exit;
   }
 
   if(strlen($_POST['password']) < 8){
     $session->addMessage('error', 'Password must be at least 8 characters long!');
-    print_r('Password must be at least 8 characters long!');
+    //print_r('Password must be at least 8 characters long!');
     //header('Location: ' . $_SERVER['HTTP_REFERER']);
-    exit;
+    //exit;
   }
 
   if($_POST['password'] != $_POST['confirm_password']){
     $session->addMessage('error', 'Passwords do not match!');
-    print_r('Passwords do not match!');
+    //print_r('Passwords do not match!');
     //header('Location: ' . $_SERVER['HTTP_REFERER']);
-    exit;
+    //exit;
   }
   
   if(!preg_match('/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/', $_POST['password'])){
     $session->addMessage('error', 'Password must contain at least one letter and one number!');
-    print_r('Password must contain at least one letter and one number!');
+    //print_r('Password must contain at least one letter and one number!');
     //header('Location: ' . $_SERVER['HTTP_REFERER']);
-    exit;
+    //exit;
   }
   
   
@@ -77,14 +77,14 @@
   // Hash password
 
   try {
-    $stmt = $db->prepare('INSERT INTO User (fullname, username, email, password, role_id, department_id) VALUES (?, ?, ?, ?, ?)');
+    $stmt = $db->prepare('INSERT INTO User (fullname, username, email, password, role_id) VALUES (?, ?, ?, ?, ?)');
     $stmt->execute(array($fullname, $username, $email, $password, $role_id));
-
+    $session->addMessage('success', 'Register successful!');
     }     
+    
     catch (PDOException $e) {
       $session->addMessage('fds', 'Register fds!');
     }
-  $session->addMessage('success', 'Register successful!');
 
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>

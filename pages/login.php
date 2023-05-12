@@ -26,8 +26,13 @@
     <form action="/actions/action_login.php" method="post" class="login-container">
       
     <!-- Email and password -->
-      <input type="email" name="email" placeholder="email">
-      <input type="password" name="password" placeholder="password">
+      <div class="input-box">
+        <input type="email" name="email" placeholder="email">
+      </div>
+
+      <div class="input-box">
+        <input type="password" name="password" placeholder="password">
+      </div>
       
       <div class="login-options">
         <!-- Login button -->
@@ -45,6 +50,14 @@
         <a class="forgot-password" href="/pages/forgot_password.php">Forgot your password?</a>
         <a class="register" href="/pages/signup.php">Don't have an account?</a>
       </div>
+
+      <section id="messages">
+        <?php foreach ($session->getMessages() as $messsage) { ?>
+          <article class="<?=$messsage['type']?>">
+            <?=$messsage['text']?>
+          </article>
+        <?php } ?>
+      </section>
       
     </form>
   </div>

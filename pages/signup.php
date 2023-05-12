@@ -56,6 +56,13 @@
         <input type="password" name="confirm_password" placeholder="confirm your password">
       </div>
 
+      <section id="messages">
+        <?php foreach ($session->getMessages() as $messsage) { ?>
+          <article class="<?=$messsage['type']?>">
+            <?=$messsage['text']?>
+          </article>
+        <?php } ?>
+      </section>
 
     </div>
 

@@ -59,22 +59,20 @@
     }
 
     static function getUserWithPassword(PDO $db, string $email, string $password) : ?User {
-      $stmt = $db->prepare('
-        SELECT id, fullname, username, email, password, role_id
-        FROM User 
-        WHERE email = ? AND password = ?
-      ');
+      $stmt = $db->prepare('SELECT * FROM User WHERE email = ?');
 
-      $stmt->execute(array($email, $password));
+      $stmt->execute(array($email));
+
+      $user = $stmt->fetch();
   
-      if ($user = $stmt->fetch()) {
+      if ($user !== false && password_verify($password, $user['password'])) {
         return new User(
-          $user['id'],
+          intval($user['id']),
           $user['fullname'],
           $user['username'],
           $user['email'],
           $user['password'],
-          $user['role_id']
+          intval($user['role_id']),
         );
       } else return null;
     }

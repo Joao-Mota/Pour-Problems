@@ -134,6 +134,16 @@ section{
     color: var(--main-color);
 }
 
+.header .navbar button{
+    font-size: 2rem;
+    margin-left: 2rem;
+    color: var(--black);
+}
+
+.header .navbar button:hover{
+    color: var(--main-color);
+}
+
 #menu-bars{
     font-size: 2.5rem;
     cursor: pointer;
@@ -797,6 +807,11 @@ section{
         text-align: center;
     }
 
+    .header .navbar button{
+        display: block;
+        margin: 2rem;
+        text-align: center;
+    }
 }
 
 @media (max-width: 450px){

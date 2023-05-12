@@ -28,22 +28,12 @@
   <body>
 
     <header>
-        <section class="header">
 
-        <a href="index.php" class="logo">
-            <img src="../sources/PourProblems_Logo_Gray.png" alt="PourProblems" width="140">
-        </a>
+      <?php 
+        if ($session->isLoggedIn()) drawLogoutHeader($session);
 
-        <nav class="navbar">
-            <a href="/pages/about.php">About</a>
-            <a href="/pages/tickets.php">Tickets</a>
-            <a href="/pages/signup.php">Sign Up</a>
-            <a href="/pages/login.php">Login</a>
-        </nav>
-
-        <div id="menu-bars" class="fas fa-bars"></div>
-
-        </section>
+        else drawLoginHeader($session);
+      ?>
 
     </header>
     
@@ -107,9 +97,42 @@
 </html>
 <?php } ?>
 
-<?php function drawLogoutForm(Session $session) { ?>
-  <form action="../actions/action_logout.php" method="post" class="logout">
-    <a href="../pages/profile.php"><?=$session->getName()?></a>
-    <button type="submit">Logout</button>
-  </form>
+<?php function drawLoginHeader(Session $session) { ?>
+  <section class="header">
+
+    <a href="index.php" class="logo">
+        <img src="../sources/PourProblems_Logo_Gray.png" alt="PourProblems" width="140">
+    </a>
+
+    <nav class="navbar">
+      <a href="/pages/about.php">About</a>
+      <a href="/pages/tickets.php">Tickets</a>
+      <a href="/pages/signup.php">Sign Up</a>
+      <a href="/pages/login.php">Login</a>
+    </nav>
+
+    <div id="menu-bars" class="fas fa-bars"></div>
+
+  </section>
+<?php } ?>
+
+<?php function drawLogoutHeader(Session $session) { ?>
+  <section class="header">
+
+    <a href="index.php" class="logo">
+        <img src="../sources/PourProblems_Logo_Gray.png" alt="PourProblems" width="140">
+    </a>
+
+    <nav class="navbar">
+      <a href="/pages/about.php">About</a>
+      <a href="/pages/tickets.php">Tickets</a>
+      <a href="/pages/signup.php">Sign Up</a>
+      <form action="../actions/action_logout.php" method="post" class="navbar">
+        <button type="submit">Logout</button>
+      </form>
+    </nav>
+
+    <div id="menu-bars" class="fas fa-bars"></div>
+
+  </section>
 <?php } ?>
