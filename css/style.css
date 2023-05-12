@@ -792,6 +792,7 @@ section{
         left: 0;
         right: 0;
         background-color: var(--white);
+        border-bottom: var(--border);
         border-top: var(--border);
         padding: 2rem;
         transition: 0.2s linear;
@@ -808,11 +809,13 @@ section{
         text-align: center;
     }
 
-    .header .navbar button{
+    .header .navbar .logout input{
         display: block;
-        margin: 2rem;
-        text-align: center;
+        margin: 2rem auto;
+        align-items: center;
     }
+
+
 }
 
 @media (max-width: 450px){
