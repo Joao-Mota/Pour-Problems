@@ -51,7 +51,7 @@
         );
       }
   
-      return $user;
+      return $users;
     }
 
     static function getUserWithPassword(PDO $db, string $email, string $password) : ?User {

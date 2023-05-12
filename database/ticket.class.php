@@ -24,6 +24,24 @@
 
             return new Ticket($ticket['id'], $ticket['subject'], $ticket['datetime'], $ticket['status_id']);
         }
+        
+        static function getAllTickets(PDO $db) : array {
+            $stmt = $db->prepare('SELECT * FROM Ticket');
+        
+            $stmt->execute();
+        
+            $tickets = array();
+
+            while ($ticket = $stmt->fetch()) {
+                $tickets[] = new Ticket(
+                $ticket['id'],
+                strval($ticket['subject']),
+                strval($ticket['datetime']),
+                $ticket['status_id']
+                );
+            }     
+            return $tickets;
+        }
 
     //maybe missing function save(PDO $db)
     }
