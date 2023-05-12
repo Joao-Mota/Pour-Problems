@@ -11,10 +11,8 @@
         }
 
         static function getStatus(PDO $db, int $id): Status{
-            $stmt = $db->prepare('
-            Select id, stat
-            from Status
-            where id = ?');
+            $stmt = $db->prepare('SELECT id, stat FROM Status WHERE id = ?');
+
             $stmt->execute(array($id));
             $status = $stmt->fetch();
 

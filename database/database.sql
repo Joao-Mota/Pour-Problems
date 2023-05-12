@@ -42,11 +42,10 @@ CREATE TABLE User
 -- Tabela de Tickets
 CREATE TABLE Ticket 
 (
-  id INTEGER,
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
   subject VARCHAR(255) NOT NULL,
   datetime DATETIME NOT NULL,
   status_id INTEGER NOT NULL,
-  CONSTRAINT ticket_pk PRIMARY KEY (id),
   CONSTRAINT ticket_status_fk FOREIGN KEY (status_id) REFERENCES Status
 );
 

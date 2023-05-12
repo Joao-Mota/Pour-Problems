@@ -20,11 +20,7 @@
     }
 
     static function getUser(PDO $db, int $id) : User {
-        $stmt = $db->prepare('
-            SELECT id, fullname, username, email, password, role_id
-            FROM User 
-            WHERE id = ?
-      ');
+      $stmt = $db->prepare('SELECT * FROM User WHERE id = ?');
 
       $stmt->execute(array($id));
       $user = $stmt->fetch();
@@ -39,23 +35,23 @@
       );
     }
 
-    static function getUsers(PDO$db, int $count) : array {
-        $stmt = $db->prepare('SELECT id, fullname, username, email, password, role_id FROM User LIMIT ?');
-        $stmt->execute(array($count));
+    static function getUsers(PDO $db, int $count) : array {
+      $stmt = $db->prepare('SELECT * FROM User LIMIT ?');
+      $stmt->execute(array($count));
 
-        $users = array();
-        while ($user = $stmt->fetch()) {
-          $users[] = new User(
-            $user['id'],
-            $user['fullname'],
-            $user['username'],
-            $user['email'],
-            $user['password'],
-            $user['role_id']
-          );
-        }
-    
-        return $user;
+      $users = array();
+      while ($user = $stmt->fetch()) {
+        $users[] = new User(
+          $user['id'],
+          $user['fullname'],
+          $user['username'],
+          $user['email'],
+          $user['password'],
+          $user['role_id']
+        );
+      }
+  
+      return $user;
     }
 
     static function getUserWithPassword(PDO $db, string $email, string $password) : ?User {
