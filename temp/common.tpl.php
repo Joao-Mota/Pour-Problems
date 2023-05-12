@@ -124,11 +124,11 @@
     </a>
 
     <nav class="navbar">
-      <a href="/pages/about.php">About</a>
-      <a href="/pages/tickets.php">Tickets</a>
-      <a href="/pages/signup.php">Sign Up</a>
-      <form action="../actions/action_logout.php" method="post" class="navbar">
-        <button type="submit">Logout</button>
+      <form action="../actions/action_logout.php" method="post" class="logout">
+        <a href="/pages/about.php">About</a>
+        <a href="/pages/tickets.php">My Tickets</a>
+        <a href="/pages/signup.php">Profile</a>
+        <input type="submit" value="Logout">
       </form>
     </nav>
 

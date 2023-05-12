@@ -134,13 +134,14 @@ section{
     color: var(--main-color);
 }
 
-.header .navbar button{
+.header .navbar input{
     font-size: 2rem;
     margin-left: 2rem;
     color: var(--black);
+    background: none;
 }
 
-.header .navbar button:hover{
+.header .navbar input:hover{
     color: var(--main-color);
 }
 
