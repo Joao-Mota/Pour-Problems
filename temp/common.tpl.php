@@ -127,7 +127,7 @@
       <form action="../actions/action_logout.php" method="post" class="logout">
         <a href="/pages/about.php">About</a>
         <a href="/pages/tickets.php">My Tickets</a>
-        <a href="/pages/signup.php">Profile</a>
+        <a href="/pages/profile.php">Profile</a>
         <input type="submit" value="Logout">
       </form>
     </nav>
