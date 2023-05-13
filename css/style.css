@@ -686,6 +686,161 @@ section{
 }
 
 
+/* Ticket Submission */
+
+.ticket-form .signup-title{
+    text-align: center;
+    font-size: 3.5rem;
+    color: var(--black);
+    padding-bottom: 5rem;
+}
+
+.ticket-form .signup-form{
+    padding: 2rem;
+    background: var(--light-bg);
+}
+
+.ticket-form .signup-form .flex{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.ticket .signup-form .flex .input-box{
+    flex: 1 1 41rem;
+}
+
+.ticket-form .signup-form .flex .input-box input{
+    width: 100%;
+    padding: 1.2rem 1.4rem;
+    font-size: 1.6rem;
+    color: var(--light-black);
+    text-transform: none;
+    margin-top: 1.5rem;
+    border: 1px solid var(--light-black);
+}
+
+.ticket-form .signup-form .flex .input-box input:focus{
+    background-color: var(--main-color);
+    color: var(--white);
+}
+
+.ticket-form .signup-form .flex .input-box input:focus::placeholder{
+    color: var(--white);
+}
+
+.ticket-form .signup-form .flex .input-box input::placeholder{
+    color: var(--light-black);
+}
+
+.ticket-form .signup-form .flex .input-box span{
+    font-size: 1.5rem;
+    color: var(--light-black);
+}
+
+.ticket-form .signup-form .btn{
+    margin-top: 2rem;
+}
+
+
+.ticket-form .signup-form .messages{
+    padding: 1rem;
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--white);
+    background-color: var(--main-color);
+    border-radius: 0.5rem;
+}
+
+
+/* mytickets */
+.mytickets{
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+}
+
+.mytickets .title{
+    text-align: center;
+    padding-bottom: 5rem;
+    font-size: 4rem;
+}
+
+.mytickets .ticket{
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: var(--light-bg);
+}
+
+.mytickets .ticket .question{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mytickets .ticket .question h3{
+    font-size: 1.8rem;
+    color: var(--black);
+}
+
+.mytickets .ticket .question .icon{
+    font-size: 2rem;
+    color: var(--black);
+}
+
+.mytickets .ticket .answer{
+    max-height: 0;
+    overflow: hidden;
+}
+
+.mytickets .ticket .answer p{
+    padding-top: 1rem;
+    font-size: 1.4rem;
+    color: var(--black);
+}
+
+.mytickets .ticket.active .answer{
+    max-height: 100rem;
+    transition: max-height 1.4s ease;
+    animation: fadeIn 0.4s linear backwards 0.2s;
+}
+
+.mytickets .ticket.active .icon{
+    transform: rotate(180deg);
+    transition: transform 0.5s ease-in;
+}
+
+.mytickets .ticket .icon{
+    transition: transform 0.5s ease-out;
+}
+
+.mytickets .ticket.active .question h3{
+    color: var(--white);
+}
+
+.mytickets .ticket.active{
+    background-color: var(--black);
+}
+
+.mytickets .ticket.active .question .icon{
+    color: var(--white);
+}
+
+.mytickets .ticket.active .answer p{
+    color: var(--white);
+}
+
+.mytickets .ticket .delete{
+    max-height: 0;
+    overflow: hidden;
+}
+
+.mytickets .ticket.active .delete {
+    max-height: 100rem;
+    transition: max-height 1.4s ease;
+    animation: fadeIn 0.4s linear backwards 0.2s;
+}
+
 
 
 

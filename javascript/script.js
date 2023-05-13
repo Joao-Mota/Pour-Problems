@@ -15,6 +15,14 @@ faqs.forEach(faq => {
     });
 });
 
+const tickets = document.querySelectorAll('.ticket');
+
+tickets.forEach(ticket => {
+    ticket.addEventListener('click', () => {
+        ticket.classList.toggle('active');
+    });
+});
+
 
 var swiper = new Swiper(".home-slider", {
     loop:true,

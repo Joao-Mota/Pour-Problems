@@ -22,7 +22,7 @@
   <h1>My Tickets</h1>
 </div>
 
-<section class="signup">
+<section class="ticket-form">
 
   <h1 class="signup-title">Create new ticket</h1>
 
@@ -36,7 +36,7 @@
 
       <div class="input-box">
         <span> DateTime: </span>
-        <input type="text" name="datetime" placeholder="enter the date/time">
+        <input type="datetime-local" name="datetime" placeholder="enter the date/time">
       </div>
 
       <section id="messages">
@@ -53,14 +53,38 @@
 
   </form>
 
-  <?php foreach($tickets_from_user as $ticket_user) { 
 
-    $ticket = Ticket::getTicket($db, $ticket_user->ticket_id) ?> 
-    <article>
-      <h2> <?= $ticket->subject ?> </h2>
-      <p> <?= $ticket->datetime ?> </p>
-    </article>
-  <?php } ?>
+  <section class="mytickets">
+    <h2 class="title">My Tickets</h2>
+
+    <?php foreach($tickets_from_user as $ticket_user) { 
+
+      $ticket = Ticket::getTicket($db, $ticket_user->ticket_id) ?> 
+      
+      <div class="ticket">
+
+        <div class="question">
+          <h3> <?= $ticket->subject ?> </h3>
+
+          <span class="icon"><i class="fas fa-sort-down"></i></span>
+        </div>
+
+        <div class="answer">
+          <p> <?= $ticket->datetime ?> </p>
+        </div>
+
+        <div>
+          <form action="../actions/action_delete_ticket.php" method="post" class="delete">
+            <input type="hidden" name="ticket_id" value="<?=$ticket_user->ticket_id?>">
+            <input type="hidden" name="id" value="<?=$ticket->id?>">
+            <input type="submit" value="Delete"> 
+          </form>
+        </div>
+
+    </div>
+
+    <?php } ?>
+  </section>
 
 </section>
       
