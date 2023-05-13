@@ -6,5 +6,5 @@
   
   $session->logout();
 
-  header('Location: ' . 'http://' . $_SERVER['HTTP_HOST'] . '/pages/index.php');
+  header('Location: ../pages/index.php');
 ?>
