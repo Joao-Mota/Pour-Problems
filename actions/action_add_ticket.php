@@ -11,8 +11,8 @@
   $db = getDatabaseConnection();
 
   if(empty($_POST['subject'] || $_POST['datetime'])){
-    print_r('All fields are required!');
     $session->addMessage('error', 'All fields are required!');
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
   }
 
 
@@ -36,12 +36,16 @@
     $client_id = $session->getID();
     $agent_id = 0;
 
-
+    try {
       $stmt = $db->prepare('INSERT INTO Ticket_User (client_id, agent_id) VALUES (?, ?)');
-
       $stmt->execute(array($client_id, $agent_id));
+      
       $session->addMessage('success', 'Ticket Submited!');
-
+      }     
+      
+      catch (PDOException $e) {
+        $session->addMessage('RIP', 'No ticket!');
+      }
 
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>
