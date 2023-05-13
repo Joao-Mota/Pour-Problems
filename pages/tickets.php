@@ -12,9 +12,7 @@
 
   $db = getDatabaseConnection();
 
-  $tickets_from_user = Ticket_User::getTickets_from_User($db, $session->getID());
-  $tickets = Ticket::getAllTickets($db);
-
+  $tickets_from_user = Ticket_User::getTickets_from_User($db, $session->getId());
 
   drawHeader($session); 
   ?>
@@ -51,17 +49,18 @@
 
     </div>
 
-    <input type="submit" value="Submit Ticket" class="btn" name="register">
+    <input type="submit" value="Submit Ticket" class="btn" name="submit">
 
   </form>
 
-  <?php foreach($tickets as $ticket) { ?> 
-      <article>
-        <h1> <?= $ticket->id ?> </h1>
-        <h2> <?= $ticket->subject ?> </h2>
-        <p> <?= $ticket->datetime ?> </p>
-      </article>
-    <?php } ?>
+  <?php foreach($tickets_from_user as $ticket_user) { 
+
+    $ticket = Ticket::getTicket($db, $ticket_user->ticket_id) ?> 
+    <article>
+      <h2> <?= $ticket->subject ?> </h2>
+      <p> <?= $ticket->datetime ?> </p>
+    </article>
+  <?php } ?>
 
 </section>
       

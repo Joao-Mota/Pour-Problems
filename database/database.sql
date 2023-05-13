@@ -46,7 +46,7 @@ CREATE TABLE User
 -- Tabela de Tickets
 CREATE TABLE Ticket 
 (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  id INTEGER PRIMARY KEY,
   subject VARCHAR(255) NOT NULL,
   datetime DATETIME NOT NULL,
   status_id INTEGER NOT NULL,
@@ -117,10 +117,10 @@ CREATE TABLE Hashtag
 -- Tabela Ticket_User, relaciona os usuários com os tickets
 CREATE TABLE Ticket_User 
 (
-  client_id INTEGER NOT NULL,
+  ticket_id INTEGER PRIMARY KEY,
+  client_id INTEGER,
   agent_id INTEGER,
-  ticket_id INTEGER NOT NULL,
-  CONSTRAINT ticket_user_pk PRIMARY KEY (client_id, ticket_id),
+  CONSTRAINT ticket_user_pk UNIQUE (client_id, ticket_id),
   CONSTRAINT ticket_user_user_fk FOREIGN KEY (client_id) REFERENCES User
     ON UPDATE CASCADE
     ON DELETE CASCADE,
@@ -131,6 +131,7 @@ CREATE TABLE Ticket_User
     ON UPDATE CASCADE
     ON DELETE CASCADE
 );
+
 
 
 -- Tabela de User_Department, relaciona os usuários com os departamentos

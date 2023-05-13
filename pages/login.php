@@ -56,7 +56,7 @@
           <article class="<?=$messsage['type']?>">
             <?=$messsage['text']?>
           </article>
-        <?php } ?>
+        <?php } ?>      
       </section>
       
     </form>
