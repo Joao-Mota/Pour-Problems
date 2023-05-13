@@ -56,7 +56,7 @@
           <article class="<?=$messsage['type']?>">
             <?=$messsage['text']?>
           </article>
-        <?php } ?>
+        <?php } ?>      
       </section>
       
     </form>
@@ -65,5 +65,5 @@
 
 
 <?php
-  drawFooter();
+  drawFooter($session);
 ?>

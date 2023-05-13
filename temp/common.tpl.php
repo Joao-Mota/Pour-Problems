@@ -39,9 +39,7 @@
     
 <?php } ?>
 
-<?php function drawFooter() { ?>
-    
-
+<?php function drawFooter(Session $session) { ?>
     <footer>
         <section class="footer">
 
@@ -49,10 +47,27 @@
 
         <div class="box">
             <h3>Quick Links</h3>
-            <a href="/pages/about.php"> <i class="fas fa-angle-right"></i> About</a>
-            <a href="/pages/tickets.php"> <i class="fas fa-angle-right"></i> Tickets</a>
-            <a href="/pages/signup.php"> <i class="fas fa-angle-right"></i> Sign Up</a>
-            <a href="/pages/login.php"> <i class="fas fa-angle-right"></i> Login</a>
+            <?php 
+              if ($session->isLoggedIn()) { ?>                        
+                <form action="../actions/action_logout.php" method="post" class="logout">
+                  <a href="/pages/about.php"> <i class="fas fa-angle-right"></i> About</a>
+                  <a href="/pages/tickets.php"> <i class="fas fa-angle-right"></i> My Tickets</a>
+                  <a href="/pages/profile.php"> <i class="fas fa-angle-right"></i> Profile</a>
+                  <input type="submit" value="Logout"> 
+                </form>
+            
+                <div id="menu-bars" class="fas fa-bars"></div>
+
+              <?php }
+              
+              else { ?>          
+                <a href="/pages/about.php"> <i class="fas fa-angle-right"></i> About</a>
+                <a href="/pages/signup.php"> <i class="fas fa-angle-right"></i> Sign Up</a>
+                <a href="/pages/login.php"> <i class="fas fa-angle-right"></i> Login</a>
+            
+                <div id="menu-bars" class="fas fa-bars"></div>
+              <?php } 
+            ?>
         </div>
 
         <div class="box">
@@ -106,7 +121,6 @@
 
     <nav class="navbar">
       <a href="/pages/about.php">About</a>
-      <a href="/pages/tickets.php">Tickets</a>
       <a href="/pages/signup.php">Sign Up</a>
       <a href="/pages/login.php">Login</a>
     </nav>
