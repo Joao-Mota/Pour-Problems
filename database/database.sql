@@ -15,6 +15,7 @@ DROP TABLE IF EXISTS Hashtag;
 DROP TABLE IF EXISTS Ticket_User;
 DROP TABLE IF EXISTS User_Department;
 DROP TABLE IF EXISTS FAQ;
+DROP TABLE IF EXISTS Profile_Picture;
 
 
 /*
@@ -35,7 +36,10 @@ CREATE TABLE User
   email VARCHAR(255) UNIQUE NOT NULL,
   password VARCHAR(255) NOT NULL,
   role_id INTEGER NOT NULL,
+  image VARCHAR(255),
   CONSTRAINT user_role_fk FOREIGN KEY (role_id) REFERENCES Role
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
 );
 
 
@@ -47,6 +51,8 @@ CREATE TABLE Ticket
   datetime DATETIME NOT NULL,
   status_id INTEGER NOT NULL,
   CONSTRAINT ticket_status_fk FOREIGN KEY (status_id) REFERENCES Status
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
 );
 
 
@@ -77,8 +83,12 @@ CREATE TABLE Message
   user_id INTEGER NOT NULL,
   ticket_id INTEGER NOT NULL,
   CONSTRAINT message_pk PRIMARY KEY (id),
-  CONSTRAINT message_user_fk FOREIGN KEY (user_id) REFERENCES User,
+  CONSTRAINT message_user_fk FOREIGN KEY (user_id) REFERENCES User
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
   CONSTRAINT message_ticket_fk FOREIGN KEY (ticket_id) REFERENCES Ticket
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
 );
 
 
@@ -99,6 +109,8 @@ CREATE TABLE Hashtag
   ticket_id INTEGER,
   CONSTRAINT hashtag_pk PRIMARY KEY (id),
   CONSTRAINT hashtag_ticket_fk FOREIGN KEY (ticket_id) REFERENCES Ticket
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
 );
 
 
@@ -109,9 +121,15 @@ CREATE TABLE Ticket_User
   client_id INTEGER,
   agent_id INTEGER,
   CONSTRAINT ticket_user_pk UNIQUE (client_id, ticket_id),
-  CONSTRAINT ticket_user_user_fk FOREIGN KEY (client_id) REFERENCES User,
-  CONSTRAINT ticket_user_agent_fk FOREIGN KEY (agent_id) REFERENCES User,
+  CONSTRAINT ticket_user_user_fk FOREIGN KEY (client_id) REFERENCES User
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
+  CONSTRAINT ticket_user_agent_fk FOREIGN KEY (agent_id) REFERENCES User
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
   CONSTRAINT ticket_user_ticket_fk FOREIGN KEY (ticket_id) REFERENCES Ticket
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
 );
 
 
@@ -122,8 +140,12 @@ CREATE TABLE User_Department
   user_id INTEGER NOT NULL,
   department_id INTEGER NOT NULL,
   CONSTRAINT user_department_pk PRIMARY KEY (user_id, department_id),
-  CONSTRAINT user_department_user_fk FOREIGN KEY (user_id) REFERENCES User,
+  CONSTRAINT user_department_user_fk FOREIGN KEY (user_id) REFERENCES User
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
   CONSTRAINT user_department_department_fk FOREIGN KEY (department_id) REFERENCES Department
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
 );
 
 
@@ -136,6 +158,21 @@ CREATE TABLE FAQ
   user_id INTEGER NOT NULL,
   CONSTRAINT faq_pk PRIMARY KEY (id),
   CONSTRAINT faq_user_fk FOREIGN KEY (user_id) REFERENCES User
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+);
+
+
+-- Tabela de Profile Picture, relaciona os usuários com suas imagens de perfil
+CREATE TABLE Profile_Picture 
+(
+  id INTEGER,
+  image VARCHAR(255) NOT NULL,
+  user_id INTEGER NOT NULL,
+  CONSTRAINT profile_picture_pk PRIMARY KEY (id),
+  CONSTRAINT profile_picture_user_fk FOREIGN KEY (user_id) REFERENCES User
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
 );
 
 
@@ -158,11 +195,6 @@ INSERT INTO Status VALUES (1, 'Open');
 INSERT INTO Status VALUES (2, 'Waiting for client');
 INSERT INTO Status VALUES (3, 'Waiting for agent');
 INSERT INTO Status VALUES (4, 'Solved');
-
--- Insert de Admins
-INSERT INTO User VALUES (1, 'Pedro Landolt', 'Landolt_admin', 'admin_pl@pourproblems.com', 'PourProblemsPL', 1);
-INSERT INTO User VALUES (2, 'João Mota', 'Mota_admin', 'admin_jm@pourproblems.com', 'PourProblemsJM', 1);
-INSERT INTO User VALUES (3, 'João Coelho', 'Coelho_admin', 'admin_jc@pourproblems.com', 'PourProblemsJC', 1);
 
 /*
 

@@ -15,11 +15,12 @@
     $session->setId($user->id);
     $session->setName($user->fullname);
     $session->addMessage('success', 'Login successful!');
+    header('Location: ../pages/profile.php');
   } 
   
   else {
     $session->addMessage('error', 'Wrong password!');
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
   }
 
-  header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>

@@ -40,10 +40,10 @@
 <?php } ?>
 
 <?php function drawFooter(Session $session) { ?>
-    <footer>
-        <section class="footer">
+  <footer>
+    <section class="footer">
 
-        <div class="box-conteiner">
+      <div class="box-conteiner">
 
         <div class="box">
             <h3>Quick Links</h3>
