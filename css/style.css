@@ -675,6 +675,23 @@ section{
 }
 
 
+.signup .signup-form .messages{
+    padding: 1rem;
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--white);
+    background-color: var(--main-color);
+    border-radius: 0.5rem;
+}
+
+
+
+
+
+
+
+
 
 
 

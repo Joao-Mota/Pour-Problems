@@ -56,18 +56,35 @@
         <input type="password" name="confirm_password" placeholder="confirm your password">
       </div>
 
-      <section id="messages">
-        <?php foreach ($session->getMessages() as $messsage) { ?>
-          <article class="<?=$messsage['type']?>">
-            <?=$messsage['text']?>
-          </article>
-        <?php } ?>
-      </section>
-
+      
     </div>
-
+    
     <input type="submit" value="Sign Up" class="btn" name="register">
-
+    <section class="messages" id="messages">
+      <?php foreach ($session->getMessages() as $messsage) { 
+        if($messsage['type'] == 'error') {
+          ?>
+          <div class="messages_title">
+            <h1>Invalid Sign Up!</h1>
+            <button class="closebtn" onclick="this.parentElement.style.display='none';">&times;</button>
+          </div>
+          <?php
+        }
+        else {
+          ?>
+          <div class="messages_title">
+            <h1>Sign Up Successful!</h1>
+            <button class="closebtn" onclick="this.parentElement.style.display='none';">&times;</button>
+          </div>
+          <?php
+        }
+        ?>
+        <article class="<?=$messsage['type']?>">
+          <?=$messsage['text']?>
+        </article>
+      <?php } ?>
+    </section>
+    
   </form>
 
 </section>
