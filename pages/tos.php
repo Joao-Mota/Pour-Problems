@@ -58,5 +58,5 @@
 </section>
     
 <?php
-  drawFooter();
+  drawFooter($session);
 ?>

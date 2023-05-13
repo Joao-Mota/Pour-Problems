@@ -21,5 +21,5 @@
 
     
 <?php
-  drawFooter();
+  drawFooter($session);
 ?>

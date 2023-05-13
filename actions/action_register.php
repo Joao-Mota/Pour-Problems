@@ -80,11 +80,12 @@
     $stmt = $db->prepare('INSERT INTO User (fullname, username, email, password, role_id) VALUES (?, ?, ?, ?, ?)');
     $stmt->execute(array($fullname, $username, $email, $password, $role_id));
     $session->addMessage('success', 'Register successful!');
+    header('Location: ../pages/login.php');
     }     
     
     catch (PDOException $e) {
       $session->addMessage('fds', 'Register fds!');
+      header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 
-  header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>

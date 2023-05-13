@@ -65,5 +65,5 @@
 
 
 <?php
-  drawFooter();
+  drawFooter($session);
 ?>
