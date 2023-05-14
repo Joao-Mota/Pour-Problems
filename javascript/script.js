@@ -31,3 +31,34 @@ var swiper = new Swiper(".home-slider", {
       prevEl: ".swiper-button-prev",
     },
   });
+
+/* Popups for Register */
+const openPopupBtn = document.querySelectorAll('[data-popup-target]');
+const closePopupBtn = document.querySelectorAll('[data-popup-close]');
+const overlay = document.getElementById('popup_overlay');
+
+openPopupBtn.forEach(input => {
+    button.addEventListener('click', () => {
+        const messages = document.querySelector(input.dataset.popupTarget);
+        openPopup(messages);
+    });
+});
+
+closePopupBtn.forEach(input => {
+    button.addEventListener('click', () => {
+        const messages = input.closest('.messages');
+        closePopup(messages);
+    });
+});
+
+function openPopup(messages) {
+    if (messages == null) return;
+    messages.classList.add('active');
+    overlay.classList.add('active');
+}
+
+function closePopup(messages) {
+    if (messages == null) return;
+    messages.classList.remove('active');
+    overlay.classList.remove('active');
+}
