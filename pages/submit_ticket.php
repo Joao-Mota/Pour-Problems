@@ -34,11 +34,6 @@
       </div>
 
       <div class="input-box">
-        <span> DateTime: </span>
-        <input type="datetime-local" name="datetime" placeholder="enter the date/time">
-      </div>
-
-      <div class="input-box">
         <span> Department: </span>
         <select id="departments" name="department">
           <option value="notsure"> Not Sure </option>

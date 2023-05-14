@@ -30,7 +30,14 @@
     <header>
 
       <?php 
-        if ($session->isLoggedIn()) drawLogoutHeader($session);
+        if ($session->isLoggedIn()) {
+          if($session->isAdmin()) {
+            drawAdminHeader($session);
+          }
+          else {
+            drawLogoutHeader($session);
+          }
+        }
 
         else drawLoginHeader($session);
       ?>
@@ -141,6 +148,27 @@
         <a href="/pages/about.php">About</a>
         <a href="/pages/mytickets.php">My Tickets</a>
         <a href="/pages/submit_ticket.php">Submit a Ticket</a>
+        <a href="/pages/profile.php">Profile</a>
+        <input type="submit" value="Logout">
+      </form>
+    </nav>
+
+    <div id="menu-bars" class="fas fa-bars"></div>
+
+  </section>
+<?php } ?>
+
+<?php function drawAdminHeader(Session $session) { ?>
+  <section class="header">
+
+    <a href="index.php" class="logo">
+        <img src="../sources/PourProblems_Logo_Gray.png" alt="PourProblems" width="140">
+    </a>
+
+    <nav class="navbar">
+      <form action="../actions/action_logout.php" method="post" class="logout">
+        <a href="/pages/about.php">About</a>
+        <a href="/pages/all_tickets.php">All Tickets</a>
         <a href="/pages/profile.php">Profile</a>
         <input type="submit" value="Logout">
       </form>

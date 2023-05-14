@@ -13,6 +13,14 @@
   $db = getDatabaseConnection();
 
   drawHeader($session); 
+
+  try {
+    $password = password_hash('admin', PASSWORD_DEFAULT);
+    $stmt = $db->prepare('INSERT INTO User (fullname, username, email, password, role_id) VALUES (?, ?, ?, ?, ?)');
+    $stmt->execute(array('admin', 'admin', 'admin@gmail.com', $password, 1));
+  }     
+  catch (PDOException $e) {
+  }
 ?>
 
 <section class="home">
