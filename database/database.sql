@@ -81,7 +81,7 @@ CREATE TABLE Message
 (
   id INTEGER,
   text TEXT NOT NULL,
-  datetime DATETIME NOT NULL,
+  datetime DATETIME,
   user_id INTEGER NOT NULL,
   ticket_id INTEGER NOT NULL,
   CONSTRAINT message_pk PRIMARY KEY (id),
