@@ -5,13 +5,15 @@
         public int $id;
         public string $subject;
         public string $datetime;
+        public string $department;
         public int $status_id;
 
 
-        public function __construct(int $id, string $subject, string $datetime, int $status_id){
+        public function __construct(int $id, string $subject, string $datetime, string $department, int $status_id){
             $this->id = $id;
             $this->subject = $subject;
             $this->datetime = $datetime;
+            $this->department = $department;
             $this->status_id = $status_id;
         }
 
@@ -22,7 +24,7 @@
             $stmt->execute(array($id));
             $ticket = $stmt->fetch();
 
-            return new Ticket($ticket['id'], $ticket['subject'], $ticket['datetime'], $ticket['status_id']);
+            return new Ticket($ticket['id'], $ticket['subject'], $ticket['datetime'], $ticket['department'], $ticket['status_id']);
         }
         
         static function getAllTickets(PDO $db) : array {
@@ -37,6 +39,7 @@
                 $ticket['id'],
                 strval($ticket['subject']),
                 strval($ticket['datetime']),
+                strval($ticket['department']),
                 $ticket['status_id']
                 );
             }     

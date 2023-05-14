@@ -8,6 +8,7 @@
   require_once(__DIR__ . '/../temp/common.tpl.php');
   require_once(__DIR__ . '/../database/ticket_user.class.php');
   require_once(__DIR__ . '/../database/ticket.class.php');
+  require_once(__DIR__ . '/../database/status.class.php');
   
 
   $db = getDatabaseConnection();
@@ -37,6 +38,16 @@
       <div class="input-box">
         <span> DateTime: </span>
         <input type="datetime-local" name="datetime" placeholder="enter the date/time">
+      </div>
+
+      <div class="input-box">
+        <span> Department: </span>
+        <select id="departments" name="department">
+          <option value="notsure"> Not Sure </option>
+          <option value="accounting"> Accounting </option>
+          <option value="packaging"> Packaging </option>
+          <option value="orders"> Orderd </option>
+        </select>
       </div>
 
       <section id="messages">
@@ -70,7 +81,10 @@
         </div>
 
         <div class="answer">
+          <p> Department : <?= $ticket->department ?> </p>
           <p> <?= $ticket->datetime ?> </p>
+          <?php $status = Status::getStatus($db, $ticket->status_id); ?>
+          <p> Ticket Status : <?= $status->stat ?> </p>
         </div>
 
         <div>
