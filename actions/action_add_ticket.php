@@ -19,12 +19,13 @@
 
   $subject = strval($_POST['subject']);
   $datetime = strval($_POST['datetime']);
-  $status_id = 0;
+  $department = strval($_POST['department']);
+  $status_id = 1;
 
   try {
-    $stmt = $db->prepare('INSERT INTO Ticket (subject, datetime, status_id) VALUES (?, ?, ?)');
+    $stmt = $db->prepare('INSERT INTO Ticket (subject, datetime, department, status_id) VALUES (?, ?, ?, ?)');
 
-    $stmt->execute(array($subject, $datetime, $status_id));
+    $stmt->execute(array($subject, $datetime, $department, $status_id));
     }     
     
     catch (PDOException $e) {
@@ -43,9 +44,9 @@
       $session->addMessage('success', 'Ticket Submited!');
       }     
       
-      catch (PDOException $e) {
-        $session->addMessage('RIP', 'No ticket!');
-      }
+    catch (PDOException $e) {
+      $session->addMessage('RIP', 'No ticket!');
+    }
 
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>

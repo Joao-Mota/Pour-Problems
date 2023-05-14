@@ -710,6 +710,29 @@ section{
     flex: 1 1 41rem;
 }
 
+.ticket-form .signup-form .flex .input-box select{
+    width: 100%;
+    padding: 1.2rem 1.4rem;
+    font-size: 1.6rem;
+    color: var(--light-black);
+    text-transform: none;
+    margin-top: 1.5rem;
+    border: 1px solid var(--light-black);
+}
+
+.ticket-form .signup-form .flex .input-box select:focus{
+    background-color: var(--main-color);
+    color: var(--white);
+}
+
+.ticket-form .signup-form .flex .input-box select:focus::placeholder{
+    color: var(--white);
+}
+
+.ticket-form .signup-form .flex .input-box select::placeholder{
+    color: var(--light-black);
+}
+
 .ticket-form .signup-form .flex .input-box input{
     width: 100%;
     padding: 1.2rem 1.4rem;

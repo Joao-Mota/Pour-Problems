@@ -49,6 +49,7 @@ CREATE TABLE Ticket
   id INTEGER PRIMARY KEY,
   subject VARCHAR(255) NOT NULL,
   datetime DATETIME NOT NULL,
+  department VARCHAR(255),
   status_id INTEGER NOT NULL,
   CONSTRAINT ticket_status_fk FOREIGN KEY (status_id) REFERENCES Status
     ON UPDATE CASCADE
@@ -191,10 +192,9 @@ INSERT INTO Role VALUES (2, 'AGE');
 INSERT INTO Role VALUES (3, 'CLI');
 
 -- Insert de Status
-INSERT INTO Status VALUES (1, 'Open');
-INSERT INTO Status VALUES (2, 'Waiting for client');
-INSERT INTO Status VALUES (3, 'Waiting for agent');
-INSERT INTO Status VALUES (4, 'Solved');
+INSERT INTO Status VALUES (1, 'Open (Waiting for agent)');
+INSERT INTO Status VALUES (2, 'Assigned to agent');
+INSERT INTO Status VALUES (3, 'Closed');
 
 /*
 
