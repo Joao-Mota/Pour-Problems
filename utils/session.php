@@ -13,6 +13,10 @@
       return isset($_SESSION['id']);    
     }
 
+    public function isAdmin() : bool {
+      return $_SESSION['id'] == 1;    
+    }
+
     public function logout() {
       session_destroy();
     }

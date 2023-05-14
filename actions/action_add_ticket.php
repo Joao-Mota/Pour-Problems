@@ -19,7 +19,7 @@
 
   $subject = strval($_POST['subject']);
   $description = strval($_POST['description']);
-  $datetime = strval($_POST['datetime']);
+  $datetime = date('d/m/y H:i');
   $department = strval($_POST['department']);
   $status_id = 1;
 
