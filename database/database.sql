@@ -48,6 +48,7 @@ CREATE TABLE Ticket
 (
   id INTEGER PRIMARY KEY,
   subject VARCHAR(255) NOT NULL,
+  description TEXT,
   datetime DATETIME NOT NULL,
   department VARCHAR(255),
   status_id INTEGER NOT NULL,

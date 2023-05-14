@@ -25,48 +25,7 @@
 
 <section class="ticket-form">
 
-  <h1 class="signup-title">Create new ticket</h1>
-
-  <form action="/actions/action_add_ticket.php" method="post" class="signup-form">
-
-    <div class="flex">
-      <div class="input-box">
-        <span> Subject: </span>
-        <input type="text" name="subject" placeholder="enter the subject">
-      </div>
-
-      <div class="input-box">
-        <span> DateTime: </span>
-        <input type="datetime-local" name="datetime" placeholder="enter the date/time">
-      </div>
-
-      <div class="input-box">
-        <span> Department: </span>
-        <select id="departments" name="department">
-          <option value="notsure"> Not Sure </option>
-          <option value="accounting"> Accounting </option>
-          <option value="packaging"> Packaging </option>
-          <option value="orders"> Orderd </option>
-        </select>
-      </div>
-
-      <section id="messages">
-        <?php foreach ($session->getMessages() as $messsage) { ?>
-          <article class="<?=$messsage['type']?>">
-            <?=$messsage['text']?>
-          </article>
-        <?php } ?>
-      </section>
-
-    </div>
-
-    <input type="submit" value="Submit Ticket" class="btn" name="submit">
-
-  </form>
-
-
   <section class="mytickets">
-    <h2 class="title">My Tickets</h2>
 
     <?php foreach($tickets_from_user as $ticket_user) { 
 
@@ -92,6 +51,14 @@
             <input type="hidden" name="ticket_id" value="<?=$ticket_user->ticket_id?>">
             <input type="hidden" name="id" value="<?=$ticket->id?>">
             <input type="submit" value="Delete"> 
+          </form>
+        </div>
+
+        <div>
+          <form action="../pages/ticket.php" method="post" class="delete">
+            <input type="hidden" name="ticket_id" value="<?=$ticket_user->ticket_id?>">
+            <input type="hidden" name="id" value="<?=$ticket->id?>">
+            <input type="submit" value="+Info"> 
           </form>
         </div>
 
