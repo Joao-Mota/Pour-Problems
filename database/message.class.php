@@ -24,5 +24,24 @@
 
             return new Message($message['id'], $message['text'], $message['datetime'], $message['user_id'], $message['ticket_id']);
         }
+
+        static function getMessages_from_ticket(PDO $db, int $ticket_id) : array {
+            $stmt = $db->prepare('SELECT * FROM Message WHERE ticket_id = ?');
+        
+            $stmt->execute(array($ticket_id));
+        
+            $messages = [];
+
+            while ($message = $stmt->fetch()) {
+                $messages[] = new Message(
+                    $message['id'],
+                    strval($message['text']),
+                    strval($message['datetime']),
+                    $message['user_id'],
+                    $message['ticket_id']
+                );
+            }     
+            return $messages;
+        }
     }
 ?>
