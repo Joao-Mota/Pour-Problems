@@ -51,7 +51,8 @@
               if ($session->isLoggedIn()) { ?>                        
                 <form action="../actions/action_logout.php" method="post" class="logout">
                   <a href="/pages/about.php"> <i class="fas fa-angle-right"></i> About</a>
-                  <a href="/pages/tickets.php"> <i class="fas fa-angle-right"></i> My Tickets</a>
+                  <a href="/pages/mytickets.php"> <i class="fas fa-angle-right"></i> My Tickets</a>
+                  <a href="/pages/submit_ticket.php"> <i class="fas fa-angle-right"></i> Submit a Ticket</a>
                   <a href="/pages/profile.php"> <i class="fas fa-angle-right"></i> Profile</a>
                   <input type="submit" value="Logout"> 
                 </form>
@@ -140,7 +141,8 @@
     <nav class="navbar">
       <form action="../actions/action_logout.php" method="post" class="logout">
         <a href="/pages/about.php">About</a>
-        <a href="/pages/tickets.php">My Tickets</a>
+        <a href="/pages/mytickets.php">My Tickets</a>
+        <a href="/pages/submit_ticket.php">Submit a Ticket</a>
         <a href="/pages/profile.php">Profile</a>
         <input type="submit" value="Logout">
       </form>

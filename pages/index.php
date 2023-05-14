@@ -34,7 +34,7 @@
                     <h3>Pour</h3>
                     <h3>Problems</h3>
                     <p>We answer every question you may have!</p>
-                    <a href="/pages/tickets.php" class="btn">Tickets!</a>
+                    <a href="/pages/mytickets.php" class="btn">Tickets!</a>
                 </div>
             </div>
 
