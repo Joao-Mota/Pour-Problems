@@ -83,6 +83,26 @@
   $db = getDatabaseConnection();
 
 
+  // Admins
+  /*  
+  $fullname_admin = 'Admin';
+  $username_admin = 'admin';
+  $email_admin = 'admin@pourproblems.com';
+  $password_admin = password_hash('admin555', PASSWORD_DEFAULT);
+  $role_id_admin = 1;
+
+  if(getUserByEmail($email_admin) == null){
+    try {
+      $stmt = $db->prepare('INSERT INTO User (fullname, username, email, password, role_id) VALUES (?, ?, ?, ?, ?)');
+      $stmt->execute(array($fullname_admin, $username_admin, $email_admin, $password_admin, $role_id_admin));
+    }     
+      
+    catch (PDOException $e) {
+      $session->addMessage('error', 'Nice try!');
+      header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
+  }
+  */
 
 
 

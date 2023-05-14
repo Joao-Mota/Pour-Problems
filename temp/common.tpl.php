@@ -49,14 +49,12 @@
             <h3>Quick Links</h3>
             <?php 
               if ($session->isLoggedIn()) { ?>                        
-                <form action="../actions/action_logout.php" method="post" class="logout">
+                
                   <a href="/pages/about.php"> <i class="fas fa-angle-right"></i> About</a>
                   <a href="/pages/mytickets.php"> <i class="fas fa-angle-right"></i> My Tickets</a>
                   <a href="/pages/submit_ticket.php"> <i class="fas fa-angle-right"></i> Submit a Ticket</a>
                   <a href="/pages/profile.php"> <i class="fas fa-angle-right"></i> Profile</a>
-                  <input type="submit" value="Logout"> 
-                </form>
-            
+                  <a href="/actions/action_logout.php"> <i class="fas fa-angle-right"></i> Logout</a>
                 <div id="menu-bars" class="fas fa-bars"></div>
 
               <?php }
