@@ -928,6 +928,80 @@ section{
 
 
 
+.users .user{
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: var(--light-white);
+}
+
+.users .user .question{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.users .user .question h3{
+    font-size: 1.8rem;
+    color: var(--black);
+}
+
+.users .user .question .icon{
+    font-size: 2rem;
+    color: var(--black);
+}
+
+.users .user .answer{
+    max-height: 0;
+    overflow: hidden;
+}
+
+.users .user .answer p{
+    padding-top: 1rem;
+    font-size: 1.4rem;
+    color: var(--black);
+}
+
+.users .user.active .answer{
+    max-height: 100rem;
+    transition: max-height 1.4s ease;
+    animation: fadeIn 0.4s linear backwards 0.2s;
+}
+
+.users .user.active .icon{
+    transform: rotate(180deg);
+    transition: transform 0.5s ease-in;
+}
+
+.users .user .icon{
+    transition: transform 0.5s ease-out;
+}
+
+.users .user.active .question h3{
+    color: var(--white);
+}
+
+.users .user.active{
+    background-color: var(--black);
+}
+
+.users .user.active .question .icon{
+    color: var(--white);
+}
+
+.users .user.active .answer p{
+    color: var(--white);
+}
+
+.users .user .delete{
+    max-height: 0;
+    overflow: hidden;
+}
+
+.users .user.active .delete {
+    max-height: 100rem;
+    transition: max-height 1.4s ease;
+    animation: fadeIn 0.4s linear backwards 0.2s;
+}
 
 
 

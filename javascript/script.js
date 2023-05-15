@@ -23,6 +23,14 @@ tickets.forEach(ticket => {
     });
 });
 
+const users = document.querySelectorAll('.user');
+
+users.forEach(user => {
+    user.addEventListener('click', () => {
+        user.classList.toggle('active');
+    });
+});
+
 
 var swiper = new Swiper(".home-slider", {
     loop:true,

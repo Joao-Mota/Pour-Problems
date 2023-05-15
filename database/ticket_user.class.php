@@ -30,6 +30,23 @@
             }     
             return $tickets;
         }
+
+        static function getAssigned_tickets(PDO $db, int $agent_id) : array {
+            $stmt = $db->prepare('SELECT * FROM Ticket_User WHERE agent_id = ?');
+        
+            $stmt->execute(array($agent_id));
+        
+            $tickets = [];
+
+            while ($ticket = $stmt->fetch()) {
+                $tickets[] = new Ticket_User(
+                intval($ticket['client_id']),
+                intval($ticket['agent_id']),
+                intval($ticket['ticket_id'])
+                );
+            }     
+            return $tickets;
+        }
         
         static function getAllTickets_User(PDO $db) : array {
             $stmt = $db->prepare('SELECT * FROM Ticket_User');

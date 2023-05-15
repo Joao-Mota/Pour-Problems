@@ -35,9 +35,9 @@
       );
     }
 
-    static function getUsers(PDO $db, int $count) : array {
-      $stmt = $db->prepare('SELECT * FROM User LIMIT ?');
-      $stmt->execute(array($count));
+    static function getUsers(PDO $db) : array {
+      $stmt = $db->prepare('SELECT * FROM User');
+      $stmt->execute();
 
       $users = array();
       while ($user = $stmt->fetch()) {

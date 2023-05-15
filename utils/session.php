@@ -17,6 +17,10 @@
       return $_SESSION['id'] == 1;    
     }
 
+    public function isAgent() : bool {
+      return $_SESSION['id'] == 2;    
+    }
+
     public function logout() {
       session_destroy();
     }
