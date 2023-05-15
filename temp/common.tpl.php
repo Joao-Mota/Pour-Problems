@@ -171,8 +171,9 @@
     <nav class="navbar">
       <form action="../actions/action_logout.php" method="post" class="logout">
         <a href="/pages/about.php">About</a>
-        <a href="/pages/users.php">All Users</a>
-        <a href="/pages/all_tickets.php">All Tickets</a>
+        <a href="/pages/users.php">Users</a>
+        <a href="/pages/all_tickets.php">Tickets</a>
+        <a href="/pages/departments.php">Departments</a>
         <a href="/pages/profile.php">Profile</a>
         <input type="submit" value="Logout">
       </form>
