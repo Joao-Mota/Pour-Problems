@@ -20,5 +20,5 @@
   $stmt->execute(array($text, $datetime, $user_id, $ticket_id));
 
 
-  header('Location: ../pages/mytickets.php');
+  header('Location: ../pages/ticket.php?id=' . $ticket_id);
 ?>

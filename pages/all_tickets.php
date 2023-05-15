@@ -13,21 +13,21 @@
 
   $db = getDatabaseConnection();
 
-  $tickets_from_user = Ticket_User::getTickets_from_User($db, $session->getId());
+  $tickets_user = Ticket_User::getAllTickets_User($db);
 
   drawHeader($session); 
   ?>
 
 
 <div class="heading">
-  <h1>My Tickets</h1>
+  <h1>All Tickets</h1>
 </div>
 
 <section class="ticket-form">
 
   <section class="mytickets">
 
-    <?php foreach($tickets_from_user as $ticket_user) { 
+    <?php foreach($tickets_user as $ticket_user) { 
 
       $ticket = Ticket::getTicket($db, $ticket_user->ticket_id) ?> 
       

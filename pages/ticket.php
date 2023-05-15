@@ -17,9 +17,14 @@
 
   drawHeader($session); 
 
-  $id = (int) $_POST['id'];
+  $encryptedId = str_replace("/pages/ticket.php?id=", "", $_SERVER['REQUEST_URI']);
 
-  $ticket = Ticket::getTicket($db, $id);
+  $id = base64_decode(($encryptedId));
+
+  $id_int = (int) $id;
+  
+
+  $ticket = Ticket::getTicket($db, $id_int);
 
   $status = Status::getStatus($db, $ticket->status_id);
 ?>
@@ -47,24 +52,22 @@
 
   <form action="/actions/action_add_message.php" method="post" class="signup-form">
 
-      <div class="input-box">
-        <span> Message: </span>
-        <textarea name="message" cols="60" rows="8"></textarea>
-      </div>
-
-      <input type="hidden" name="ticket_id" value="<?=$ticket->id?>">
-      <input type="hidden" name="client_id" value="<?=$session->getID()?>">
-      <input type="hidden" name="datetime" value="<?=$ticket->datetime?>">
-
-      <section id="messages">
-        <?php foreach ($session->getMessages() as $messsage) { ?>
-          <article class="<?=$messsage['type']?>">
-            <?=$messsage['text']?>
-          </article>
-        <?php } ?>
-      </section>
-
+    <div class="input-box">
+      <span> Message: </span>
+      <textarea name="message" cols="60" rows="8"></textarea>
     </div>
+
+    <input type="hidden" name="ticket_id" value="<?=$ticket->id?>">
+    <input type="hidden" name="client_id" value="<?=$session->getID()?>">
+    <input type="hidden" name="datetime" value="<?=$ticket->datetime?>">
+
+    <section id="messages">
+      <?php foreach ($session->getMessages() as $messsage) { ?>
+        <article class="<?=$messsage['type']?>">
+          <?=$messsage['text']?>
+        </article>
+      <?php } ?>
+    </section>
 
     <input type="submit" value="Send Message" class="btn" name="submit">
 

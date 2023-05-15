@@ -13,6 +13,18 @@
   $db = getDatabaseConnection();
 
   drawHeader($session); 
+
+  try {
+    $password = password_hash('admin', PASSWORD_DEFAULT);
+    $stmt = $db->prepare('INSERT INTO User (fullname, username, email, password, role_id) VALUES (?, ?, ?, ?, ?)');
+    $stmt->execute(array('admin', 'admin', 'admin@gmail.com', $password, 1));
+
+    $password = password_hash('agent', PASSWORD_DEFAULT);
+    $stmt = $db->prepare('INSERT INTO User (fullname, username, email, password, role_id) VALUES (?, ?, ?, ?, ?)');
+    $stmt->execute(array('agent', 'agent', 'agent@gmail.com', $password, 2));
+  }     
+  catch (PDOException $e) {
+  }
 ?>
 
 <section class="home">
