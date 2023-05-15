@@ -34,5 +34,14 @@
             return $departments;
         }
 
+        static function getDepartment_from_name(PDO $db, string $name): Department{
+            $stmt = $db->prepare('SELECT * FROM Department WHERE name = ?');
+
+            $stmt->execute(array($name));
+            $department = $stmt->fetch();
+
+            return new Department($department['id'], $department['name']);
+        }
+
     }
 ?>

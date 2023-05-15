@@ -141,7 +141,7 @@ CREATE TABLE User_Department
 (
   user_id INTEGER NOT NULL,
   department_id INTEGER NOT NULL,
-  CONSTRAINT user_department_pk PRIMARY KEY (user_id, department_id),
+  CONSTRAINT user_department_pk UNIQUE (user_id, department_id),
   CONSTRAINT user_department_user_fk FOREIGN KEY (user_id) REFERENCES User
     ON UPDATE CASCADE
     ON DELETE CASCADE,

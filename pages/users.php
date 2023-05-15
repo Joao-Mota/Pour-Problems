@@ -7,11 +7,13 @@
   require_once(__DIR__ . '/../database/connection.db.php');
   require_once(__DIR__ . '/../temp/common.tpl.php');
   require_once(__DIR__ . '/../database/user.class.php');
+  require_once(__DIR__ . '/../database/department.class.php');
   
 
   $db = getDatabaseConnection();
 
   $users = User::getUsers($db);
+  $departments = Department::getDepartments($db);
 
   drawHeader($session); 
   ?>
@@ -42,15 +44,29 @@
         <?php } 
       
         else if($user->role_id == 2) { ?>
-            <div class="user">
+            <div class="agent">
                 <div class="question">
                 <h3> <?= $user->username ?> </h3>
-
-                <span class="icon"><i class="fas fa-sort-down"></i></span>
                 </div>
 
                 <div class="answer">
                 <p> Name : <?= $user->fullname ?> </p>
+                </div>
+
+                <div>
+                  <form action="../actions/action_assign_department.php" method="post" class="delete">
+
+                    <input type="hidden" name="user_id" value="<?=$user->id?>">
+
+                    <select id="departments" name="department">
+                      <?php foreach($departments as $department) { ?>
+                        <option value="<?=$department->name?>"> <?=$department->name?> </option>
+                      <?php } ?>
+                    </select>
+
+                    <input type="submit" value="Assign Department"> 
+
+                  </form>
                 </div>
             </div>
         <?php }
@@ -77,19 +93,3 @@
 <?php
   drawFooter($session);
 ?>
-
-<!-- <div>
-        <form action="../actions/action_delete_ticket.php" method="post" class="delete">
-        <input type="hidden" name="ticket_id" value="<?=$ticket_user->ticket_id?>">
-        <input type="hidden" name="id" value="<?=$ticket->id?>">
-        <input type="submit" value="Delete"> 
-        </form>
-    </div>
-
-    <div>
-        <form action="../pages/ticket.php?id=<?=base64_encode(strval($ticket->id))?>" method="post" class="delete">
-        <input type="hidden" name="ticket_id" value="<?=$ticket_user->ticket_id?>">
-        <input type="hidden" name="id" value="<?=$ticket->id?>">
-        <input type="submit" value="+Info"> 
-        </form>
-</div> -->

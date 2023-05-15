@@ -54,8 +54,9 @@
 
             <div>
                 <form action="../pages/department.php?id=<?=base64_encode(strval($department->id))?>" method="post" class="delete">
-                <input type="hidden" name="id" value="<?=$department->id?>">
-                <input type="submit" value="+Info"> 
+                  <input type="hidden" name="id" value="<?=$department->id?>">
+                  <input type="hidden" name="name" value="<?=$department->name?>">
+                  <input type="submit" value="+Info"> 
                 </form>
             </div>
 

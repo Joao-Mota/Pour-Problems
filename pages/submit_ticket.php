@@ -9,11 +9,15 @@
   require_once(__DIR__ . '/../database/ticket_user.class.php');
   require_once(__DIR__ . '/../database/ticket.class.php');
   require_once(__DIR__ . '/../database/status.class.php');
+  require_once(__DIR__ . '/../database/department.class.php');
   
 
   $db = getDatabaseConnection();
 
   drawHeader($session); 
+
+  $departments = Department::getDepartments($db);
+
   ?>
 
 
@@ -36,10 +40,11 @@
       <div class="input-box">
         <span> Department: </span>
         <select id="departments" name="department">
-          <option value="notsure"> Not Sure </option>
-          <option value="accounting"> Accounting </option>
-          <option value="packaging"> Packaging </option>
-          <option value="orders"> Orderd </option>
+
+          <?php foreach($departments as $department) { ?>
+            <option value="<?=$department->name?>"> <?=$department->name?> </option>
+          <?php } ?>
+
         </select>
       </div>
 
