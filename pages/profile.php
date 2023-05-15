@@ -32,26 +32,41 @@
 ?>
 
 <div class="profile">
+
   <div class="profile_pic">
     <img src="/sources/profile_placeholder/profile_placeholder.png" alt="profile_pic">
   </div>
+
+  
   <div class="profile_info">
-    <tr>
-      <th>Username:</th>
-      <td><?php echo $user_array->username; ?></td>
-    </tr>
-    <tr>
-      <th>Full Name:</th>
-      <td><?php echo $user_array->fullname; ?></td>
-    </tr>
-    <tr>
-      <th>Email:</th>
-      <td><?php echo $user_array->email; ?></td>
-    </tr>
-    <tr>
-      <th>Role:</th>
-      <td><?php echo $role; ?></td>
-    </tr>
+    <div class="title"> 
+      <h1> Information </h1> 
+    </div>
+    <table class="info">
+      <tr>
+        <th>Username:</th>
+        <td><?php echo $user_array->username; ?></td>
+      </tr>
+
+      <tr>
+        <th>Full Name:</th>
+        <td><?php echo $user_array->fullname; ?></td>
+      </tr>
+
+      <tr>
+        <th>Email:</th>
+        <td><?php echo $user_array->email; ?></td>
+      </tr>
+
+      <tr>
+        <th>Role:</th>
+        <td><?php echo $role; ?></td>
+      </tr>
+    </table>
+
+  </div>
+  <div class="edit_profile">
+    <a href="/actions/action_profile_edit.php"><i class="fas fa-user-pen"></i></a>
   </div>
 </div>
     

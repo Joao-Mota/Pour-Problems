@@ -1,12 +1,17 @@
+// Menu
 const menu_pop = document.querySelector('#menu-bars');
 const navbar = document.querySelector('.header .navbar');
 
-menu_pop.addEventListener = ('click', () => {
+console.log(menu_pop);
+
+menu_pop.addEventListener('click', () => {
+    console.log('click');
     menu_pop.classList.toggle('fa-times');
     navbar.classList.toggle('active');
 });
 
 
+// Faqs
 const faqs = document.querySelectorAll('.faq');
 
 faqs.forEach(faq => {
@@ -15,6 +20,9 @@ faqs.forEach(faq => {
     });
 });
 
+
+
+// Ticket
 const tickets = document.querySelectorAll('.ticket');
 
 tickets.forEach(ticket => {
@@ -23,6 +31,8 @@ tickets.forEach(ticket => {
     });
 });
 
+
+// User
 const users = document.querySelectorAll('.user');
 
 users.forEach(user => {
@@ -32,6 +42,7 @@ users.forEach(user => {
 });
 
 
+// Swiper
 const swiper = new Swiper(".home-slider", {
     loop:true,
     navigation: {
@@ -46,10 +57,10 @@ const closePopupBtn = document.querySelectorAll('[data-popup-close]');
 const overlay = document.getElementById('popup_overlay');
 
 openPopupBtn.forEach(input => {
-    console.log(input);
-    input.addEventListener('click', () => {
+    input.addEventListener('click', (e) => {
         const messages = document.querySelector(input.dataset.popupTarget);
         openPopup(messages);
+        e.preventDefault();
     });
 });
 

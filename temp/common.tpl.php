@@ -11,7 +11,6 @@
     <title>PourProblems</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../javascript/script.js" defer></script>
 
     <link rel="shortcut icon" href="../sources/PourProblems_icon.png" type="image/x-icon">
 
@@ -23,6 +22,12 @@
     
     <!-- Custom CSS link -->
     <link rel="stylesheet" href="../css/style.css">
+    
+    <!-- Swipper js link -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- custom js file link -->
+    <script src="../javascript/script.js" defer></script>
 
   </head>
   <body>
@@ -65,7 +70,7 @@
                   <a href="/pages/submit_ticket.php"> <i class="fas fa-angle-right"></i> Submit a Ticket</a>
                   <a href="/pages/profile.php"> <i class="fas fa-angle-right"></i> Profile</a>
                   <a href="/actions/action_logout.php"> <i class="fas fa-angle-right"></i> Logout</a>
-                <div id="menu-bars" class="fas fa-bars"></div>
+                
 
               <?php }
               
@@ -74,7 +79,7 @@
                 <a href="/pages/signup.php"> <i class="fas fa-angle-right"></i> Sign Up</a>
                 <a href="/pages/login.php"> <i class="fas fa-angle-right"></i> Login</a>
             
-                <div id="menu-bars" class="fas fa-bars"></div>
+                
               <?php } 
             ?>
         </div>
@@ -110,12 +115,6 @@
     </section>
 
     </footer>
-
-    <!-- Swipper js link -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-    <!-- custom js file link -->
-    <script src="../javascript/script.js"></script>
 
   </body>
 </html>

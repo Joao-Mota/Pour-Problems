@@ -59,7 +59,7 @@
       
     </div>
     
-    <input data-popup-target="#messages" type="submit" value="Sign Up" class="btn" name="register">
+    <input data-popup-target="#messages .active" type="submit" value="Sign Up" class="btn" name="register">
     <section class="messages" id="messages">
       <?php foreach ($session->getMessages() as $messsage) { 
         if($messsage['type'] == 'error') {
