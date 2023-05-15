@@ -59,10 +59,12 @@ $datetime = date('d/m/y H:i');
 $department = strval($_POST['department']);
 $status_id = 1;
 
+$new_ticket_id = null;
+
 try {
   $stmt = $db->prepare('INSERT INTO Ticket (subject, description, datetime, department, status_id) VALUES (?, ?, ?, ?, ?)');
-
   $stmt->execute(array($subject, $description, $datetime, $department, $status_id));
+  $new_ticket_id = $db->lastInsertId();
 } catch (PDOException $e) {
   $session->addMessage('RIP', 'No ticket!');
 }
@@ -73,10 +75,18 @@ $agent_id = 0;
 try {
   $stmt = $db->prepare('INSERT INTO Ticket_User (client_id, agent_id) VALUES (?, ?)');
   $stmt->execute(array($client_id, $agent_id));
-
-  $session->addMessage('success', 'Ticket Submited!');
 } catch (PDOException $e) {
   $session->addMessage('RIP', 'No ticket!');
 }
 
+try {
+  foreach ($filenames as $filename) {
+    $stmt = $db->prepare('INSERT INTO Ticket_Files (file_path, user_id, ticket_id) VALUES (?, ?, ?)');
+    $stmt->execute(array($filename, $client_id, $new_ticket_id));
+  }
+} catch (PDOException $e) {
+  $session->addMessage('RIP', 'Cannot save files!');
+}
+
+$session->addMessage('success', 'Ticket Submited!');
 header('Location: ' . $_SERVER['HTTP_REFERER']);
