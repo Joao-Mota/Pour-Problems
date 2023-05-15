@@ -55,7 +55,7 @@
         </div>
 
         <div>
-          <form action="../pages/ticket.php" method="post" class="delete">
+          <form action="../pages/ticket.php?id=<?=base64_encode(strval($ticket->id))?>" method="post" class="delete">
             <input type="hidden" name="ticket_id" value="<?=$ticket_user->ticket_id?>">
             <input type="hidden" name="id" value="<?=$ticket->id?>">
             <input type="submit" value="+Info"> 
