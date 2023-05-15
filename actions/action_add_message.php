@@ -13,6 +13,7 @@
   $ticket_id = strval($_POST['ticket_id']);
   $user_id = strval($_POST['client_id']);
   $datetime = strval($_POST['datetime']);
+  $url_id = strval($_POST['id']);
 
 
   $stmt = $db->prepare('INSERT INTO Message (text, datetime, user_id, ticket_id) VALUES (?, ?, ?, ?)');
@@ -20,5 +21,5 @@
   $stmt->execute(array($text, $datetime, $user_id, $ticket_id));
 
 
-  header('Location: ../pages/ticket.php?id=' . $ticket_id);
+  header('Location: ../pages/ticket.php?id=' . $url_id);
 ?>

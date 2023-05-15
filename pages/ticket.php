@@ -23,7 +23,6 @@
 
   $id_int = (int) $id;
   
-
   $ticket = Ticket::getTicket($db, $id_int);
 
   $status = Status::getStatus($db, $ticket->status_id);
@@ -60,6 +59,7 @@
     <input type="hidden" name="ticket_id" value="<?=$ticket->id?>">
     <input type="hidden" name="client_id" value="<?=$session->getID()?>">
     <input type="hidden" name="datetime" value="<?=$ticket->datetime?>">
+    <input type="hidden" name="id" value="<?=$encryptedId?>">
 
     <section id="messages">
       <?php foreach ($session->getMessages() as $messsage) { ?>
