@@ -57,11 +57,11 @@ const closePopupBtn = document.querySelectorAll('[data-popup-close]');
 const overlay = document.getElementById('popup_overlay');
 
 openPopupBtn.forEach(input => {
-    input.addEventListener('click', (e) => {
-        const messages = document.querySelector(input.dataset.popupTarget);
-        openPopup(messages);
-        e.preventDefault();
-    });
+    // input.addEventListener('click', (e) => {
+    //     const messages = document.querySelector(input.dataset.popupTarget);
+    //     openPopup(messages);
+    //     e.preventDefault();
+    // });
 });
 
 closePopupBtn.forEach(input => {

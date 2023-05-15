@@ -655,12 +655,13 @@ section{
 }
 
 .signup .signup-form .flex .input-box input:focus{
-    background-color: var(--main-color);
-    color: var(--white);
+    background-color: var(--light-bg);
+    color: var(--black);
+    border: 1px solid cadetblue;
 }
 
 .signup .signup-form .flex .input-box input:focus::placeholder{
-    color: var(--white);
+    color: var(--black);
 }
 
 .signup .signup-form .flex .input-box input::placeholder{
@@ -1258,4 +1259,12 @@ section{
         font-size: 50%;
     }
 
+}
+
+.text-danger{
+    color: var(--main-color);
+}
+
+.signup .signup-form .flex .input-box input[data-state="invalid"]{
+    border: 1px solid var(--main-color);
 }

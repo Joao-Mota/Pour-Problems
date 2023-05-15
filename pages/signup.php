@@ -6,13 +6,16 @@
 
   require_once(__DIR__ . '/../database/connection.db.php');
 
-
   require_once(__DIR__ . '/../temp/common.tpl.php');
-  
 
   $db = getDatabaseConnection();
 
   drawHeader($session);
+?>
+
+<!-- get fields erros -->
+<?php 
+  $errorFields = $session->getFieldErrors();
 ?>
 
 <div class="heading" style="background:url(/sources/heading_bg/signup-slide-bg.jpg) no-repeat;">
@@ -28,12 +31,18 @@
     <div class="flex">
       <div class="input-box">
         <span> first name: </span>
-        <input type="text" name="first_name" placeholder="enter your first name">
+        <input type="text" name="first_name" placeholder="enter your first name" data-state="<?php if(isset($errorFields['first_name'])) { ?>invalid<?php } ?>">
+        <?php if(isset($errorFields['first_name'])) { ?>
+          <p class="text-danger"><?=$errorFields['first_name']?></p>
+        <?php } ?>
       </div>
 
       <div class="input-box">
         <span> last name: </span>
-        <input type="text" name="last_name" placeholder="enter your last name">
+        <input type="text" name="last_name" placeholder="enter your last name" data-state="<?php if(isset($errorFields['last_name'])) { ?>invalid<?php } ?>">
+        <?php if(isset($errorFields['last_name'])) { ?>
+          <p class="text-danger"><?=$errorFields['last_name']?></p>
+        <?php } ?>
       </div>
 
       <div class="input-box">
@@ -59,7 +68,14 @@
       
     </div>
     
-    <input data-popup-target="#messages .active" type="submit" value="Sign Up" class="btn" name="register">
+    <button data-popup-target="#messages .active" type="submit" value="Sign Up" class="btn" name="register">Sign Up</button>
+    <?php foreach ($session->getMessages() as $messsage) { ?>
+      <div class="messages_text">
+        <article class="<?=$messsage['type']?>">
+          <?=$messsage['text']?>
+        </article>
+      </div>
+    <?php } ?>
     <section class="messages" id="messages">
       <?php foreach ($session->getMessages() as $messsage) { 
         if($messsage['type'] == 'error') {
