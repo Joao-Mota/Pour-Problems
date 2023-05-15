@@ -18,5 +18,21 @@
 
             return new Department($department['id'], $department['name']);
         }
+
+        static function getDepartments(PDO $db) : array {
+            $stmt = $db->prepare('SELECT * FROM Department');
+            $stmt->execute();
+      
+            $departments = array();
+            while ($department = $stmt->fetch()) {
+              $departments[] = new Department(
+                $department['id'],
+                $department['name']
+              );
+            }
+        
+            return $departments;
+        }
+
     }
 ?>
