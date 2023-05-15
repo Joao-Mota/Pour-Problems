@@ -29,7 +29,7 @@
 
   <h1 class="signup-title">Create new ticket</h1>
 
-  <form action="/actions/action_add_ticket.php" method="post" class="signup-form">
+  <form action="/actions/action_add_ticket.php" method="post" class="signup-form" enctype="multipart/form-data">
 
     <div class="flex">
       <div class="input-box">
@@ -60,8 +60,12 @@
           </article>
         <?php } ?>
       </section>
-
+      <div class="input-box">
+        <label for="file">Choose files</label>
+        <input type="file" name="file[]" id="files" class="inputfile" multiple pattern=".*\.(jpe?g|png|pdf)$" accept=".jpg,.jpeg,.png,.pdf">
+      </div>
     </div>
+
 
     <input type="submit" value="Submit Ticket" class="btn" name="submit">
 
