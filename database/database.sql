@@ -16,6 +16,7 @@ DROP TABLE IF EXISTS Ticket_User;
 DROP TABLE IF EXISTS User_Department;
 DROP TABLE IF EXISTS FAQ;
 DROP TABLE IF EXISTS Profile_Picture;
+DROP TABLE IF EXISTS Ticket_Files;
 
 
 /*
@@ -173,6 +174,23 @@ CREATE TABLE Profile_Picture
   user_id INTEGER NOT NULL,
   CONSTRAINT profile_picture_pk PRIMARY KEY (id),
   CONSTRAINT profile_picture_user_fk FOREIGN KEY (user_id) REFERENCES User
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+);
+
+
+-- Tabela de Ticket Files, relaciona os tickets com os arquivos anexados e seus respectivos usuários
+CREATE TABLE Ticket_Files 
+(
+  id INTEGER,
+  file_path VARCHAR(255) NOT NULL,
+  user_id INTEGER NOT NULL,
+  ticket_id INTEGER NOT NULL,
+  CONSTRAINT ticket_files_pk PRIMARY KEY (id),
+  CONSTRAINT ticket_files_user_fk FOREIGN KEY (user_id) REFERENCES User
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
+  CONSTRAINT ticket_files_ticket_fk FOREIGN KEY (ticket_id) REFERENCES Ticket
     ON UPDATE CASCADE
     ON DELETE CASCADE
 );

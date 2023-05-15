@@ -1,12 +1,15 @@
 <?php
   class Session {
     private array $messages;
+    private array $fieldErrors;
 
     public function __construct() {
       session_start();
 
       $this->messages = isset($_SESSION['messages']) ? $_SESSION['messages'] : array();
       unset($_SESSION['messages']);
+      $this->fieldErrors = isset($_SESSION['fieldErrors']) ? $_SESSION['fieldErrors'] : array();
+      unset($_SESSION['fieldErrors']);
     }
 
     public function isLoggedIn() : bool {
@@ -51,6 +54,18 @@
 
     public function addMessage(string $type, string $text) {
       $_SESSION['messages'][] = array('type' => $type, 'text' => $text);
+    }
+
+    public function addFieldError(string $fieldName, string $errorMessage) {
+      $_SESSION['fieldErrors'][$fieldName] = $errorMessage;
+    }
+
+    public function hasFieldErrors() : bool {
+      return isset($_SESSION['fieldErrors']);
+    }
+
+    public function getFieldErrors() : ?array {
+      return $this->fieldErrors;
     }
 
     public function getMessages() {
