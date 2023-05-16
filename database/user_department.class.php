@@ -27,6 +27,22 @@
             }     
             return $users;
         }
+
+        static function getDepartmentFromUser(PDO $db, int $department_id): array{
+            $stmt = $db->prepare('SELECT * FROM User_Department WHERE user_id = ?');
+        
+            $stmt->execute(array($department_id));
+        
+            $departments = [];
+
+            while ($department = $stmt->fetch()) {
+                $departments[] = new User_Department(
+                intval($department['user_id']),
+                intval($department['department_id'])
+                );
+            }     
+            return $departments;
+        }
         
     }
 ?>

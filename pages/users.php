@@ -8,6 +8,7 @@
   require_once(__DIR__ . '/../temp/common.tpl.php');
   require_once(__DIR__ . '/../database/user.class.php');
   require_once(__DIR__ . '/../database/department.class.php');
+  require_once(__DIR__ . '/../database/user_department.class.php');
   
 
   $db = getDatabaseConnection();
@@ -59,12 +60,30 @@
                     <input type="hidden" name="user_id" value="<?=$user->id?>">
 
                     <select id="departments" name="department">
-                      <?php foreach($departments as $department) { ?>
+                      <?php $user_department = User_Department::getDepartmentFromUser($db, $user->id);
+                       foreach($departments as $department) {
+                        foreach($user_department as $user_dep){
+                        if ($department->id == $user_dep->department_id) {
+                          ?>
+                          <option value="<?=$department->name?>" selected> <?=$department->name?> </option>
+                        <?php } else{ ?>
                         <option value="<?=$department->name?>"> <?=$department->name?> </option>
-                      <?php } ?>
+                      <?php }}} ?>
                     </select>
 
                     <input type="submit" value="Assign Department"> 
+
+                  </form>
+                </div>
+
+                <div>
+                  <form action="../actions/action_change_to_client.php" method="post" class="delete">
+
+                    <input type="hidden" name="user_id" value="<?=$user->id?>">
+
+                    
+
+                    <input type="submit" value="Turn Back to client"> 
 
                   </form>
                 </div>
@@ -81,6 +100,16 @@
 
                 <div class="answer">
                 <p> Name : <?= $user->fullname ?> </p>
+                </div>
+                <div>
+                  <form action="../actions/action_change_role.php" method="post" class="delete">
+
+                    <input type="hidden" name="user_id" value="<?=$user->id?>">
+
+
+                    <input type="submit" value="Turn Agent"> 
+
+                  </form>
                 </div>
             </div>
         <?php }

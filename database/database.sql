@@ -138,7 +138,7 @@ CREATE TABLE Ticket_User
 
 
 -- Tabela de User_Department, relaciona os usuários com os departamentos
-CREATE TABLE User_Department 
+CREATE TABLE xartment 
 (
   user_id INTEGER NOT NULL,
   department_id INTEGER NOT NULL,
@@ -215,6 +215,11 @@ INSERT INTO Status VALUES (1, 'Open (Waiting for agent)');
 INSERT INTO Status VALUES (2, 'Assigned to agent');
 INSERT INTO Status VALUES (3, 'Closed');
 
+-- Insert de Departamentos
+INSERT INTO Department VALUES (1, 'General');
+INSERT INTO Department VALUES (2, 'Packaging');
+INSERT INTO Department VALUES (3, 'Payment');
+INSERT INTO Department VALUES (4, 'Delivery');
 /*
 
 ==========================================================
