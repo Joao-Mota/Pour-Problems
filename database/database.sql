@@ -138,7 +138,7 @@ CREATE TABLE Ticket_User
 
 
 -- Tabela de User_Department, relaciona os usuários com os departamentos
-CREATE TABLE User_Department 
+CREATE TABLE xartment 
 (
   user_id INTEGER NOT NULL,
   department_id INTEGER NOT NULL,

@@ -14,6 +14,8 @@
 
   $department = Department::getDepartment_from_name($db, $department_name);
 
+  $stmt = $db->prepare('DELETE FROM User_Department WHERE user_id = ?');
+  $stmt->execute(array($user_id));
 
   $stmt = $db->prepare('INSERT INTO User_Department (user_id, department_id) VALUES (?, ?)');
 
