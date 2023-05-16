@@ -72,5 +72,10 @@
         );
       } else return null;
     }
+    function save($db) {
+      $stmt = $db->prepare('UPDATE User SET role_id = ? WHERE id = ?');
+
+      $stmt->execute(array($this->role_id, $this->id));
+    }
   }
 ?>

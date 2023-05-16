@@ -82,6 +82,16 @@
                 <div class="answer">
                 <p> Name : <?= $user->fullname ?> </p>
                 </div>
+                <div>
+                  <form action="../actions/action_change_role.php" method="post" class="delete">
+
+                    <input type="hidden" name="user_id" value="<?=$user->id?>">
+
+
+                    <input type="submit" value="Turn Agent"> 
+
+                  </form>
+                </div>
             </div>
         <?php }
 

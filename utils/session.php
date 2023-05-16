@@ -1,4 +1,6 @@
 <?php
+require_once(__DIR__ . '/../database/connection.db.php');
+$db = getDatabaseConnection();
   class Session {
     private array $messages;
     private array $fieldErrors;
@@ -21,7 +23,9 @@
     }
 
     public function isAgent() : bool {
-      return $_SESSION['id'] == 2;    
+      global $db;
+      $user = User::getUser($db, $_SESSION['id']);
+      return $user->role_id == 2;    
     }
 
     public function logout() {
