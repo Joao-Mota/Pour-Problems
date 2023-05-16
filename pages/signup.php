@@ -1,21 +1,21 @@
 <?php
-  declare(strict_types = 1);
+declare(strict_types=1);
 
-  require_once(__DIR__ . '/../utils/session.php');
-  $session = new Session();
+require_once(__DIR__ . '/../utils/session.php');
+$session = new Session();
 
-  require_once(__DIR__ . '/../database/connection.db.php');
+require_once(__DIR__ . '/../database/connection.db.php');
 
-  require_once(__DIR__ . '/../temp/common.tpl.php');
+require_once(__DIR__ . '/../temp/common.tpl.php');
 
-  $db = getDatabaseConnection();
+$db = getDatabaseConnection();
 
-  drawHeader($session);
+drawHeader($session);
 ?>
 
 <!-- get fields erros -->
-<?php 
-  $errorFields = $session->getFieldErrors();
+<?php
+$errorFields = $session->getFieldErrors();
 ?>
 
 <div class="heading" style="background:url(/sources/heading_bg/signup-slide-bg.jpg) no-repeat;">
@@ -31,83 +31,78 @@
     <div class="flex">
       <div class="input-box">
         <span> first name: </span>
-        <input type="text" name="first_name" placeholder="enter your first name" data-state="<?php if(isset($errorFields['first_name'])) { ?>invalid<?php } ?>">
-        <?php if(isset($errorFields['first_name'])) { ?>
-          <p class="text-danger"><?=$errorFields['first_name']?></p>
+        <input type="text" name="first_name" placeholder="enter your first name"
+          data-state="<?php if (isset($errorFields['first_name'])) { ?>invalid<?php } ?>" value="<?= $session->getPreviousFirstNameField() ?>">
+        <?php if (isset($errorFields['first_name'])) { ?>
+          <p class="text-danger">
+            <?= $errorFields['first_name'] ?>
+          </p>
         <?php } ?>
       </div>
 
       <div class="input-box">
         <span> last name: </span>
-        <input type="text" name="last_name" placeholder="enter your last name" data-state="<?php if(isset($errorFields['last_name'])) { ?>invalid<?php } ?>">
-        <?php if(isset($errorFields['last_name'])) { ?>
-          <p class="text-danger"><?=$errorFields['last_name']?></p>
+        <input type="text" name="last_name" placeholder="enter your last name"
+          data-state="<?php if (isset($errorFields['last_name'])) { ?>invalid<?php } ?>" value="<?= $session->getPreviousLastNameField() ?>">
+        <?php if (isset($errorFields['last_name'])) { ?>
+          <p class="text-danger">
+            <?= $errorFields['last_name'] ?>
+          </p>
         <?php } ?>
       </div>
 
       <div class="input-box">
         <span> username: </span>
-        <input type="text" name="username" placeholder="enter your username">
+        <input type="text" name="username" placeholder="enter your username"
+          data-state="<?php if (isset($errorFields['username'])) { ?>invalid<?php } ?>" value="<?= $session->getPreviousUsernameField() ?>">
+        <?php if (isset($errorFields['username'])) { ?>
+          <p class="text-danger">
+            <?= $errorFields['username'] ?>
+          </p>
+        <?php } ?>
       </div>
 
       <div class="input-box">
         <span> email: </span>
-        <input type="email" name="email" placeholder="enter your email">
+        <input type="email" name="email" placeholder="enter your email"
+          data-state="<?php if (isset($errorFields['email'])) { ?>invalid<?php } ?>" value="<?= $session->getPreviousEmailField() ?>">
+        <?php if (isset($errorFields['email'])) { ?>
+          <p class="text-danger">
+            <?= $errorFields['email'] ?>
+          </p>
+        <?php } ?>
       </div>
 
       <div class="input-box">
         <span> password: </span>
-        <input type="password" name="password" placeholder="enter your password">
+        <input type="password" name="password" placeholder="enter your password"
+          data-state="<?php if (isset($errorFields['password'])) { ?>invalid<?php } ?>">
+        <?php if (isset($errorFields['password'])) { ?>
+          <p class="text-danger">
+            <?= $errorFields['password'] ?>
+          </p>
+        <?php } ?>
       </div>
 
       <div class="input-box">
         <span> confirm password: </span>
-        <input type="password" name="confirm_password" placeholder="confirm your password">
+        <input type="password" name="confirm_password" placeholder="confirm your password"
+          data-state="<?php if (isset($errorFields['confirm_password'])) { ?>invalid<?php } ?>">
+        <?php if (isset($errorFields['confirm_password'])) { ?>
+          <p class="text-danger">
+            <?= $errorFields['confirm_password'] ?>
+          </p>
+        <?php } ?>
       </div>
 
-      
     </div>
-    
-    <button data-popup-target="#messages .active" type="submit" value="Sign Up" class="btn" name="register">Sign Up</button>
-    <?php foreach ($session->getMessages() as $messsage) { ?>
-      <div class="messages_text">
-        <article class="<?=$messsage['type']?>">
-          <?=$messsage['text']?>
-        </article>
-      </div>
-    <?php } ?>
-    <section class="messages" id="messages">
-      <?php foreach ($session->getMessages() as $messsage) { 
-        if($messsage['type'] == 'error') {
-          ?>
-          <div class="messages_title">
-            <h1>Invalid Sign Up!</h1>
-            <button data-messages-close class="closebtn" onclick="this.parentElement.style.display='none';">&times;</button>
-          </div>
-          <?php
-        }
-        else {
-          ?>
-          <div class="messages_title">
-            <h1>Sign Up Successful!</h1>
-            <button data-popup-close class="closebtn" onclick="this.parentElement.style.display='none';">&times;</button>
-          </div>
-          <?php
-        }
-        ?>
-          <div class="messages_text">
-            <article class="<?=$messsage['type']?>">
-              <?=$messsage['text']?>
-            </article>
-          </div>
-      <?php } ?>
-    </section>
-    <div id="popup_overlay"></div>
+
+    <button type="submit" value="Sign Up" class="btn" name="register">Sign Up</button>
   </form>
 
 </section>
 
 
 <?php
-  drawFooter($session);
+drawFooter($session);
 ?>

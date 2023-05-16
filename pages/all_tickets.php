@@ -44,6 +44,7 @@
           <p> <?= $ticket->datetime ?> </p>
           <?php $status = Status::getStatus($db, $ticket->status_id); ?>
           <p> Ticket Status : <?= $status->stat ?> </p>
+          <p> Anexos: <?= count($ticket->files) ?> </p>
         </div>
 
         <div>

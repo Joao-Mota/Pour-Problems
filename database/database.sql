@@ -15,7 +15,6 @@ DROP TABLE IF EXISTS Hashtag;
 DROP TABLE IF EXISTS Ticket_User;
 DROP TABLE IF EXISTS User_Department;
 DROP TABLE IF EXISTS FAQ;
-DROP TABLE IF EXISTS Profile_Picture;
 DROP TABLE IF EXISTS Ticket_Files;
 
 
@@ -37,7 +36,7 @@ CREATE TABLE User
   email VARCHAR(255) UNIQUE NOT NULL,
   password VARCHAR(255) NOT NULL,
   role_id INTEGER NOT NULL,
-  image VARCHAR(255),
+  image_path VARCHAR(255),
   CONSTRAINT user_role_fk FOREIGN KEY (role_id) REFERENCES Role
     ON UPDATE CASCADE
     ON DELETE CASCADE
@@ -161,19 +160,6 @@ CREATE TABLE FAQ
   user_id INTEGER NOT NULL,
   CONSTRAINT faq_pk PRIMARY KEY (id),
   CONSTRAINT faq_user_fk FOREIGN KEY (user_id) REFERENCES User
-    ON UPDATE CASCADE
-    ON DELETE CASCADE
-);
-
-
--- Tabela de Profile Picture, relaciona os usuários com suas imagens de perfil
-CREATE TABLE Profile_Picture 
-(
-  id INTEGER,
-  image VARCHAR(255) NOT NULL,
-  user_id INTEGER NOT NULL,
-  CONSTRAINT profile_picture_pk PRIMARY KEY (id),
-  CONSTRAINT profile_picture_user_fk FOREIGN KEY (user_id) REFERENCES User
     ON UPDATE CASCADE
     ON DELETE CASCADE
 );
