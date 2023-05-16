@@ -25,13 +25,14 @@ try {
     $stmt = $db->prepare('INSERT INTO User (fullname, username, email, password, role_id, image_path) VALUES (?, ?, ?, ?, ?, ?)');
     $stmt->execute(array('agent', 'agent1', 'agent1@gmail.com', $password, 2, User::DEFAULT_IMAGE_PATH));
 
-    $stmt = $db->prepare('INSERT INTO Department (name) VALUES (?)');
-    $stmt->execute(array('General'));
-    $stmt->execute(array('Packaging'));
-    $stmt->execute(array('Payment'));
-    $stmt->execute(array('Delivery'));
-} catch (PDOException $e) {
-}
+    //$stmt = $db->prepare('INSERT INTO Department (name) VALUES (?)');
+    //$stmt->execute(array('General'));
+    //$stmt->execute(array('Packaging'));
+    //$stmt->execute(array('Payment'));
+    //$stmt->execute(array('Delivery'));
+  }     
+  catch (PDOException $e) {
+  }
 ?>
 
 <section class="home">

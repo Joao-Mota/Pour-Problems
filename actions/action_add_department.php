@@ -11,10 +11,14 @@
 
   $name = strval($_POST['name']);
 
-
+  if ($name == ""){
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    echo "Insert a department name, please";
+  }
+  else{
   $stmt = $db->prepare('INSERT INTO Department (name) VALUES (?)');
 
-  $stmt->execute(array($name));
+  $stmt->execute(array($name));}
 
 
   header('Location: ' . $_SERVER['HTTP_REFERER']);
