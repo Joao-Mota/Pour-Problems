@@ -27,11 +27,11 @@
     $stmt = $db->prepare('INSERT INTO User (fullname, username, email, password, role_id) VALUES (?, ?, ?, ?, ?)');
     $stmt->execute(array('agent', 'agent', 'agent2@gmail.com', $password, 2));
 
-    $stmt = $db->prepare('INSERT INTO Department (name) VALUES (?)');
-    $stmt->execute(array('General'));
-    $stmt->execute(array('Packaging'));
-    $stmt->execute(array('Payment'));
-    $stmt->execute(array('Delivery'));
+    //$stmt = $db->prepare('INSERT INTO Department (name) VALUES (?)');
+    //$stmt->execute(array('General'));
+    //$stmt->execute(array('Packaging'));
+    //$stmt->execute(array('Payment'));
+    //$stmt->execute(array('Delivery'));
   }     
   catch (PDOException $e) {
   }
