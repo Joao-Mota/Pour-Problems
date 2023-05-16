@@ -29,6 +29,9 @@
     <!-- custom js file link -->
     <script src="../javascript/script.js" defer></script>
 
+    <!-- chat js file link -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
   </head>
   <body>
 
