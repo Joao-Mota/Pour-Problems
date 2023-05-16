@@ -1,31 +1,29 @@
 <?php
-  declare(strict_types = 1);
+declare(strict_types=1);
 
-  require_once(__DIR__ . '/../utils/session.php');
-  $session = new Session();
+require_once(__DIR__ . '/../utils/session.php');
+$session = new Session();
 
-  require_once(__DIR__ . '/../database/connection.db.php');
+require_once(__DIR__ . '/../database/connection.db.php');
 
 
-  require_once(__DIR__ . '/../temp/common.tpl.php');
-  
+require_once(__DIR__ . '/../temp/common.tpl.php');
 
-  $db = getDatabaseConnection();
+require_once(__DIR__ . '/../database/user.class.php');
 
-  drawHeader($session); 
 
-  try {
+$db = getDatabaseConnection();
+
+drawHeader($session);
+
+try {
     $password = password_hash('admin', PASSWORD_DEFAULT);
-    $stmt = $db->prepare('INSERT INTO User (fullname, username, email, password, role_id) VALUES (?, ?, ?, ?, ?)');
-    $stmt->execute(array('admin', 'admin', 'admin@gmail.com', $password, 1));
+    $stmt = $db->prepare('INSERT INTO User (fullname, username, email, password, role_id, image_path) VALUES (?, ?, ?, ?, ?, ?)');
+    $stmt->execute(array('admin', 'admin', 'admin@gmail.com', $password, 1, User::DEFAULT_IMAGE_PATH));
 
     $password = password_hash('agent1', PASSWORD_DEFAULT);
-    $stmt = $db->prepare('INSERT INTO User (fullname, username, email, password, role_id) VALUES (?, ?, ?, ?, ?)');
-    $stmt->execute(array('agent', 'agent', 'agent1@gmail.com', $password, 2));
-
-    $password = password_hash('agent2', PASSWORD_DEFAULT);
-    $stmt = $db->prepare('INSERT INTO User (fullname, username, email, password, role_id) VALUES (?, ?, ?, ?, ?)');
-    $stmt->execute(array('agent', 'agent', 'agent2@gmail.com', $password, 2));
+    $stmt = $db->prepare('INSERT INTO User (fullname, username, email, password, role_id, image_path) VALUES (?, ?, ?, ?, ?, ?)');
+    $stmt->execute(array('agent', 'agent1', 'agent1@gmail.com', $password, 2, User::DEFAULT_IMAGE_PATH));
 
     //$stmt = $db->prepare('INSERT INTO Department (name) VALUES (?)');
     //$stmt->execute(array('General'));
@@ -50,7 +48,8 @@
                 </div>
             </div>
 
-            <div class="swiper-slide slide" style="background: url(/sources/heading_bg/tickets-slide-bg.jpg) no-repeat;">
+            <div class="swiper-slide slide"
+                style="background: url(/sources/heading_bg/tickets-slide-bg.jpg) no-repeat;">
                 <div class="content">
                     <span>Support</span>
                     <h3>Pour</h3>
@@ -67,12 +66,12 @@
                 </div>
             </div>
 
-            
+
         </div>
 
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
-        
+
     </div>
 </section>
 
@@ -87,9 +86,9 @@
         </div>
         <div class="answer">
             <p>
-                If you notice a musty smell or a damp cardboard taste, your wine is probably corked. 
-                This is caused by a chemical compound called TCA, which can be found in cork. 
-                If you suspect that your wine is corked, you can send it to us for testing. 
+                If you notice a musty smell or a damp cardboard taste, your wine is probably corked.
+                This is caused by a chemical compound called TCA, which can be found in cork.
+                If you suspect that your wine is corked, you can send it to us for testing.
                 We will determine whether or not it is corked and provide you with a replacement bottle if necessary.
             </p>
         </div>
@@ -104,9 +103,9 @@
         </div>
         <div class="answer">
             <p>
-                The best way to store wine is in a cool, dark place. 
-                This will help preserve the flavor and prevent it from spoiling. 
-                If you don't have a cellar or basement, you can store your wine in the refrigerator. 
+                The best way to store wine is in a cool, dark place.
+                This will help preserve the flavor and prevent it from spoiling.
+                If you don't have a cellar or basement, you can store your wine in the refrigerator.
                 Just make sure that it's not too cold or too hot!
             </p>
         </div>
@@ -121,10 +120,11 @@
         </div>
         <div class="answer">
             <p>
-                The best way to open a bottle of wine is by using a corkscrew. 
-                This will ensure that the cork doesn't break and that you don't spill any wine. 
-                If you don't have a corkscrew, you can use a knife or scissors to cut the foil off the top of the bottle. 
-                Then, insert the tip of the knife into the cork and twist it until it comes out. 
+                The best way to open a bottle of wine is by using a corkscrew.
+                This will ensure that the cork doesn't break and that you don't spill any wine.
+                If you don't have a corkscrew, you can use a knife or scissors to cut the foil off the top of the
+                bottle.
+                Then, insert the tip of the knife into the cork and twist it until it comes out.
                 Finally, pour yourself a glass and enjoy!
             </p>
         </div>
@@ -138,10 +138,11 @@
         </div>
         <div class="answer">
             <p>
-                The best cork for wine is a natural cork. 
-                This type of cork is made from the bark of the cork oak tree and has been used for centuries. 
-                It's also biodegradable, which means that it can be recycled or composted after use. 
-                Natural corks are more expensive than synthetic corks, but they're worth it because they don't affect the taste of your wine!
+                The best cork for wine is a natural cork.
+                This type of cork is made from the bark of the cork oak tree and has been used for centuries.
+                It's also biodegradable, which means that it can be recycled or composted after use.
+                Natural corks are more expensive than synthetic corks, but they're worth it because they don't affect
+                the taste of your wine!
             </p>
         </div>
     </div>
@@ -156,15 +157,18 @@
     <div class="content">
         <h3>About Us</h3>
         <p>
-            PourProblems is your solution to all wine-related issues. 
-            With our own wine cellar in Porto and years of experience in the industry, our team of experts is dedicated to resolving any wine problem you may encounter. 
-            Whether it's a stubborn cork or a wine pairing conundrum, we provide personalized solutions to ensure that you can enjoy your wine without any hassle. 
-            At PourProblems, we pride ourselves on our attention to detail and commitment to customer satisfaction, so you can trust us to deliver exceptional service every time.
+            PourProblems is your solution to all wine-related issues.
+            With our own wine cellar in Porto and years of experience in the industry, our team of experts is dedicated
+            to resolving any wine problem you may encounter.
+            Whether it's a stubborn cork or a wine pairing conundrum, we provide personalized solutions to ensure that
+            you can enjoy your wine without any hassle.
+            At PourProblems, we pride ourselves on our attention to detail and commitment to customer satisfaction, so
+            you can trust us to deliver exceptional service every time.
         </p>
         <a href="/pages/about.php" class="btn">read more!</a>
-    </div>    
+    </div>
 </section>
 
 <?php
-  drawFooter($session);
+drawFooter($session);
 ?>
