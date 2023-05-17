@@ -25,7 +25,7 @@ drawHeader($session);
 
     <h1 class="profile-edit-title">Edit your profile</h1>
 
-    <form action="/actions/action_profile_edit.php" method="post">
+    <form action="/actions/action_profile_edit.php" method="post" enctype="multipart/form-data">
         <div class="input-box">
             <label for="fullname">Name</label>
             <input type="text" name="fullname" id="fullname" placeholder="Full Name" value="<?= $user->fullname ?>">
@@ -47,8 +47,8 @@ drawHeader($session);
             <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password">
         </div>
         <div class="input-box">
-            <label for="image">Profile Image</label>
-            <input type="file" name="profile-pic" id="profile-pic" class="inputfile" multiple pattern=".*\.(jpe?g|png)$"
+            <label for="file">Profile Image</label>
+            <input type="file" name="file" id="file" class="inputfile" multiple pattern=".*\.(jpe?g|png)$"
                 accept=".jpg,.jpeg,.png">
         </div>
 

@@ -3,11 +3,6 @@
     private array $messages;
     private array $fieldErrors;
 
-    private string $previousFirstNameField;
-    private string $previousLastNameField;
-    private string $previousEmailField;
-    private string $previousUsernameField;
-
     public function __construct() {
       session_start();
 
@@ -75,38 +70,6 @@
 
     public function getMessages() {
       return $this->messages;
-    }
-
-    public function getPreviousFirstNameField() : ?string {
-      return isset($_SESSION['previousFirstNameField']) ? $_SESSION['previousFirstNameField'] : null;
-    }
-
-    public function setPreviousFirstNameField(string $previousFirstNameField) {
-      $_SESSION['previousFirstNameField'] = $previousFirstNameField;
-    }
-
-    public function getPreviousLastNameField() : ?string {
-      return isset($_SESSION['previousLastNameField']) ? $_SESSION['previousLastNameField'] : null;
-    }
-
-    public function setPreviousLastNameField(string $previousLastNameField) {
-      $_SESSION['previousLastNameField'] = $previousLastNameField;
-    }
-
-    public function getPreviousEmailField() : ?string {
-      return isset($_SESSION['previousEmailField']) ? $_SESSION['previousEmailField'] : null;
-    }
-
-    public function setPreviousEmailField(string $previousEmailField) {
-      $_SESSION['previousEmailField'] = $previousEmailField;
-    }
-
-    public function getPreviousUsernameField() : ?string {
-      return isset($_SESSION['previousUsernameField']) ? $_SESSION['previousUsernameField'] : null;
-    }
-
-    public function setPreviousUsernameField(string $previousUsernameField) {
-      $_SESSION['previousUsernameField'] = $previousUsernameField;
     }
   }
 ?>

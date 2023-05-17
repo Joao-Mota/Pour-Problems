@@ -109,11 +109,6 @@ if ($registerSuccess) {
   }
 } else {
 
-  $session->setPreviousFirstNameField($_POST['first_name']);
-  $session->setPreviousLastNameField($_POST['last_name']);
-  $session->setPreviousUsernameField($_POST['username']);
-  $session->setPreviousEmailField($_POST['email']);
-
   $session->addMessage('error', 'The form was not filled correctly!');
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
