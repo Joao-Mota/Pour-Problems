@@ -12,6 +12,16 @@
             $this->ticket_id = $ticket_id;
         }
 
+        static function getTicket_User(PDO $db, int $id): Ticket_User
+        {
+            $stmt = $db->prepare('SELECT * FROM Ticket_User WHERE ticket_id = ?');
+    
+            $stmt->execute(array($id));
+            $ticket_user = $stmt->fetch();
+    
+            return new Ticket_User($ticket_user['client_id'], $ticket_user['agent_id'], $ticket_user['ticket_id']);
+        }
+
         // maybe missing static function getArtistAlbums(PDO $db, int $id) : array
 
         static function getTickets_from_User(PDO $db, int $client_id) : array {
