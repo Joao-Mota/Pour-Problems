@@ -99,11 +99,5 @@ class User
 
     $stmt->execute(array($fullname, $username, $email, $password, $image_path, $this->id));
   }
-
-  function save($db) {
-    $stmt = $db->prepare('UPDATE User SET role_id = ? WHERE id = ?');
-
-    $stmt->execute(array($this->role_id, $this->id));
-  }
 }
 ?>
