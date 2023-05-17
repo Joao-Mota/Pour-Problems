@@ -82,27 +82,3 @@ function closePopup(messages) {
     messages.classList.remove('active');
     overlay.classList.remove('active');
 }
-
-// function make_chat_dialog_box(user_id)
-// {
-//   var modal_content = '<div id="user_dialog_'+user_id+'" class="user_dialog" title="Chat">';
-//   modal_content += '<div style="height:400px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-touserid="'+user_id+'" id="chat_history_'+user_id+'">';
-//   modal_content += '</div>';
-//   modal_content += '<div class="form-group">';
-//   modal_content += '<textarea name="chat_message_'+user_id+'" id="chat_message_'+user_id+'" class="form-control"></textarea>';
-//   modal_content += '</div><div class="form-group" align="right">';
-//   modal_content+= '<button type="button" name="send_message" id="'+user_id+'" class="btn btn-info send_chat">Send Message</button></div></div>';
-//   $('#chat').html(modal_content);
-// }
-
-function make_chat_dialog_box(ticket_id, client_id, datetime, id)
-{
-  var modal_content = '<section class="ticket-form">';
-  modal_content += '<form method="post" class="signup-form">';
-  modal_content += '<div class="input-box"><span> Message: </span><textarea name="message" id="message" cols="60" rows="8"></textarea></div>';
-  modal_content += '<button type="button" id=chat_history_"'+client_id+'" data-ticket_id="'+ticket_id+'" data-client_id="'+client_id+'" data-datetime="'+datetime+'" data-id="'+id+'" name="send_message" class="send_message">Send Message</button>';
-  modal_content += '</form>';
-  modal_content += '</section>';
-
-  $('#chat').html(modal_content);
-}

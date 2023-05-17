@@ -28,74 +28,6 @@ $ticket = Ticket::getTicket($db, $id_int);
 $status = Status::getStatus($db, $ticket->status_id);
 ?>
 
-<script>
-  $(document).ready(function(){
-
-    //make_chat_dialog_box(ticket_id, client_id, datetime, id);
-
-    console.log('entro na pagina');
-  });
-
-  $(document).on('click', '.start_chat', function(){
-    var ticket_id = $(this).data('ticket_id');
-    var client_id = $(this).data('client_id');
-    var datetime = $(this).data('datetime');
-    var id = $(this).data('id');
-
-    console.log(ticket_id);
-    console.log(client_id);
-    console.log(datetime);
-    console.log(id);
-
-    make_chat_dialog_box(ticket_id, client_id, datetime, id);
-
-    console.log('Criou chat');
-  });
-
-  $(document).on('click', '.send_message', function(){
-    console.log('Entrou na mensagem');
-
-    var message = $('#message').val();
-    var ticket_id = $(this).attr('data-ticket_id');
-    var client_id = $(this).data('client_id');
-    var datetime = $(this).data('datetime');
-    var id = $(this).data('id');
-
-    console.log(message);
-    console.log(ticket_id);
-    console.log(client_id);
-    console.log(datetime);
-    console.log(id);
-
-    $.ajax({
-      url:"../actions/action_add_message.php",
-      method:"POST",
-      data:{message:message, ticket_id:ticket_id, client_id:client_id, datetime:datetime, id:id},
-      success:function(data)
-      {
-        $('#message').val('');
-        $('#chat_history_'+client_id).html(data);
-      }
-    })
-
-
-    // var to_user_id = $(this).attr('id');
-    // var chat_message = $('#chat_message_'+to_user_id).val();
-    // $.ajax({
-    // url:"../actions/action_add_message.php",
-    // method:"POST",
-    // data:{to_user_id:to_user_id, chat_message:chat_message},
-    // success:function(data)
-    // {
-    //   $('#chat_message_'+to_user_id).val('');
-    //   $('#chat_history_'+to_user_id).html(data);
-    // }
-    // })
-  });
-</script>
-
-
-
 <h1>
   <?= $ticket->subject ?>
 </h1>
@@ -146,16 +78,7 @@ foreach ($messages as $message) {
 
 <?php } ?>
 
-<button type="button" class="btn btn-info btn-xs start_chat" data-ticket_id="<?=$ticket->id?>" data-client_id="<?=$session->getID()?>" data-datetime="<?=$ticket->datetime?>" data-id="<?=$encryptedId?>">Show Real-Time Chat</button>
-
-<div id="chat"></div>
-
-
-
-
-<!-- Mensagens (antigo) -->
-
-<!-- <section class="ticket-form">
+<section class="ticket-form">
 
   <form action="/actions/action_add_message.php" method="post" class="signup-form">
 
@@ -178,7 +101,7 @@ foreach ($messages as $message) {
 
   </form>
 
-</section> -->
+</section>
 
 <?php
 drawFooter($session);
