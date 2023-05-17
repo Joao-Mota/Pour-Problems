@@ -99,7 +99,7 @@ if ($registerSuccess) {
   $image_path = User::DEFAULT_IMAGE_PATH;
 
   try {
-    $stmt = $db->prepare('INSERT INTO User (fullname, username, email, password, role_id) VALUES (?, ?, ?, ?, ?, ?)');
+    $stmt = $db->prepare('INSERT INTO User (fullname, username, email, password, role_id, image_path) VALUES (?, ?, ?, ?, ?, ?)');
     $stmt->execute(array($fullname, $username, $email, $password, $role_id, $image_path));
     $session->addMessage('success', 'Register successful!');
     header('Location: ../pages/login.php');
@@ -108,11 +108,6 @@ if ($registerSuccess) {
     header('Location: ' . $_SERVER['HTTP_REFERER']);
   }
 } else {
-
-  $session->setPreviousFirstNameField($_POST['first_name']);
-  $session->setPreviousLastNameField($_POST['last_name']);
-  $session->setPreviousUsernameField($_POST['username']);
-  $session->setPreviousEmailField($_POST['email']);
 
   $session->addMessage('error', 'The form was not filled correctly!');
   header('Location: ' . $_SERVER['HTTP_REFERER']);

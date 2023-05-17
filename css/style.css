@@ -589,7 +589,6 @@ section{
 }
 
 
-
 .login .login-input .login-container .login-links{
     display: flex;
     align-items: center;
@@ -621,7 +620,6 @@ section{
 
 
 /* Sign Up */
-
 .signup .signup-title{
     text-align: center;
     font-size: 4.5rem;
@@ -657,7 +655,8 @@ section{
 .signup .signup-form .flex .input-box input:focus{
     background-color: var(--light-bg);
     color: var(--black);
-    border: 1px solid cadetblue;
+    border: 1px solid var(--black);
+    box-shadow: 0 0 0.5rem rgba(0,0,0,0.4);
 }
 
 .signup .signup-form .flex .input-box input:focus::placeholder{
@@ -675,74 +674,6 @@ section{
 
 .signup .signup-form .btn{
     margin-top: 2rem;
-}
-
-
-.signup .signup-form .messages{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transition: 0.5s ease-in-out;
-    border-radius: 10px;
-    box-shadow: var(--box-shadow);
-    z-index: 10;
-    background-color: var(--main-color);
-    padding: 2rem;
-    width: 50%;    
-    max-width: 80%;
-}
-
-.signup .signup-form .messages.active{
-    transform: translate(-50%, -50%) scale(1);
-}
-
-.signup .signup-form .messages .messages_title{
-    color: var(--white);
-    text-align: center;
-    padding-bottom: 2rem;
-}
-
-.signup .signup-form .messages .messages_title h1{
-    font-size: 3rem;
-    color: var(--white);
-    text-align: center;
-}
-
-.signup .signup-form .messages .messages_title button{
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    font-size: 3rem;
-    color: var(--white);
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-}
-
-.signup .signup-form .messages .messages_text{
-    font-size: 1.5rem;
-    color: var(--white);
-    text-align: center;
-    padding-bottom: 2rem;
-}
-
-.signup .signup-form .popup_overlay{
-    position: fixed;
-    opacity: 0;
-    transition: 0.5s ease-in-out;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    pointer-events: none;
-}
-
-.signup .signup-form .popup_overlay.active{
-    opacity: 1;
-    pointer-events: all;
 }
 
 

@@ -46,7 +46,7 @@ if (!empty($files)) {
 
     // check if file was uploaded and if it's size is less than 1MB
     if (isset($file_name) && $file_size > 0 && $file_size < 1000000) {
-      // save the file in uploads folder and push the filename to the array of filenames~
+      // save the file in uploads folder and push the filename to the array of filenames
       $new_filename = save_in_uploads($temp_name, $file_name);
       array_push($filenames, $new_filename);
     }

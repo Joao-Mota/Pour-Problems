@@ -32,7 +32,7 @@ $errorFields = $session->getFieldErrors();
       <div class="input-box">
         <span> first name: </span>
         <input type="text" name="first_name" placeholder="enter your first name"
-          data-state="<?php if (isset($errorFields['first_name'])) { ?>invalid<?php } ?>" value="<?= $session->getPreviousFirstNameField() ?>">
+          data-state="<?php if (isset($errorFields['first_name'])) { ?>invalid<?php } ?>">
         <?php if (isset($errorFields['first_name'])) { ?>
           <p class="text-danger">
             <?= $errorFields['first_name'] ?>
@@ -43,7 +43,7 @@ $errorFields = $session->getFieldErrors();
       <div class="input-box">
         <span> last name: </span>
         <input type="text" name="last_name" placeholder="enter your last name"
-          data-state="<?php if (isset($errorFields['last_name'])) { ?>invalid<?php } ?>" value="<?= $session->getPreviousLastNameField() ?>">
+          data-state="<?php if (isset($errorFields['last_name'])) { ?>invalid<?php } ?>">
         <?php if (isset($errorFields['last_name'])) { ?>
           <p class="text-danger">
             <?= $errorFields['last_name'] ?>
@@ -54,7 +54,7 @@ $errorFields = $session->getFieldErrors();
       <div class="input-box">
         <span> username: </span>
         <input type="text" name="username" placeholder="enter your username"
-          data-state="<?php if (isset($errorFields['username'])) { ?>invalid<?php } ?>" value="<?= $session->getPreviousUsernameField() ?>">
+          data-state="<?php if (isset($errorFields['username'])) { ?>invalid<?php } ?>">
         <?php if (isset($errorFields['username'])) { ?>
           <p class="text-danger">
             <?= $errorFields['username'] ?>
@@ -65,7 +65,7 @@ $errorFields = $session->getFieldErrors();
       <div class="input-box">
         <span> email: </span>
         <input type="email" name="email" placeholder="enter your email"
-          data-state="<?php if (isset($errorFields['email'])) { ?>invalid<?php } ?>" value="<?= $session->getPreviousEmailField() ?>">
+          data-state="<?php if (isset($errorFields['email'])) { ?>invalid<?php } ?>">
         <?php if (isset($errorFields['email'])) { ?>
           <p class="text-danger">
             <?= $errorFields['email'] ?>

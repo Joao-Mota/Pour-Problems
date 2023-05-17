@@ -87,11 +87,17 @@ class User
   }
 
   /* Update User with out changing is role */
-  public function updateUser(PDO $db)
+  public function updateUserProfile(PDO $db, string $fullname, string $username, string $email, string $password,string  $image_path)
   {
     $stmt = $db->prepare('UPDATE User SET fullname = ?, username = ?, email = ?, password = ?, image_path = ? WHERE id = ?');
 
-    $stmt->execute(array($this->fullname, $this->username, $this->email, $this->password, $this->image_path, $this->id));
+    $stmt->execute(array($fullname, $username, $email, $password, $image_path, $this->id));
+  }
+
+  function save($db) {
+    $stmt = $db->prepare('UPDATE User SET role_id = ? WHERE id = ?');
+
+    $stmt->execute(array($this->role_id, $this->id));
   }
 }
 ?>
