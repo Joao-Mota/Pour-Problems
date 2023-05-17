@@ -4,6 +4,8 @@ declare(strict_types=1);
 require_once(__DIR__ . '/../utils/session.php');
 $session = new Session();
 
+
+
 require_once(__DIR__ . '/../database/connection.db.php');
 
 require_once(__DIR__ . '/../temp/common.tpl.php');
@@ -18,41 +20,29 @@ drawHeader($session);
 $errorFields = $session->getFieldErrors();
 ?>
 
-<div class="heading" style="background:url(/sources/heading_bg/signup-slide-bg.jpg) no-repeat;">
-  <h1>Sign Up</h1>
-</div>
+
 
 <section class="signup">
 
-  <h1 class="signup-title">Sign Up Now!</h1>
+  <div class="logo">
+    <img src="../sources/PourProblems_Logo_Gray.png" alt="logo">
+  </div>
 
-  <form action="/actions/action_register.php" method="post" class="signup-form">
+  <div class="signup-input">
+    <h2 class="title">SignUp</h2>
+    <form action="/actions/action_register.php" method="post" class="signup-form">
 
-    <div class="flex">
       <div class="input-box">
-        <span> first name: </span>
-        <input type="text" name="first_name" placeholder="enter your first name"
-          data-state="<?php if (isset($errorFields['first_name'])) { ?>invalid<?php } ?>">
-        <?php if (isset($errorFields['first_name'])) { ?>
+        <input type="text" name="full_name" placeholder="enter your full name"
+          data-state="<?php if (isset($errorFields['full_name'])) { ?>invalid<?php } ?>">
+        <?php if (isset($errorFields['full_name'])) { ?>
           <p class="text-danger">
-            <?= $errorFields['first_name'] ?>
+            <?= $errorFields['full_name'] ?>
           </p>
         <?php } ?>
       </div>
 
       <div class="input-box">
-        <span> last name: </span>
-        <input type="text" name="last_name" placeholder="enter your last name"
-          data-state="<?php if (isset($errorFields['last_name'])) { ?>invalid<?php } ?>">
-        <?php if (isset($errorFields['last_name'])) { ?>
-          <p class="text-danger">
-            <?= $errorFields['last_name'] ?>
-          </p>
-        <?php } ?>
-      </div>
-
-      <div class="input-box">
-        <span> username: </span>
         <input type="text" name="username" placeholder="enter your username"
           data-state="<?php if (isset($errorFields['username'])) { ?>invalid<?php } ?>">
         <?php if (isset($errorFields['username'])) { ?>
@@ -63,7 +53,6 @@ $errorFields = $session->getFieldErrors();
       </div>
 
       <div class="input-box">
-        <span> email: </span>
         <input type="email" name="email" placeholder="enter your email"
           data-state="<?php if (isset($errorFields['email'])) { ?>invalid<?php } ?>">
         <?php if (isset($errorFields['email'])) { ?>
@@ -74,7 +63,6 @@ $errorFields = $session->getFieldErrors();
       </div>
 
       <div class="input-box">
-        <span> password: </span>
         <input type="password" name="password" placeholder="enter your password"
           data-state="<?php if (isset($errorFields['password'])) { ?>invalid<?php } ?>">
         <?php if (isset($errorFields['password'])) { ?>
@@ -85,7 +73,6 @@ $errorFields = $session->getFieldErrors();
       </div>
 
       <div class="input-box">
-        <span> confirm password: </span>
         <input type="password" name="confirm_password" placeholder="confirm your password"
           data-state="<?php if (isset($errorFields['confirm_password'])) { ?>invalid<?php } ?>">
         <?php if (isset($errorFields['confirm_password'])) { ?>
@@ -95,10 +82,22 @@ $errorFields = $session->getFieldErrors();
         <?php } ?>
       </div>
 
-    </div>
+      <div class="signup-options">
+        <button type="submit"><span class="signup-btn"><i class="fas fa-arrow-right"></i></span></button>
+        <div class="signup-links">
+          <a class="alredy-signup" href="/pages/login.php">Already have an Acount?</a>
+        </div>
+      </div>
 
-    <button type="submit" value="Sign Up" class="btn" name="register">Sign Up</button>
-  </form>
+      <section id="messages">
+        <?php foreach ($session->getMessages() as $messsage) { ?>
+          <article class="<?= $messsage['type'] ?>">
+            <?= $messsage['text'] ?>
+          </article>
+        <?php } ?>
+      </section>
+    </form>
+  </div>
 
 </section>
 

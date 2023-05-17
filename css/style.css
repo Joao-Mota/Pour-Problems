@@ -498,6 +498,8 @@ section{
     text-align: center;
     border-left: var(--main-color) 5px solid;
     padding-left: 3rem;
+    align-items: center;
+    padding-bottom: 5rem;
 }
 
 .login .login-input h2{
@@ -517,11 +519,11 @@ section{
     border: 1px solid var(--light-black);
     border-radius: 0.5rem;
     outline: none;
-
 }
 
 .login .login-input .login-container input:focus{
-    border: 1px solid var(--main-color);
+    border: 1px solid var(--black);
+    box-shadow: 0 0 0.5rem rgba(0,0,0,0.4);
 }
 
 .login .login-input .login-container input::placeholder{
@@ -618,72 +620,126 @@ section{
     width: 100%;
 }
 
+.login .login-input .login-container #messages{
+    display: none;
+}
+
 
 /* Sign Up */
-.signup .signup-title{
+.signup{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:3rem;
+    justify-content: center;
+    margin : 5rem;
+}
+
+.signup .logo{
+    flex: 1 1 41rem;
     text-align: center;
-    font-size: 4.5rem;
-    color: var(--black);
+}
+
+.signup .logo img{
+    width: 80%;
+}
+
+.signup .signup-input{
+    flex: 1 1 41rem;
+    text-align: center;
+    border-left: var(--main-color) 5px solid;
+    padding-left: 3rem;
     padding-bottom: 5rem;
 }
 
-.signup .signup-form{
-    padding: 2rem;
-    background: var(--light-bg);
-}
-
-.signup .signup-form .flex{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-}
-
-.signup .signup-form .flex .input-box{
-    flex: 1 1 41rem;
-}
-
-.signup .signup-form .flex .input-box input{
-    width: 100%;
-    padding: 1.2rem 1.4rem;
-    font-size: 1.6rem;
-    color: var(--light-black);
-    text-transform: none;
-    margin-top: 1.5rem;
-    border: 1px solid var(--light-black);
-}
-
-.signup .signup-form .flex .input-box input:focus{
-    background-color: var(--light-bg);
+.signup .signup-input h2{
+    font-size: 3.5rem;
     color: var(--black);
+}
+
+.signup .signup-input .signup-form{
+    margin: 2rem 0;
+}
+
+.signup .signup-input .signup-form .input-box input{
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-size: 1.5rem;
+    border: 1px solid var(--light-black);
+    border-radius: 0.5rem;
+    outline: none;
+}
+
+.signup .signup-input .signup-form .input-box input:focus{
     border: 1px solid var(--black);
     box-shadow: 0 0 0.5rem rgba(0,0,0,0.4);
 }
 
-.signup .signup-form .flex .input-box input:focus::placeholder{
-    color: var(--black);
-}
-
-.signup .signup-form .flex .input-box input::placeholder{
+.signup .signup-input .signup-form .input-box input::placeholder{
     color: var(--light-black);
 }
 
-.signup .signup-form .flex .input-box span{
+.signup .signup-input .signup-form .signup-options{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.signup .signup-input .signup-form .signup-options button{
+    width: 10%;
+    padding: 1rem;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    outline: none;
+    background-color: var(--main-color);
+    color: var(--white);
+    cursor: pointer;
+}
+
+.signup .signup-input .signup-form .signup-options button:hover{
+    opacity: 0.8;
+}
+
+.signup .signup-input .signup-form .signup-options .signup-links{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.signup .signup-input .signup-form .signup-options .signup-links a{
     font-size: 1.5rem;
     color: var(--light-black);
 }
 
-.signup .signup-form .btn{
-    margin-top: 2rem;
+.signup .signup-input .signup-form .signup-options .signup-links a:hover{
+    color: var(--main-color);
 }
 
+.signup .signup-input .signup-form .signup-options .signup-links a::after{
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: var(--main-color);
+    display: block;
+    transition: width 0.5s;
+}
 
+.signup .signup-input .signup-form .signup-options .signup-links a:hover::after{
+    width: 100%;
+}
+
+.signup .signup-input .signup-form #messages{
+    display: none;
+}
 
 
 
 
 
 /* Ticket Submission */
-
 .ticket-form .signup-title{
     text-align: center;
     font-size: 3.5rem;
@@ -861,7 +917,7 @@ section{
 }
 
 
-
+/* Users */
 .users .user{
     margin-bottom: 1rem;
     padding: 1rem;
@@ -1104,6 +1160,11 @@ section{
 @media (max-width: 1197px){
 
     .login .login-input{
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .signup .signup-input{
         border-left: none;
         padding-left: 0;
     }
