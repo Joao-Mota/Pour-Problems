@@ -1,18 +1,18 @@
 <?php
-  declare(strict_types = 1);
+declare(strict_types=1);
 
-  require_once(__DIR__ . '/../utils/session.php');
-  $session = new Session();
+require_once(__DIR__ . '/../utils/session.php');
+$session = new Session();
 
-  require_once(__DIR__ . '/../database/connection.db.php');
+require_once(__DIR__ . '/../database/connection.db.php');
 
 
-  require_once(__DIR__ . '/../temp/common.tpl.php');
-  
+require_once(__DIR__ . '/../temp/common.tpl.php');
 
-  $db = getDatabaseConnection();
 
-  drawHeader($session); 
+$db = getDatabaseConnection();
+
+drawHeader($session);
 ?>
 
 <section class="login">
@@ -24,8 +24,8 @@
   <div class="login-input">
     <h2 class="title">Login</h2>
     <form action="/actions/action_login.php" method="post" class="login-container">
-      
-    <!-- Email and password -->
+
+      <!-- Email and password -->
       <div class="input-box">
         <input type="email" name="email" placeholder="email">
       </div>
@@ -33,11 +33,11 @@
       <div class="input-box">
         <input type="password" name="password" placeholder="password">
       </div>
-      
+
       <div class="login-options">
         <!-- Login button -->
         <button type="submit"><span class="login-btn"><i class="fas fa-arrow-right"></i></span></button>
-        
+
         <!-- Stay logged in -->
         <div class="stay-logged-in">
           <input type="checkbox" id="stay_logged_in_check" value="true">
@@ -53,17 +53,17 @@
 
       <section id="messages">
         <?php foreach ($session->getMessages() as $messsage) { ?>
-          <article class="<?=$messsage['type']?>">
-            <?=$messsage['text']?>
+          <article class="<?= $messsage['type'] ?>">
+            <?= $messsage['text'] ?>
           </article>
-        <?php } ?>      
+        <?php } ?>
       </section>
-      
+
     </form>
   </div>
 </section>
 
 
 <?php
-  drawFooter($session);
+drawFooter($session);
 ?>

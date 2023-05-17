@@ -12,15 +12,9 @@ $db = getDatabaseConnection();
 // flag to check if register was successful
 $registerSuccess = true;
 
-// validate first_name field
-if (empty($_POST['first_name'])) {
-  $session->addFieldError('first_name', 'First name is required!');
-  $registerSuccess = false;
-}
-
-// validate last_name field
-if (empty($_POST['last_name'])) {
-  $session->addFieldError('last_name', 'Last name is required!');
+// validate fullname field
+if (empty($_POST['full_name'])) {
+  $session->addFieldError('full_name', 'Full Name is required!');
   $registerSuccess = false;
 }
 
