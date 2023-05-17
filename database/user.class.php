@@ -64,6 +64,46 @@ class User
     return $users;
   }
 
+  static function getAgents(PDO $db, $role_id): array
+  {
+    $stmt = $db->prepare('SELECT * FROM User WHERE role_id = ?');
+    $stmt->execute(array($role_id));
+
+    $users = array();
+    while ($user = $stmt->fetch()) {
+      $users[] = new User(
+        $user['id'],
+        $user['fullname'],
+        $user['username'],
+        $user['email'],
+        $user['password'],
+        $user['role_id'],
+        $user['image_path']
+      );
+    }
+
+    return $users;
+  }
+
+  static function getUser_from_username(PDO $db, string $username): ?User
+  {
+    $stmt = $db->prepare('SELECT * FROM User WHERE username = ?');
+
+    $stmt->execute(array($username));
+
+    $user = $stmt->fetch();
+
+    return new User(
+      intval($user['id']),
+      $user['fullname'],
+      $user['username'],
+      $user['email'],
+      $user['password'],
+      intval($user['role_id']),
+      $user['image_path']
+    );
+  }
+
   static function getUserWithPassword(PDO $db, string $email, string $password): ?User
   {
     $stmt = $db->prepare('SELECT * FROM User WHERE email = ?');

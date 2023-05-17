@@ -18,6 +18,8 @@
 
   $all_status = Status::getAll_Status($db);
 
+  $agents = User::getAgents($db, 2);
+
   drawHeader($session); 
   ?>
 
@@ -93,6 +95,23 @@
           </form>
         </div>
 
+        <div>
+          <form action="../actions/action_assign_agent.php" method="post" class="delete">
+
+            <input type="hidden" name="ticket_id" value="<?=$ticket->id?>">
+
+            <select id="agent" name="agent">
+
+              <?php foreach($agents as $agent) { ?>                                                              
+                <option value="<?=$agent->username?>"> <?=$agent->username?> </option>
+              <?php } ?>                     
+
+            </select>
+
+            <input type="submit" value="Assign Agent"> 
+
+          </form>
+        </div>
     </div>
 
     <?php } ?>
