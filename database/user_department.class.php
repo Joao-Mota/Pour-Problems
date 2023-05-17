@@ -28,10 +28,10 @@
             return $users;
         }
 
-        static function getDepartmentFromUser(PDO $db, int $department_id): array{
+        static function getDepartmentsFromUser(PDO $db, int $user_id): array{
             $stmt = $db->prepare('SELECT * FROM User_Department WHERE user_id = ?');
         
-            $stmt->execute(array($department_id));
+            $stmt->execute(array($user_id));
         
             $departments = [];
 

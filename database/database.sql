@@ -219,4 +219,3 @@ INSERT INTO Department VALUES (4, 'Delivery');
 
 
 -- Query para testar o banco de dados
-SELECT * FROM User;
