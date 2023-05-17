@@ -76,9 +76,7 @@
                   <form action="../actions/action_change_to_client.php" method="post" class="delete">
 
                     <input type="hidden" name="user_id" value="<?=$user->id?>">
-
                     
-
                     <input type="submit" value="Turn Back to client"> 
 
                   </form>
