@@ -99,7 +99,7 @@ if ($registerSuccess) {
   $image_path = User::DEFAULT_IMAGE_PATH;
 
   try {
-    $stmt = $db->prepare('INSERT INTO User (fullname, username, email, password, role_id) VALUES (?, ?, ?, ?, ?, ?)');
+    $stmt = $db->prepare('INSERT INTO User (fullname, username, email, password, role_id, image_path) VALUES (?, ?, ?, ?, ?, ?)');
     $stmt->execute(array($fullname, $username, $email, $password, $role_id, $image_path));
     $session->addMessage('success', 'Register successful!');
     header('Location: ../pages/login.php');
