@@ -26,6 +26,18 @@ $id_int = (int) $id;
 $ticket = Ticket::getTicket($db, $id_int);
 
 $status = Status::getStatus($db, $ticket->status_id);
+
+$ticket_user = Ticket_User::getTicket_User($db, $ticket->id);
+
+if($ticket_user->agent_id == NULL) {
+  $agent_username = 'No Agent Assigned';
+}
+
+else {
+  $agent = User::getUser($db, $ticket_user->agent_id);
+
+  $agent_username = $agent->username;
+} 
 ?>
 
 <h1>
@@ -38,8 +50,12 @@ $status = Status::getStatus($db, $ticket->status_id);
   <?= $ticket->datetime ?>
 </p>
 <?php $status = Status::getStatus($db, $ticket->status_id); ?>
-<h3> Ticket Status :
+<h3> Ticket Status:
   <?= $status->stat ?>
+</h3>
+
+<h3> Agent Assigned:
+  <?= $agent_username ?>
 </h3>
 
 <p>
