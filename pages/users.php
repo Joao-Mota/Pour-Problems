@@ -60,15 +60,11 @@
                     <input type="hidden" name="user_id" value="<?=$user->id?>">
 
                     <select id="departments" name="department">
-                      <?php $user_department = User_Department::getDepartmentFromUser($db, $user->id);
-                       foreach($departments as $department) {
-                        foreach($user_department as $user_dep){
-                        if ($department->id == $user_dep->department_id) {
-                          ?>
-                          <option value="<?=$department->name?>" selected> <?=$department->name?> </option>
-                        <?php } else{ ?>
+
+                      <?php foreach($departments as $department) { ?>                                                              
                         <option value="<?=$department->name?>"> <?=$department->name?> </option>
-                      <?php }}} ?>
+                      <?php } ?>                     
+
                     </select>
 
                     <input type="submit" value="Assign Department"> 

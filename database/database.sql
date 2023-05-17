@@ -137,7 +137,7 @@ CREATE TABLE Ticket_User
 
 
 -- Tabela de User_Department, relaciona os usuários com os departamentos
-CREATE TABLE xartment 
+CREATE TABLE User_Department 
 (
   user_id INTEGER NOT NULL,
   department_id INTEGER NOT NULL,
@@ -219,4 +219,3 @@ INSERT INTO Department VALUES (4, 'Delivery');
 
 
 -- Query para testar o banco de dados
-SELECT * FROM User;

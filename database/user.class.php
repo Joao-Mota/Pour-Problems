@@ -86,6 +86,12 @@ class User
       return null;
   }
 
+  function save($db) {
+    $stmt = $db->prepare('UPDATE User SET role_id = ? WHERE id = ?');
+
+    $stmt->execute(array($this->role_id, $this->id));
+  }
+
   /* Update User with out changing is role */
   public function updateUser(PDO $db)
   {
