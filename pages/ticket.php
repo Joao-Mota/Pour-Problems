@@ -11,6 +11,7 @@ require_once(__DIR__ . '/../database/status.class.php');
 require_once(__DIR__ . '/../database/ticket_user.class.php');
 require_once(__DIR__ . '/../database/message.class.php');
 require_once(__DIR__ . '/../database/user.class.php');
+require_once(__DIR__ . '/../database/hashtag.class.php');
 
 
 $db = getDatabaseConnection();
@@ -28,6 +29,8 @@ $ticket = Ticket::getTicket($db, $id_int);
 $status = Status::getStatus($db, $ticket->status_id);
 
 $ticket_user = Ticket_User::getTicket_User($db, $ticket->id);
+
+$hashtags = Hashtag::getHashtags_from_ticket($db, $ticket->id);
 
 if($ticket_user->agent_id == NULL) {
   $agent_username = 'No Agent Assigned';
@@ -49,6 +52,13 @@ else {
 <p>
   <?= $ticket->datetime ?>
 </p>
+
+<h3> Hashtags:
+  <?php foreach($hashtags as $hashtag) { ?>
+    <p> <?= $hashtag->name ?> </p>
+  <?php } ?>
+</h3>
+
 <?php $status = Status::getStatus($db, $ticket->status_id); ?>
 <h3> Ticket Status:
   <?= $status->stat ?>

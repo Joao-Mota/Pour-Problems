@@ -9,6 +9,7 @@
   require_once(__DIR__ . '/../database/ticket_user.class.php');
   require_once(__DIR__ . '/../database/ticket.class.php');
   require_once(__DIR__ . '/../database/status.class.php');
+  require_once(__DIR__ . '/../database/hashtag.class.php');
   
 
   $db = getDatabaseConnection();
@@ -45,6 +46,11 @@
           <?php $status = Status::getStatus($db, $ticket->status_id); ?>
           <p> Ticket Status : <?= $status->stat ?> </p>
           <p> Anexos: <?= count($ticket->files) ?> </p>
+
+          <?php $hashtags = Hashtag::getHashtags_from_ticket($db, $ticket->id);
+            foreach($hashtags as $hashtag) { ?>
+              <p> <?=$hashtag->name?> </p>
+            <?php } ?>
         </div>
 
         <div>

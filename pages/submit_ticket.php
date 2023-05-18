@@ -49,6 +49,11 @@ $departments = Department::getDepartments($db);
       </div>
 
       <div class="input-box">
+        <span> Hashtag: </span>
+        <input type="text" name="hashtag" placeholder="enter hashtags">
+      </div>
+
+      <div class="input-box">
         <span> Description: </span>
         <textarea name="description" cols="60" rows="8"></textarea>
       </div>

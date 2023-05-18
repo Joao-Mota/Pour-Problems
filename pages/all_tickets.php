@@ -11,6 +11,7 @@
   require_once(__DIR__ . '/../database/status.class.php');
   require_once(__DIR__ . '/../database/user.class.php');
   require_once(__DIR__ . '/../database/department.class.php');
+  require_once(__DIR__ . '/../database/hashtag.class.php');
   
 
   $db = getDatabaseConnection();
@@ -62,6 +63,11 @@
           <p> Ticket Status : <?= $status->stat ?> </p>
           <p> Agent Assigned : <?= $agent_username ?> </p>
           <p> Anexos: <?= count($ticket->files) ?> </p>
+
+          <?php $hashtags = Hashtag::getHashtags_from_ticket($db, $ticket->id);
+            foreach($hashtags as $hashtag) { ?>
+              <p> <?=$hashtag->name?> </p>
+            <?php } ?>
         </div>
 
         <div>
