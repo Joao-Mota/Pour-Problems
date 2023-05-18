@@ -14,29 +14,29 @@ $sendEmailSuccess = true;
 
 // validate email field
 if (empty($_POST['email'])) {
-  $session->addFieldError('email', 'Email is required!');
-  $sendEmailSuccess = false;
+    $session->addFieldError('email', 'Email is required!');
+    $sendEmailSuccess = false;
 }
 
 // validate email field for valid email
 if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-  $session->addFieldError('email', 'Invalid email!');
-  $sendEmailSuccess = false;
+    $session->addFieldError('email', 'Invalid email!');
+    $sendEmailSuccess = false;
 }
 
-if($sendEmailSuccess) {
-  try {
-    $user = getUserByEmail($_POST['email']);
-    //$user->sendPasswordResetEmail();
-    $session->addMessage('success', 'Email sent!');
-    header('Location: ../pages/login.php');
-  } catch (Exception $e) {
-    $session->addMessage('error', 'Email not sent!');
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
-  }
+if ($sendEmailSuccess) {
+    try {
+        $user = getUserByEmail($_POST['email']);
+        //$user->sendPasswordResetEmail();
+        $session->addMessage('success', 'Email sent!');
+        header('Location: ../pages/login.php');
+    } catch (Exception $e) {
+        $session->addMessage('error', 'Email not sent!');
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
 } else {
-  $session->addMessage('error', 'The form was not filled correctly!');
-  header('Location: ' . $_SERVER['HTTP_REFERER']);
+    $session->addMessage('error', 'The form was not filled correctly!');
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
 

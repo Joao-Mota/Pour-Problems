@@ -4,7 +4,10 @@ declare(strict_types=1);
 require_once(__DIR__ . '/../utils/session.php');
 $session = new Session();
 
-
+// Can't access login page if already logged in
+if ($session->isLoggedIn()) {
+  header('Location: ../pages/home.php');
+}
 
 require_once(__DIR__ . '/../database/connection.db.php');
 

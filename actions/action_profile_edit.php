@@ -81,30 +81,29 @@ if ($update_profile_success) {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    
+
 
     if ($_FILES['file'] != NULL) {
         $file_name = $_FILES['file']['name'];
         $file_size = $_FILES['file']['size'];
         $temp_name = $_FILES['file']['tmp_name'];
-        
+
         if (isset($file_name) && $file_size > 0 && $file_size < 1000000) {
             $image_path = save_in_uploads_profile($temp_name, $file_name);
         }
-    }else{
+    } else {
         $image_path = $user->image_path;
     }
 
-    try{
+    try {
         $user->updateUserProfile($db, $fullname, $username, $email, $password, $image_path);
         $session->addMessage('success', 'Profile updated successfully!');
         header('Location: /pages/profile.php');
     } catch (Exception $e) {
         $session->addMessage('error', $e->getMessage());
-        header('Location: /pages/profile.php');        
+        header('Location: /pages/profile.php');
     }
-}
-else {
+} else {
     header('Location: /pages/profile_edit.php');
 }
 
