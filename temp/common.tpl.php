@@ -73,7 +73,7 @@ require_once(__DIR__ . '/../utils/session.php');
                 <a href="/pages/users.php"> <i class="fas fa-angle-right"></i> Users</a>
                 <a href="/pages/all_tickets.php"> <i class="fas fa-angle-right"></i> Tickets</a>
                 <a href="/pages/departments.php"> <i class="fas fa-angle-right"></i> Departments</a>
-                <a href="/pages/profile.php"> <i class="fas fa-angle-right"></i> Profile</a>
+                <a href="/pages/profile.php?id=<?= base64_encode(strval($session->getID()))?>"> <i class="fas fa-angle-right"></i> Profile</a>
                 <a href="/actions/action_logout.php"> <i class="fas fa-angle-right"></i> Logout</a>
 
               <?php } else if ($session->isAgent()) { ?>
@@ -81,7 +81,7 @@ require_once(__DIR__ . '/../utils/session.php');
                   <a href="/pages/about.php"> <i class="fas fa-angle-right"></i> About</a>
                   <a href="/pages/assigned_tickets.php"> <i class="fas fa-angle-right"></i> Assigned Tickets</a>
                   <a href="/pages/all_tickets.php"> <i class="fas fa-angle-right"></i> Tickets</a>
-                  <a href="/pages/profile.php"> <i class="fas fa-angle-right"></i> Profile</a>
+                  <a href="/pages/profile.php?id=<?= base64_encode(strval($session->getID()))?>"> <i class="fas fa-angle-right"></i> Profile</a>
                   <a href="/actions/action_logout.php"> <i class="fas fa-angle-right"></i> Logout</a>
 
               <?php } else { ?>
@@ -89,7 +89,7 @@ require_once(__DIR__ . '/../utils/session.php');
                   <a href="/pages/about.php"> <i class="fas fa-angle-right"></i> About</a>
                   <a href="/pages/mytickets.php"> <i class="fas fa-angle-right"></i> My Tickets</a>
                   <a href="/pages/submit_ticket.php"> <i class="fas fa-angle-right"></i> Submit a Ticket</a>
-                  <a href="/pages/profile.php"> <i class="fas fa-angle-right"></i> Profile</a>
+                  <a href="/pages/profile.php?id=<?= base64_encode(strval($session->getID()))?>"> <i class="fas fa-angle-right"></i> Profile</a>
                   <a href="/actions/action_logout.php"> <i class="fas fa-angle-right"></i> Logout</a>
 
 
@@ -173,7 +173,7 @@ require_once(__DIR__ . '/../utils/session.php');
         <a href="/pages/about.php">About</a>
         <a href="/pages/mytickets.php">My Tickets</a>
         <a href="/pages/submit_ticket.php">Submit a Ticket</a>
-        <a href="/pages/profile.php">Profile</a>
+        <a href="/pages/profile.php?id=<?= base64_encode(strval($session->getID()))?>">Profile</a>
         <input type="submit" value="Logout">
       </form>
     </nav>
@@ -197,7 +197,7 @@ require_once(__DIR__ . '/../utils/session.php');
         <a href="/pages/users.php">Users</a>
         <a href="/pages/all_tickets.php">Tickets</a>
         <a href="/pages/departments.php">Departments</a>
-        <a href="/pages/profile.php">Profile</a>
+        <a href="/pages/profile.php?id=<?= base64_encode(strval($session->getID()))?>">Profile</a>
         <input type="submit" value="Logout">
       </form>
     </nav>
@@ -220,7 +220,7 @@ require_once(__DIR__ . '/../utils/session.php');
         <a href="/pages/about.php">About</a>
         <a href="/pages/assigned_tickets.php">Assigned Tickets</a>
         <a href="/pages/all_tickets.php">Tickets</a>
-        <a href="/pages/profile.php">Profile</a>
+        <a href="/pages/profile.php?id=<?= base64_encode(strval($session->getID()))?>">Profile</a>
         <input type="submit" value="Logout">
       </form>
     </nav>

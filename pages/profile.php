@@ -18,7 +18,14 @@ $db = getDatabaseConnection();
 
 drawHeader($session);
 
-$user_array = User::getUser($db, $session->getId());
+$encryptedId = str_replace("/pages/profile.php?id=", "", $_SERVER['REQUEST_URI']);
+
+$id = base64_decode(($encryptedId));
+
+$id_int = (int) $id;
+
+$user_array = User::getUser($db, $id_int);
+
 $role_num = $user_array->role_id;
 
 
@@ -78,11 +85,19 @@ if ($role_num == 1) {
       </tr>
     </table>
 
-  </div>
-  <div class="edit_profile">
-    <a href="/pages/profile_edit.php"><i class="fas fa-user-pen"></i></a>
-  </div>
-</div>
+  <?php if($user_array->id == $session->getID()) { ?>
+    </div>
+      <div class="edit_profile">
+        <a href="/pages/profile_edit.php"><i class="fas fa-user-pen"></i></a>
+      </div>
+    </div>    
+  <?php } 
+  else { ?>
+    </div>
+      
+    </div> 
+  <?php } ?>
+
 
 <?php
 drawFooter($session);

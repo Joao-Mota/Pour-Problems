@@ -18,6 +18,7 @@ $db = getDatabaseConnection();
 
 $user_id = $session->getId();
 
+$encryptedId = base64_encode(strval($session->getID()));
 
 $user = User::getUser($db, $user_id);
 
@@ -98,10 +99,10 @@ if ($update_profile_success) {
     try {
         $user->updateUserProfile($db, $fullname, $username, $email, $password, $image_path);
         $session->addMessage('success', 'Profile updated successfully!');
-        header('Location: /pages/profile.php');
+        header('Location: /pages/profile.php?id=' . $encryptedId);
     } catch (Exception $e) {
         $session->addMessage('error', $e->getMessage());
-        header('Location: /pages/profile.php');
+        header('Location: /pages/profile.php?id=' . $encryptedId);
     }
 } else {
     header('Location: /pages/profile_edit.php');

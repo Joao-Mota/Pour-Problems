@@ -91,9 +91,11 @@ drawHeader($session);
                 $profile_image = $user->image_path;
                 ?>
                 <img src="/uploads/profiles/<?= $profile_image ?>" alt="Profile Image" class="profile-image">
-                <p>
-                  <?= $user->username ?>
-                </p>
+
+                <form action="../pages/profile.php?id=<?= base64_encode(strval($user->id)) ?>" method="post" class="info-form">
+                  <input type="submit" value="<?=$user->username?>">
+                </form>
+
               </div>
             </td>
 

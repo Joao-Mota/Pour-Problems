@@ -16,6 +16,7 @@ require_once(__DIR__ . '/../database/ticket_user.class.php');
 require_once(__DIR__ . '/../database/message.class.php');
 require_once(__DIR__ . '/../database/user.class.php');
 require_once(__DIR__ . '/../database/hashtag.class.php');
+require_once(__DIR__ . '/../database/department.class.php');
 
 
 $db = getDatabaseConnection();
@@ -35,6 +36,12 @@ $status = Status::getStatus($db, $ticket->status_id);
 $ticket_user = Ticket_User::getTicket_User($db, $ticket->id);
 
 $hashtags = Hashtag::getHashtags_from_ticket($db, $ticket->id);
+
+$all_status = Status::getAll_Status($db);
+
+$agents = User::getAgents($db, 2);
+
+$departments = Department::getDepartments($db);
 
 if ($ticket_user->agent_id == NULL) {
   $agent_username = 'No Agent Assigned';
@@ -100,21 +107,68 @@ if ($ticket_user->agent_id == NULL) {
 
 // add change status form if user is an agent or admin
 if ($session->isAdmin() || $session->isAgent()) { ?>
-  <section class="ticket-form">
-    
-    <form action="../actions/action_change_status.php" method="post" class="delete">
-    <input type="hidden" name="ticket_id" value="<?= $ticket->id ?>">
-    <select name="status" id="status">
-      <?php
-      $statuses = Status::getAll_Status($db);
-      foreach ($statuses as $status) { ?>
-        <option value="<?= $status->stat ?>"><?= $status->stat ?></option>
-      <?php } ?>
-    </select>
-    <input type="submit" value="Change Status">
+  <div>
+    <form action="../actions/action_delete_ticket.php" method="post" class="delete">
+      <input type="hidden" name="ticket_id" value="<?=$ticket_user->ticket_id?>">
+      <input type="hidden" name="id" value="<?=$ticket->id?>">
+      <input type="submit" value="Delete"> 
     </form>
+  </div>
 
-  </section>
+  <div>
+    <form action="../actions/action_change_status.php" method="post" class="delete">
+
+      <input type="hidden" name="ticket_id" value="<?=$ticket->id?>">
+
+      <select id="status" name="status">
+
+        <?php foreach($all_status as $status) { ?>                                                              
+          <option value="<?=$status->stat?>"> <?=$status->stat?> </option>
+        <?php } ?>                     
+
+      </select>
+
+      <input type="submit" value="Change Status"> 
+
+    </form>
+  </div>
+
+  <div>
+    <form action="../actions/action_assign_agent.php" method="post" class="delete">
+
+      <input type="hidden" name="ticket_id" value="<?=$ticket->id?>">
+
+      <select id="agent" name="agent">
+
+        <?php foreach($agents as $agent) { ?>                                                              
+          <option value="<?=$agent->username?>"> <?=$agent->username?> </option>
+        <?php } ?>                     
+
+      </select>
+
+      <input type="submit" value="Assign Agent"> 
+
+    </form>
+  </div>
+
+  <div>
+    <form action="../actions/action_change_department.php" method="post" class="delete">
+
+      <input type="hidden" name="ticket_id" value="<?=$ticket->id?>">
+
+      <select id="departments" name="department">
+
+        <?php foreach($departments as $department) { ?>                                                              
+          <option value="<?=$department->name?>"> <?=$department->name?> </option>
+        <?php } ?>                     
+
+      </select>
+
+      <input type="submit" value="Change Department"> 
+
+    </form>
+  </div>
+  
 <?php }
 
 ?>
