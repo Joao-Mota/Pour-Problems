@@ -10,6 +10,7 @@
   require_once(__DIR__ . '/../database/ticket.class.php');
   require_once(__DIR__ . '/../database/status.class.php');
   require_once(__DIR__ . '/../database/user.class.php');
+  require_once(__DIR__ . '/../database/department.class.php');
   
 
   $db = getDatabaseConnection();
@@ -19,6 +20,8 @@
   $all_status = Status::getAll_Status($db);
 
   $agents = User::getAgents($db, 2);
+
+  $departments = Department::getDepartments($db);
 
   drawHeader($session); 
   ?>
@@ -109,6 +112,24 @@
             </select>
 
             <input type="submit" value="Assign Agent"> 
+
+          </form>
+        </div>
+
+        <div>
+          <form action="../actions/action_change_department.php" method="post" class="delete">
+
+            <input type="hidden" name="ticket_id" value="<?=$ticket->id?>">
+
+            <select id="departments" name="department">
+
+              <?php foreach($departments as $department) { ?>                                                              
+                <option value="<?=$department->name?>"> <?=$department->name?> </option>
+              <?php } ?>                     
+
+            </select>
+
+            <input type="submit" value="Change Department"> 
 
           </form>
         </div>

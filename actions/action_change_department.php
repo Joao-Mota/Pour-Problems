@@ -5,18 +5,14 @@
   $session = new Session();
 
   require_once(__DIR__ . '/../database/connection.db.php');
-  require_once(__DIR__ . '/../database/role.class.php');
-  require_once(__DIR__ . '/../database/user.class.php');
 
   $db = getDatabaseConnection();
 
-  $user_id = (int) $_POST['user_id'];
+  $ticket_id = $_POST['ticket_id'];
+  $department_name = $_POST['department'];
 
-  $user = User::getUser($db, $user_id);
-
-  $user->role_id = 3;
-
-  $user->save($db);
+  $stmt = $db->prepare('UPDATE Ticket SET department = ? WHERE id = ?');
+  $stmt->execute(array($department_name, $ticket_id));
 
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>
