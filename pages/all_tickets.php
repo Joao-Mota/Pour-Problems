@@ -90,11 +90,13 @@ drawHeader($session);
                 $user = User::getUser($db, $ticket_user->client_id);
                 $profile_image = $user->image_path;
                 ?>
-                <img src="/uploads/profiles/<?= $profile_image ?>" alt="Profile Image" class="profile-image">
+                <a href="../pages/profile.php?id=<?= base64_encode(strval($user->id)) ?>">
+                  <img src="/uploads/profiles/<?= $profile_image ?>" alt="Profile Image" class="profile-image">
 
-                <form action="../pages/profile.php?id=<?= base64_encode(strval($user->id)) ?>" method="post" class="info-form">
-                  <input type="submit" value="<?=$user->username?>">
-                </form>
+                  <p>
+                    <?= $user->username ?>
+                  </p>
+                </a>
 
               </div>
             </td>
@@ -167,7 +169,7 @@ drawHeader($session);
               </div>
             </td>
           </tr>
-          
+
         <?php } ?>
       </tbody>
     </table>

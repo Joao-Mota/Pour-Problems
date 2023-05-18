@@ -8,6 +8,11 @@ if (!$session->isLoggedIn()) {
   header('Location: ../pages/login.php');
 }
 
+if (strpos($_SERVER['REQUEST_URI'], 'id=') === false) {
+  header('Location: ../pages/departments.php');
+}
+
+
 require_once(__DIR__ . '/../database/connection.db.php');
 require_once(__DIR__ . '/../temp/common.tpl.php');
 require_once(__DIR__ . '/../database/user_department.class.php');
