@@ -1,20 +1,24 @@
 <?php
-  declare(strict_types = 1);
+declare(strict_types=1);
 
-  require_once(__DIR__ . '/../utils/session.php');
-  $session = new Session();
+require_once(__DIR__ . '/../utils/session.php');
+$session = new Session();
 
-  require_once(__DIR__ . '/../database/connection.db.php');
-  require_once(__DIR__ . '/../temp/common.tpl.php');
-  require_once(__DIR__ . '/../database/department.class.php');
-  
+if (!$session->isLoggedIn()) {
+  header('Location: ../pages/login.php');
+}
 
-  $db = getDatabaseConnection();
+require_once(__DIR__ . '/../database/connection.db.php');
+require_once(__DIR__ . '/../temp/common.tpl.php');
+require_once(__DIR__ . '/../database/department.class.php');
 
-  $departments = Department::getDepartments($db);
 
-  drawHeader($session); 
-  ?>
+$db = getDatabaseConnection();
+
+$departments = Department::getDepartments($db);
+
+drawHeader($session);
+?>
 
 
 <div class="heading">
@@ -26,47 +30,52 @@
   <section class="users">
 
     <div>
-        <form action="../actions/action_add_department.php" method="post" class="delete">
-            <input type="text" name="name" placeholder="department's name">
-            <input type="submit" value="Create New Department"> 
-        </form>
+      <form action="../actions/action_add_department.php" method="post" class="delete">
+        <input type="text" name="name" placeholder="department's name">
+        <input type="submit" value="Create New Department">
+      </form>
     </div>
 
-    <?php foreach($departments as $department) { ?>
+    <?php foreach ($departments as $department) { ?>
 
-        <div class="user">
-            <div class="question">
-            <h3> <?= $department->name ?> </h3>
+      <div class="user">
+        <div class="question">
+          <h3>
+            <?= $department->name ?>
+          </h3>
 
-            <span class="icon"><i class="fas fa-sort-down"></i></span>
-            </div>
-
-            <div class="answer">
-            <p> Id : <?= $department->id ?> </p>
-            </div>
-
-            <div>
-                <form action="../actions/action_delete_department.php" method="post" class="delete">
-                <input type="hidden" name="id" value="<?=$department->id?>">
-                <input type="submit" value="Delete"> 
-                </form>
-            </div>
-
-            <div>
-                <form action="../pages/department.php?id=<?=base64_encode(strval($department->id))?>" method="post" class="delete">
-                  <input type="hidden" name="id" value="<?=$department->id?>">
-                  <input type="hidden" name="name" value="<?=$department->name?>">
-                  <input type="submit" value="+Info"> 
-                </form>
-            </div>
-
+          <span class="icon"><i class="fas fa-sort-down"></i></span>
         </div>
+
+        <div class="answer">
+          <p> Id :
+            <?= $department->id ?>
+          </p>
+        </div>
+
+        <div>
+          <form action="../actions/action_delete_department.php" method="post" class="delete">
+            <input type="hidden" name="id" value="<?= $department->id ?>">
+            <input type="submit" value="Delete">
+          </form>
+        </div>
+
+        <div>
+          <form action="../pages/department.php?id=<?= base64_encode(strval($department->id)) ?>" method="post"
+            class="delete">
+            <input type="hidden" name="id" value="<?= $department->id ?>">
+            <input type="hidden" name="name" value="<?= $department->name ?>">
+            <input type="submit" value="+Info">
+          </form>
+        </div>
+
+      </div>
 
     <?php } ?>
   </section>
 
 </section>
-      
+
 <?php
-  drawFooter($session);
+drawFooter($session);
 ?>

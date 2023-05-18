@@ -4,6 +4,10 @@ declare(strict_types=1);
 require_once(__DIR__ . '/../utils/session.php');
 $session = new Session();
 
+if (!$session->isLoggedIn()) {
+  header('Location: ../pages/login.php');
+}
+
 require_once(__DIR__ . '/../database/connection.db.php');
 require_once(__DIR__ . '/../temp/common.tpl.php');
 require_once(__DIR__ . '/../database/ticket.class.php');
@@ -32,15 +36,13 @@ $ticket_user = Ticket_User::getTicket_User($db, $ticket->id);
 
 $hashtags = Hashtag::getHashtags_from_ticket($db, $ticket->id);
 
-if($ticket_user->agent_id == NULL) {
+if ($ticket_user->agent_id == NULL) {
   $agent_username = 'No Agent Assigned';
-}
-
-else {
+} else {
   $agent = User::getUser($db, $ticket_user->agent_id);
 
   $agent_username = $agent->username;
-} 
+}
 ?>
 
 <h1>
@@ -54,8 +56,10 @@ else {
 </p>
 
 <h3> Hashtags:
-  <?php foreach($hashtags as $hashtag) { ?>
-    <p> <?= $hashtag->name ?> </p>
+  <?php foreach ($hashtags as $hashtag) { ?>
+    <p>
+      <?= $hashtag->name ?>
+    </p>
   <?php } ?>
 </h3>
 
@@ -76,9 +80,9 @@ else {
     <?= count($ticket->files) ?>
   </p>
   <?php foreach ($ticket->files as $file) { ?>
-    
+
     <a class="file" href="/uploads/tickets/<?= $file['file_path'] ?>" target="_blank" rel="noopener noreferrer">
-    <?php
+      <?php
       // check if file is an image from the file extension
       $file_extension = pathinfo($file['file_path'], PATHINFO_EXTENSION);
       if (in_array($file_extension, ['jpg', 'jpeg', 'png', 'gif'])) { ?>
@@ -98,7 +102,7 @@ $messages = Message::getMessages_from_ticket($db, $ticket->id);
 foreach ($messages as $message) {
   $user = User::getUser($db, $message->user_id); ?>
   <h2>
-    <?= $user->username ?> 
+    <?= $user->username ?>
     <?= $message->text ?>
   </h2>
 

@@ -107,9 +107,7 @@ if ($add_ticket) {
 
   $session->addMessage('success', 'Ticket Submited!');
   header('Location: ' . $_SERVER['HTTP_REFERER']);
-}
-
-else {
+} else {
   $session->addMessage('error', 'The form was not filled correctly!');
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }

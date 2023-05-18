@@ -30,9 +30,8 @@ try {
     //$stmt->execute(array('Packaging'));
     //$stmt->execute(array('Payment'));
     //$stmt->execute(array('Delivery'));
-  }     
-  catch (PDOException $e) {
-  }
+} catch (PDOException $e) {
+}
 ?>
 
 <section class="home">
