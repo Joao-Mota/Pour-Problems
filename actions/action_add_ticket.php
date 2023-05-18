@@ -11,9 +11,16 @@ require_once(__DIR__ . '/../database/ticket_user.class.php');
 
 $db = getDatabaseConnection();
 
-if (empty($_POST['subject'] || $_POST['datetime'])) {
-  $session->addMessage('error', 'All fields are required!');
-  header('Location: ' . $_SERVER['HTTP_REFERER']);
+$add_ticket = true;
+
+if (empty($_POST['subject'])) {
+  $session->addFieldError('subject', 'Subject is required!');
+  $add_ticket = false;
+}
+
+if (empty($_POST['hashtag'])) {
+  $session->addFieldError('hashtag', 'Hashtag is required!');
+  $add_ticket = false;
 }
 
 function save_in_uploads($temp_name, $name)
@@ -53,40 +60,56 @@ if (!empty($files)) {
   }
 }
 
-$subject = strval($_POST['subject']);
-$description = strval($_POST['description']);
-$datetime = date('d/m/y H:i');
-$department = strval($_POST['department']);
-$status_id = 1;
+if ($add_ticket) {
 
-$new_ticket_id = null;
+  $subject = strval($_POST['subject']);
+  $description = strval($_POST['description']);
+  $datetime = date('d/m/y H:i');
+  $department = strval($_POST['department']);
+  $status_id = 1;
+  $hashtag = strval($_POST['hashtag']);
 
-try {
-  $stmt = $db->prepare('INSERT INTO Ticket (subject, description, datetime, department, status_id) VALUES (?, ?, ?, ?, ?)');
-  $stmt->execute(array($subject, $description, $datetime, $department, $status_id));
-  $new_ticket_id = $db->lastInsertId();
-} catch (PDOException $e) {
-  $session->addMessage('RIP', 'No ticket!');
-}
+  $new_ticket_id = null;
 
-$client_id = $session->getID();
-$agent_id = 0;
-
-try {
-  $stmt = $db->prepare('INSERT INTO Ticket_User (client_id, agent_id) VALUES (?, ?)');
-  $stmt->execute(array($client_id, $agent_id));
-} catch (PDOException $e) {
-  $session->addMessage('RIP', 'No ticket!');
-}
-
-try {
-  foreach ($filenames as $filename) {
-    $stmt = $db->prepare('INSERT INTO Ticket_Files (file_path, user_id, ticket_id) VALUES (?, ?, ?)');
-    $stmt->execute(array($filename, $client_id, $new_ticket_id));
+  try {
+    $stmt = $db->prepare('INSERT INTO Ticket (subject, description, datetime, department, status_id) VALUES (?, ?, ?, ?, ?)');
+    $stmt->execute(array($subject, $description, $datetime, $department, $status_id));
+    $new_ticket_id = $db->lastInsertId();
+  } catch (PDOException $e) {
+    $session->addMessage('RIP', 'No ticket!');
   }
-} catch (PDOException $e) {
-  $session->addMessage('RIP', 'Cannot save files!');
+
+  $client_id = $session->getID();
+  $agent_id = 0;
+
+  try {
+    $stmt = $db->prepare('INSERT INTO Ticket_User (client_id, agent_id) VALUES (?, ?)');
+    $stmt->execute(array($client_id, $agent_id));
+  } catch (PDOException $e) {
+    $session->addMessage('RIP', 'No ticket!');
+  }
+
+  try {
+    foreach ($filenames as $filename) {
+      $stmt = $db->prepare('INSERT INTO Ticket_Files (file_path, user_id, ticket_id) VALUES (?, ?, ?)');
+      $stmt->execute(array($filename, $client_id, $new_ticket_id));
+    }
+  } catch (PDOException $e) {
+    $session->addMessage('RIP', 'Cannot save files!');
+  }
+
+  try {
+    $stmt = $db->prepare('INSERT INTO Hashtag (name, ticket_id) VALUES (?, ?)');
+    $stmt->execute(array($hashtag, $new_ticket_id));
+  } catch (PDOException $e) {
+    $session->addMessage('RIP', 'No ticket!');
+  }
+
+  $session->addMessage('success', 'Ticket Submited!');
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
-$session->addMessage('success', 'Ticket Submited!');
-header('Location: ' . $_SERVER['HTTP_REFERER']);
+else {
+  $session->addMessage('error', 'The form was not filled correctly!');
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
+}

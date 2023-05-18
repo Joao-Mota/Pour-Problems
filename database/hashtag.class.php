@@ -12,13 +12,30 @@
             $this->ticket_id = $ticket_id;
         }
 
-        static function getChat(PDO $db, int $id): Hashtag{
+        static function getHashtag(PDO $db, int $id): Hashtag{
             $stmt = $db->prepare('SELECT * FROM Hashtag WHERE id = ?');
 
             $stmt->execute(array($id));
             $chat = $stmt->fetch();
 
             return new Hashtag($chat['id'], $chat['name'], $chat['ticket_id']);
+        }
+
+        static function getHashtags_from_ticket(PDO $db, int $ticket_id) : array {
+            $stmt = $db->prepare('SELECT * FROM Hashtag WHERE ticket_id = ?');
+        
+            $stmt->execute(array($ticket_id));
+        
+            $hashtags = [];
+
+            while ($hashtag = $stmt->fetch()) {
+                $hashtags[] = new Hashtag(
+                    $hashtag['id'],
+                    strval($hashtag['name']),
+                    $hashtag['ticket_id']
+                );
+            }     
+            return $hashtags;
         }
     }
 ?>
