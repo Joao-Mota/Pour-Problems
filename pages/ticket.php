@@ -97,6 +97,29 @@ if ($ticket_user->agent_id == NULL) {
 </div>
 
 <?php
+
+// add change status form if user is an agent or admin
+if ($session->isAdmin() || $session->isAgent()) { ?>
+  <section class="ticket-form">
+    
+    <form action="../actions/action_change_status.php" method="post" class="delete">
+    <input type="hidden" name="ticket_id" value="<?= $ticket->id ?>">
+    <select name="status" id="status">
+      <?php
+      $statuses = Status::getAll_Status($db);
+      foreach ($statuses as $status) { ?>
+        <option value="<?= $status->stat ?>"><?= $status->stat ?></option>
+      <?php } ?>
+    </select>
+    <input type="submit" value="Change Status">
+    </form>
+
+  </section>
+<?php }
+
+?>
+
+<?php
 $messages = Message::getMessages_from_ticket($db, $ticket->id);
 
 foreach ($messages as $message) {
