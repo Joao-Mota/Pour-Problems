@@ -37,9 +37,9 @@ if (getUserByEmail($_POST['email']) == null) {
 }
 
 // validate password field for correct password
-try {
-  $user = User::getUserWithPassword($db, $_POST['email'], $_POST['password']);
-} catch (Exception $e) {
+
+$user = User::getUserWithPassword($db, $_POST['email'], $_POST['password']);
+if ($user == null) {
   $session->addFieldError('password', 'Wrong password!');
   $loginSuccess = false;
 }
