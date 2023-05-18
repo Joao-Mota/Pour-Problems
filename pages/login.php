@@ -15,6 +15,11 @@ $db = getDatabaseConnection();
 drawHeader($session);
 ?>
 
+<!-- get fields erros -->
+<?php
+$errorFields = $session->getFieldErrors();
+?>
+
 <section class="login">
   <div class="logo">
     <img src="../sources/PourProblems_Logo_Gray.png" alt="logo">
@@ -27,11 +32,23 @@ drawHeader($session);
 
       <!-- Email and password -->
       <div class="input-box">
-        <input type="email" name="email" placeholder="email">
+        <input type="email" name="email" placeholder="email"
+          data-state="<?php if (isset($errorFields['email'])) { ?>invalid<?php } ?>">
+        <?php if (isset($errorFields['email'])) { ?>
+          <p class="text-danger">
+            <?= $errorFields['email'] ?>
+          </p>
+        <?php } ?>
       </div>
 
       <div class="input-box">
-        <input type="password" name="password" placeholder="password">
+        <input type="password" name="password" placeholder="password"
+          data-state="<?php if (isset($errorFields['password'])) { ?>invalid<?php } ?>">
+        <?php if (isset($errorFields['password'])) { ?>
+          <p class="text-danger">
+            <?= $errorFields['password'] ?>
+          </p>
+        <?php } ?>
       </div>
 
       <div class="login-options">
@@ -47,8 +64,8 @@ drawHeader($session);
 
       <!-- Links -->
       <div class="login-links">
-        <a class="forgot-password" href="/pages/forgot_password.php">Forgot your password?</a>
-        <a class="register" href="/pages/signup.php">Don't have an account?</a>
+        <a class="forgot-password-login" href="/pages/forgot_password.php">Forgot your password?</a>
+        <a class="register-login" href="/pages/signup.php">Don't have an account?</a>
       </div>
 
       <section id="messages">
