@@ -66,16 +66,35 @@ require_once(__DIR__ . '/../utils/session.php');
           <div class="box">
             <h3>Quick Links</h3>
             <?php
-            if ($session->isLoggedIn()) { ?>
+            if ($session->isLoggedIn()) {
+              if ($session->isAdmin()) { ?>
 
-              <a href="/pages/about.php"> <i class="fas fa-angle-right"></i> About</a>
-              <a href="/pages/mytickets.php"> <i class="fas fa-angle-right"></i> My Tickets</a>
-              <a href="/pages/submit_ticket.php"> <i class="fas fa-angle-right"></i> Submit a Ticket</a>
-              <a href="/pages/profile.php"> <i class="fas fa-angle-right"></i> Profile</a>
-              <a href="/actions/action_logout.php"> <i class="fas fa-angle-right"></i> Logout</a>
+                <a href="/pages/about.php"> <i class="fas fa-angle-right"></i> About</a>
+                <a href="/pages/users.php"> <i class="fas fa-angle-right"></i> Users</a>
+                <a href="/pages/all_tickets.php"> <i class="fas fa-angle-right"></i> Tickets</a>
+                <a href="/pages/departments.php"> <i class="fas fa-angle-right"></i> Departments</a>
+                <a href="/pages/profile.php"> <i class="fas fa-angle-right"></i> Profile</a>
+                <a href="/actions/action_logout.php"> <i class="fas fa-angle-right"></i> Logout</a>
+
+              <?php } else if ($session->isAgent()) { ?>
+
+                  <a href="/pages/about.php"> <i class="fas fa-angle-right"></i> About</a>
+                  <a href="/pages/assigned_tickets.php"> <i class="fas fa-angle-right"></i> Assigned Tickets</a>
+                  <a href="/pages/all_tickets.php"> <i class="fas fa-angle-right"></i> Tickets</a>
+                  <a href="/pages/profile.php"> <i class="fas fa-angle-right"></i> Profile</a>
+                  <a href="/actions/action_logout.php"> <i class="fas fa-angle-right"></i> Logout</a>
+
+              <?php } else { ?>
+
+                  <a href="/pages/about.php"> <i class="fas fa-angle-right"></i> About</a>
+                  <a href="/pages/mytickets.php"> <i class="fas fa-angle-right"></i> My Tickets</a>
+                  <a href="/pages/submit_ticket.php"> <i class="fas fa-angle-right"></i> Submit a Ticket</a>
+                  <a href="/pages/profile.php"> <i class="fas fa-angle-right"></i> Profile</a>
+                  <a href="/actions/action_logout.php"> <i class="fas fa-angle-right"></i> Logout</a>
 
 
-            <?php } else { ?>
+              <?php }
+            } else { ?>
               <a href="/pages/about.php"> <i class="fas fa-angle-right"></i> About</a>
               <a href="/pages/signup.php"> <i class="fas fa-angle-right"></i> Sign Up</a>
               <a href="/pages/login.php"> <i class="fas fa-angle-right"></i> Login</a>
@@ -199,8 +218,8 @@ require_once(__DIR__ . '/../utils/session.php');
     <nav class="navbar">
       <form action="../actions/action_logout.php" method="post" class="logout">
         <a href="/pages/about.php">About</a>
-        <a href="/pages/assigned_tickets.php">My Assigned Tickets</a>
-        <a href="/pages/all_tickets.php">All Tickets</a>
+        <a href="/pages/assigned_tickets.php">Assigned Tickets</a>
+        <a href="/pages/all_tickets.php">Tickets</a>
         <a href="/pages/profile.php">Profile</a>
         <input type="submit" value="Logout">
       </form>

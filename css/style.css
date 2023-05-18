@@ -1177,6 +1177,9 @@ section {
     display: 1 1 41rem;
     border-left: var(--main-color) 5px solid;
     padding-left: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    display: block;
 }
 
 .profile .profile_info .title {
@@ -1224,9 +1227,148 @@ section {
 
 
 
+/* All Tickets */
+.tickets-table {
+    border-collapse: collapse;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.tickets-table .tickets-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.tickets-table .tickets-body table,
+.tickets-table .tickets-body td,
+.tickets-table .tickets-body th {
+    padding: 1rem;
+}
+
+.tickets-table .tickets-body table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.4);
+    display: 1 1 41rem;
+}
+
+.tickets-table .tickets-body table thead {
+    background-color: var(--main-color);
+    color: var(--white);
+}
+
+.tickets-table .tickets-body table thead th {
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.tickets-table .tickets-body table tbody tr {
+    border-bottom: 1px solid var(--main-color);
+}
+
+.tickets-table .tickets-body table tbody tr:last-child {
+    border-bottom: none;
+}
 
 
+.tickets-table .tickets-body table tbody tr:hover {
+    background-color: var(--light-bg);
+}
 
+
+.tickets-table .tickets-body table tbody tr td {
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.tickets-table .tickets-body p {
+    font-size: 1.5rem;
+    padding: 1rem;
+    text-align: center;
+    color: var(--black);
+}
+
+.tickets-table .tickets-body .client {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.tickets-table .tickets-body .client img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+    display: 1 1 41rem;
+    vertical-align: middle;
+}
+
+.tickets-table .tickets-body .client p {
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: var(--black);
+}
+
+.tickets-table .tickets-body .status {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.tickets-table .tickets-body .status span {
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    font-size: 1.5rem;
+}
+
+.tickets-table .tickets-body .status .open {
+    background-color: var(--main-color);
+    color: var(--white);
+}
+
+.tickets-table .tickets-body .status .closed {
+    background-color: #03a15a;
+    color: var(--white);
+}
+
+.tickets-table .tickets-body .status .assigned {
+    background-color: #f1c40f;
+    color: var(--black);
+}
+
+.tickets-table .tickets-body .more-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.tickets-table .tickets-body .more-info input {
+    font-size: 3rem;
+    color: var(--main-color);
+    border: none;
+    background-color: transparent;
+}
+
+.tickets-table .tickets-body .more-info input:hover {
+    opacity: 0.8;
+}
 
 
 
@@ -1295,15 +1437,21 @@ section {
 
 
 
-@media (max-width: 1200px) {
+@media (max-width: 75em) {
 
     header section {
         padding: 3rem 5%;
     }
 
+    .tickets-table .tickets-body td:not(:first-of-type) {
+        min-width: 12.1rem;
+    }
+
 }
 
-@media (max-width: 1197px) {
+
+
+@media (max-width: 74.8125em) {
 
     .login .login-input {
         border-left: none;
@@ -1321,7 +1469,7 @@ section {
     }
 }
 
-@media (max-width: 990px) {
+@media (max-width: 61.875em) {
 
     html {
         font-size: 55%;
@@ -1337,7 +1485,7 @@ section {
 
 }
 
-@media (max-width: 750px) {
+@media (max-width: 46.875em) {
 
     #menu-bars {
         display: inline-block;
@@ -1380,7 +1528,7 @@ section {
 
 }
 
-@media (max-width: 650px) {
+@media (max-width: 40.625em) {
 
     .profile .profile_pic {
         width: 20rem;
@@ -1396,7 +1544,7 @@ section {
 
 }
 
-@media (max-width: 450px) {
+@media (max-width: 28.125em) {
 
     html {
         font-size: 50%;
