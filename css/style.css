@@ -530,6 +530,16 @@ section{
     color: var(--light-black);
 }
 
+.login .login-input .login-container .input-box input[data-state="invalid"]{
+    border: 1px solid var(--main-color);
+}
+
+.login .login-input .login-container .input-box .text-danger{
+    color: var(--main-color);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
 .login .login-input .login-container .login-options{
     display: flex;
     align-items: center;
@@ -680,6 +690,18 @@ section{
     color: var(--light-black);
 }
 
+.signup .signup-input .signup-form .input-box input[data-state="invalid"]{
+    border: 1px solid var(--main-color);
+}
+
+.signup .signup-input .signup-form .input-box .text-danger{
+    color: var(--main-color);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+
+
 .signup .signup-input .signup-form .signup-options{
     display: flex;
     align-items: center;
@@ -736,6 +758,129 @@ section{
 }
 
 
+
+/* Forgot Password */
+.forgot-password{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:3rem;
+    justify-content: center;
+    margin : 5rem;
+}
+
+.forgot-password .logo{
+    flex: 1 1 41rem;
+    text-align: center;
+}
+
+.forgot-password .logo img{
+    width: 80%;
+}
+
+.forgot-password .forgot-password-input{
+    flex: 1 1 41rem;
+    text-align: center;
+    border-left: var(--main-color) 5px solid;
+    padding-left: 3rem;
+    padding-bottom: 5rem;
+}
+
+.forgot-password .forgot-password-input h2{
+    font-size: 3.5rem;
+    color: var(--black);
+}
+
+.forgot-password .forgot-password-input .forgot-password-form{
+    margin: 2rem 0;
+}
+
+.forgot-password .forgot-password-input .forgot-password-form p{
+    font-size: 1.5rem;
+    color: var(--light-black);
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+.forgot-password .forgot-password-input .forgot-password-form .input-box input{
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-size: 1.5rem;
+    border: 1px solid var(--light-black);
+    border-radius: 0.5rem;
+    outline: none;
+}
+
+.forgot-password .forgot-password-input .forgot-password-form .input-box input:focus{
+    border: 1px solid var(--black);
+    box-shadow: 0 0 0.5rem rgba(0,0,0,0.4);
+}
+
+.forgot-password .forgot-password-input .forgot-password-form .input-box input::placeholder{
+    color: var(--light-black);
+}
+
+.forgot-password .forgot-password-input .forgot-password-form .input-box input[data-state="invalid"]{
+    border: 1px solid var(--main-color);
+}
+
+.forgot-password .forgot-password-input .forgot-password-form .input-box .text-danger{
+    color: var(--main-color);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.forgot-password .forgot-password-input .forgot-password-form .forgot-password-options{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.forgot-password .forgot-password-input .forgot-password-form .forgot-password-options button{
+    width: 10%;
+    padding: 1rem;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    outline: none;
+    background-color: var(--main-color);
+    color: var(--white);
+    cursor: pointer;
+}
+
+.forgot-password .forgot-password-input .forgot-password-form .forgot-password-options button:hover{
+    opacity: 0.8;
+}
+
+.forgot-password .forgot-password-input .forgot-password-form .forgot-password-options .forgot-password-links{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.forgot-password .forgot-password-input .forgot-password-form .forgot-password-options .forgot-password-links a{
+    font-size: 1.5rem;
+    color: var(--light-black);
+}
+
+.forgot-password .forgot-password-input .forgot-password-form .forgot-password-options .forgot-password-links a:hover{
+    color: var(--main-color);
+}
+
+.forgot-password .forgot-password-input .forgot-password-form .forgot-password-options .forgot-password-links a::after{
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: var(--main-color);
+    display: block;
+    transition: width 0.5s;
+}
+
+.forgot-password .forgot-password-input .forgot-password-form .forgot-password-options .forgot-password-links a:hover::after{
+    width: 100%;
+}
 
 
 
@@ -1253,10 +1398,5 @@ section{
 
 }
 
-.text-danger{
-    color: var(--main-color);
-}
 
-.signup .signup-form .flex .input-box input[data-state="invalid"]{
-    border: 1px solid var(--main-color);
-}
+
