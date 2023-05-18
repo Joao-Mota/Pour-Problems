@@ -8,6 +8,7 @@
   require_once(__DIR__ . '/../temp/common.tpl.php');
   require_once(__DIR__ . '/../database/user_department.class.php');
   require_once(__DIR__ . '/../database/user.class.php');
+  require_once(__DIR__ . '/../database/department.class.php');
 
 
   $db = getDatabaseConnection();
@@ -22,7 +23,8 @@
 
   $department_name = $_POST['name'];
 
-  $users = User_Department::getUsers_from_department($db, $id_int);
+  $users = User_Department::getAgents_from_department($db, $id_int);
+  $departments = Department::getDepartments($db);
 ?>
 
 <div class="heading">
@@ -31,24 +33,40 @@
 
 <section class="ticket-form">
 
-  <section class="users">
+  <section class="agents">
 
     <?php foreach($users as $user_department) { 
       
       $user = User::getUser($db, $user_department->user_id);
       ?>     
 
-        <div class="user">
-            <div class="question">
-            <h3> <?= $user->username ?> </h3>
-
-            <span class="icon"><i class="fas fa-sort-down"></i></span>
-            </div>
-
-            <div class="answer">
-            <p> Email : <?=$user->email?></p>
-            </div>
+      <div class="user">
+        <div class="question">
+        <h3> <?= $user->username ?> </h3>
         </div>
+
+        <div class="answer">
+        <p> Name : <?= $user->fullname ?> </p>
+        </div>
+
+        <div>
+          <form action="../actions/action_assign_department.php" method="post" class="delete">
+
+            <input type="hidden" name="user_id" value="<?=$user->id?>">
+
+            <select id="departments" name="department">
+
+              <?php foreach($departments as $department) { ?>                                                              
+                <option value="<?=$department->name?>"> <?=$department->name?> </option>
+              <?php } ?>                     
+
+            </select>
+
+            <input type="submit" value="Assign Department"> 
+
+          </form>
+        </div>
+    </div>
 
     <?php } ?>
   </section>

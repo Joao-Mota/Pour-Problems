@@ -11,10 +11,11 @@
   $db = getDatabaseConnection();
 
   $user_id = (int) $_POST['user_id'];
+  $role_id = (int) $_POST['role_id'];
 
   $user = User::getUser($db, $user_id);
 
-  $user->role_id = 2;
+  $user->role_id = $role_id;
 
   $user->save($db);
 

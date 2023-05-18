@@ -12,7 +12,7 @@
 
         // maybe missing static function getArtistAlbums(PDO $db, int $id) : array
 
-        static function getUsers_from_department(PDO $db, int $department_id) : array {
+        static function getAgents_from_department(PDO $db, int $department_id) : array {
             $stmt = $db->prepare('SELECT * FROM User_Department WHERE department_id = ?');
         
             $stmt->execute(array($department_id));

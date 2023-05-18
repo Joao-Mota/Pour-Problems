@@ -15,8 +15,11 @@
   $agent = User::getUser_from_username($db, $agent_username);
 
   $stmt = $db->prepare('UPDATE Ticket_User SET agent_id = ? WHERE ticket_id = ?');
-
   $stmt->execute(array($agent->id, $ticket_id));
+
+
+  $stmt = $db->prepare('UPDATE Ticket SET status_id = ? WHERE id = ?');
+  $stmt->execute(array(2, $ticket_id));
 
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>
