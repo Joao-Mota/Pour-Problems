@@ -1296,7 +1296,7 @@ section {
     color: var(--black);
 }
 
-.tickets-table .tickets-body .client {
+.tickets-table .tickets-body .client a{
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -1364,6 +1364,7 @@ section {
     color: var(--main-color);
     border: none;
     background-color: transparent;
+    cursor: pointer;
 }
 
 .tickets-table .tickets-body .more-info input:hover {

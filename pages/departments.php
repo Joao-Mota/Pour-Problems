@@ -20,9 +20,8 @@ $departments = Department::getDepartments($db);
 drawHeader($session);
 ?>
 
-
-<div class="heading">
-  <h1>All Departments</h1>
+<div class="heading" style="background: url('../sources/heading_bg/departments.jpg');">
+  <h1>Departments</h1>
 </div>
 
 <section class="ticket-form">
@@ -31,8 +30,8 @@ drawHeader($session);
 
     <div>
       <form action="../actions/action_add_department.php" method="post" class="delete">
-        <input type="text" name="name" placeholder="department's name">
         <input type="submit" value="Create New Department">
+        <input type="text" name="name" placeholder="department's name">
       </form>
     </div>
 

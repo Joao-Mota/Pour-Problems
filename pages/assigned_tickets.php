@@ -8,7 +8,7 @@ if (!$session->isLoggedIn()) {
   header('Location: ../pages/login.php');
 }
 
-if (!$session->isAgent() && !$session->isAdmin()) {
+if (!$session->isAgent()) {
   header('Location: ../pages/index.php');
 }
 
@@ -88,10 +88,13 @@ drawHeader($session);
                 $user = User::getUser($db, $ticket_user->client_id);
                 $profile_image = $user->image_path;
                 ?>
-                <img src="/uploads/profiles/<?= $profile_image ?>" alt="Profile Image" class="profile-image">
-                <p>
-                  <?= $user->username ?>
-                </p>
+                <a href="../pages/profile.php?id=<?= base64_encode(strval($user->id)) ?>">
+                  <img src="/uploads/profiles/<?= $profile_image ?>" alt="Profile Image" class="profile-image">
+
+                  <p>
+                    <?= $user->username ?>
+                  </p>
+                </a>
               </div>
             </td>
 
