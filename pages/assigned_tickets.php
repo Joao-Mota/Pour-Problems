@@ -8,7 +8,7 @@ if (!$session->isLoggedIn()) {
   header('Location: ../pages/login.php');
 }
 
-if (!$session->isAgent()) {
+if (!$session->isAgent() && !$session->isAdmin()) {
   header('Location: ../pages/index.php');
 }
 
