@@ -49,9 +49,10 @@ if ($user == null) {
 if ($loginSuccess) {
   try {
     $session->setId($user->id);
+    $encryptedId = base64_encode(strval($session->getID()));
     $session->setName($user->fullname);
     $session->addMessage('success', 'Login successful!');
-    header('Location: ../pages/profile.php');
+    header('Location: ../pages/profile.php?id=' . $encryptedId);
   } catch (Exception $e) {
     $session->addMessage('error', 'Login failed!');
     header('Location: ' . $_SERVER['HTTP_REFERER']);
