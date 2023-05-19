@@ -85,7 +85,6 @@ if ($registerSuccess) {
   $fullname = $_POST['full_name'];
   $username = $_POST['username'];
   $email = $_POST['email'];
-  // hash password
   $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
   $role_id = 3;
 

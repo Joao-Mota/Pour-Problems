@@ -21,44 +21,125 @@ $user = User::getUser($db, $session->getId());
 drawHeader($session);
 ?>
 
-<div class="heading" style="background:url(/sources/heading_bg/signup-slide-bg.jpg) no-repeat;">
-    <h1>Profile Edit</h1>
+<!-- get fields erros -->
+<?php
+$errorFields = $session->getFieldErrors();
+?>
+
+<div class="profile-edit-title">
+    <h1>Edit your profile</h1>
 </div>
 
-<section class="profile-edit">
 
-    <h1 class="profile-edit-title">Edit your profile</h1>
+<div class="profile-edit-form">
+    <form action="/actions/action_profile_edit.php" method="post" enctype="multipart/form-data" class="pform-edit">
 
-    <form action="/actions/action_profile_edit.php" method="post" enctype="multipart/form-data">
-        <div class="input-box">
-            <label for="fullname">Name</label>
-            <input type="text" name="fullname" id="fullname" placeholder="Full Name" value="<?= $user->fullname ?>">
-        </div>
-        <div class="input-box">
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username" placeholder="Username" value="<?= $user->username ?>">
-        </div>
-        <div class="input-box">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" placeholder="Email" value="<?= $user->email ?>">
-        </div>
-        <div class="input-box">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" placeholder="Password">
-        </div>
-        <div class="input-box">
-            <label for="confirm_password">Confirm Password</label>
-            <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password">
-        </div>
-        <div class="input-box">
-            <label for="file">Profile Image</label>
-            <input type="file" name="file" id="file" class="inputfile" multiple pattern=".*\.(jpe?g|png)$"
-                accept=".jpg,.jpeg,.png">
+        <div class="changes">
+            <div class="profile-edit-img">
+                <img src="/uploads/profiles/<?= $user->image_path ?>" alt="Profile Image">
+                <div class="files-box">
+                    <label for="file-image">Edit Profile Image<br />
+                        <i class="fa fa-2x fa-camera"></i>
+                        <input type="file" name="file" id="file-image" class="inputfile" multiple
+                            pattern=".*\.(jpe?g|png)$" accept=".jpg,.jpeg,.png">
+                        <br />
+                        <span class="file-name" id="file-image-name"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="profile-edit-info">
+
+                <div class="title">
+                    <h1> Information </h1>
+                </div>
+
+                <div class="info">
+                    <div class="input-box">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" placeholder="Username"
+                            value="<?= $user->username ?>"
+                            data-state="<?php if (isset($errorFields['username'])) { ?>invalid<?php } ?>">
+                        <?php if (isset($errorFields['username'])) { ?>
+                            <p class="text-danger">
+                                <?= $errorFields['username'] ?>
+                            </p>
+                        <?php } ?>
+                    </div>
+
+                    <div class="input-box">
+                        <label for="fullname">Name</label>
+                        <input type="text" name="fullname" id="fullname" placeholder="Full Name"
+                            value="<?= $user->fullname ?>"
+                            data-state="<?php if (isset($errorFields['fullname'])) { ?>invalid<?php } ?>">
+                        <?php if (isset($errorFields['fullname'])) { ?>
+                            <p class="text-danger">
+                                <?= $errorFields['fullname'] ?>
+                            </p>
+                        <?php } ?>
+                    </div>
+
+
+                    <div class="input-box">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" placeholder="Email" value="<?= $user->email ?>"
+                            data-state="<?php if (isset($errorFields['email'])) { ?>invalid<?php } ?>">
+                        <?php if (isset($errorFields['email'])) { ?>
+                            <p class="text-danger">
+                                <?= $errorFields['email'] ?>
+                            </p>
+                        <?php } ?>
+                    </div>
+
+                </div>
+            </div>
         </div>
 
-        <input type="submit" value="Save Changes" class="btn" name="Save">
-
+        <div class="confirm">
+            <div class="confirm-passwords">
+                <div class="input-box">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Password"
+                        data-state="<?php if (isset($errorFields['password'])) { ?>invalid<?php } ?>">
+                    <?php if (isset($errorFields['password'])) { ?>
+                        <p class="text-danger">
+                            <?= $errorFields['password'] ?>
+                        </p>
+                    <?php } ?>
+                </div>
+                <div class="input-box">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password"
+                        data-state="<?php if (isset($errorFields['confirm_password'])) { ?>invalid<?php } ?>">
+                    <?php if (isset($errorFields['confirm_password'])) { ?>
+                        <p class="text-danger">
+                            <?= $errorFields['confirm_password'] ?>
+                        </p>
+                    <?php } ?>
+                </div>
+            </div>
+            <div class="confirm-button">
+                <input type="submit" value="Save Changes" class="btn" name="Save">
+            </div>
+        </div>
     </form>
-</section>
+
+
+
+</div>
+
+<div class="final-links">
+    <div class="delete">
+        <a href="/actions/action_profile_delete.php" class="delete-account"><i class="fas fa-trash-alt"></i> Delete
+            Account </a>
+    </div>
+    <div class="password-change">
+        <a href="/pages/password_change.php" class="change-password">Change Password</a>
+    </div>
+    <div class="back">
+        <a href="/pages/profile.php?id=<?= base64_encode(strval($session->getID())) ?>" class="back-profile">Back to
+            Profile <i class="fas fa-arrow-right"></i></a>
+    </div>
+</div>
 
 <?= drawFooter($session); ?>

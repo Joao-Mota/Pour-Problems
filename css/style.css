@@ -1227,6 +1227,301 @@ section {
 
 
 
+/* Profile Edit */
+.profile-edit-title{
+  /* Put text align in the middle */
+    text-align: center;
+    font-size: 2.5rem;
+    padding-bottom: 1rem;
+    padding-top: 3rem;
+    color: var(--black);
+}
+
+.profile-edit-form{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+    margin: 3rem;
+    margin-bottom: 0;
+}
+
+
+
+
+.profile-edit-form .pform-edit .changes{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+    padding-bottom: 3rem;
+}
+
+.profile-edit-form .pform-edit .changes .profile-edit-img img{
+    width: 30rem;
+    height: 30rem;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+    display: 1 1 41rem;
+}
+
+
+.profile-edit-form .pform-edit .changes .profile-edit-img .files-box label {
+    display: block;
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+    color: var(--black);
+    text-align: center;
+    cursor: pointer;
+}
+
+.profile-edit-form .pform-edit .changes .profile-edit-img .files-box label:hover {
+    color: var(--main-color);
+}
+
+.profile-edit-form .pform-edit .changes .profile-edit-img .files-box input {
+    display: none;
+}
+
+.profile-edit-form .pform-edit .changes .profile-edit-img .files-box .file-name {
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+    color: var(--black);
+    text-align: center;
+}
+
+.profile-edit-form .pform-edit .changes .profile-edit-info{
+    width: 30rem;
+    display: 1 1 41rem;
+    border-left: var(--main-color) 5px solid;
+    padding-left: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: block;
+}
+
+.profile-edit-form .pform-edit .changes .profile-edit-info .title {
+    font-size: 2rem;
+    padding-bottom: 1rem;
+}
+
+.profile-edit-form .pform-edit .changes .profile-edit-info .info .input-box {
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+}
+
+.profile-edit-form .pform-edit .changes .profile-edit-info .info .input-box label {
+    display: block;
+    font-size: 2rem;
+    padding-top: 1rem;
+    color: var(--black);
+}
+
+
+
+.profile-edit-form .pform-edit .changes .profile-edit-info .info .input-box label:hover {
+    color: var(--main-color);
+}
+
+.profile-edit-form .pform-edit .changes .profile-edit-info .info .input-box input {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    border: none;
+    border-bottom: var(--main-color) 2px solid;
+    outline: none;
+    background: transparent;
+    color: var(--black);
+}
+
+.profile-edit-form .pform-edit .changes .profile-edit-info .info .input-box input:focus {
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.4);
+}
+
+
+.profile-edit-form .pform-edit .confirm .confirm-passwords{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+    padding-bottom: 3rem;
+}
+
+.profile-edit-form .pform-edit .confirm .confirm-passwords .input-box{
+    width: 30rem;
+    display: 1 1 41rem;
+    padding-left: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: block;
+}
+
+.profile-edit-form .pform-edit .confirm .confirm-passwords .input-box label{
+    display: block;
+    font-size: 2rem;
+    padding-top: 1rem;
+    color: var(--black);
+}
+
+.profile-edit-form .pform-edit .confirm .confirm-passwords .input-box label:hover{
+    color: var(--main-color);
+}
+
+.profile-edit-form .pform-edit .confirm .confirm-passwords .input-box input{
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    border: none;
+    border-bottom: var(--main-color) 2px solid;
+    outline: none;
+    background: transparent;
+    color: var(--black);
+}
+
+.profile-edit-form .pform-edit .confirm .confirm-passwords .input-box input:focus{
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.4);
+}
+
+.profile-edit-form .input-box input[data-state="invalid"]{
+    border-bottom: var(--main-color) 2px solid;
+}
+
+.profile-edit-form .input-box .text-danger{
+    color: var(--main-color);
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+}
+
+.profile-edit-form .pform-edit .confirm .confirm-button{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+    padding-bottom: 3rem;
+}
+
+.final-links{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10rem;
+    justify-content: center;
+    padding-bottom: 3rem;
+    margin: 0;
+}
+
+.final-links a{
+    font-size: 1.5rem;
+    color: var(--black);
+    text-decoration: none;
+}
+
+.final-links a:hover{
+    color: var(--main-color);
+}
+
+.final-links a::after{
+    content: '';
+    width: 0;
+    height: 2px;
+    background: var(--main-color);
+    display: block;
+    transition: 0.5s;
+}
+
+.final-links a:hover::after{
+    width: 100%;
+}
+
+
+/* Change Password */
+.password-edit{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+    padding-bottom: 3rem;
+}
+
+.password-edit form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.password-edit form .input-boxes{
+    width: 30rem;
+    display: 1 1 41rem;
+    padding-left: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: block;
+}
+
+.password-edit form .input-boxes label{
+    display: block;
+    font-size: 2rem;
+    padding-top: 1rem;
+    color: var(--black);
+}
+
+.password-edit form .input-boxes label:hover{
+    color: var(--main-color);
+}
+
+.password-edit form .input-boxes input{
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    border: none;
+    border-bottom: var(--main-color) 2px solid;
+    outline: none;
+    background: transparent;
+    color: var(--black);
+}
+
+.password-edit form .input-boxes input:focus{
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.4);
+}
+
+.password-edit form .input-boxes input[data-state="invalid"]{
+    border-bottom: var(--main-color) 2px solid;
+}
+
+.password-edit form .input-boxes .text-danger{
+    color: var(--main-color);
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* All Tickets */
 .tickets-table {
     border-collapse: collapse;
@@ -1796,6 +2091,10 @@ section {
         font-size: 10vw;
     }
 
+    .heading h1 {
+        font-size: 10vw;
+    }
+
 }
 
 @media (max-width: 46.875em) {
@@ -1855,6 +2154,13 @@ section {
     }
 
 
+}
+
+@media (max-width: 38.438em) {
+    .profile-edit-form .pform-edit .changes .profile-edit-info{
+        border-left: none;
+        padding-left: 0;
+    }
 }
 
 @media (max-width: 28.125em) {

@@ -43,11 +43,7 @@ if ($role_num == 1) {
 <div class="profile">
 
   <div class="profile_pic">
-    <?php if ($user_array->image_path != User::DEFAULT_IMAGE_PATH) { ?>
-      <img src="/uploads/profiles/<?php echo $user_array->image_path; ?>" alt="profile_pic">
-    <?php } else { ?>
-      <img src="/uploads/profiles/<?= User::DEFAULT_IMAGE_PATH ?>" alt="default_pic">
-    <?php } ?>
+    <img src="../uploads/profiles/<?= $user_array->image_path ?>" alt="Profile Picture">
   </div>
 
 
