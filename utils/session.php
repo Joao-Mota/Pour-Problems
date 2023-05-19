@@ -1,4 +1,6 @@
 <?php
+require_once(__DIR__ . '/../database/connection.db.php');
+require_once(__DIR__ . '/../database/user.class.php');
 class Session
 {
   private array $messages;
@@ -19,14 +21,17 @@ class Session
     return isset($_SESSION['id']);
   }
 
-  public function isAdmin(): bool
-  {
-    return $_SESSION['id'] == 1;
-  }
 
-  public function isAgent(): bool
-  {
-    return $_SESSION['id'] == 2;
+  public function isAdmin() : bool {
+    $db = getDatabaseConnection();
+    $user = User::getUser($db, $_SESSION['id']);
+    return $user->role_id == 1;     
+    }
+
+  public function isAgent() : bool {
+    $db = getDatabaseConnection();
+    $user = User::getUser($db, $_SESSION['id']);
+    return $user->role_id == 2;
   }
 
   public function logout()

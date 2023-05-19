@@ -15,6 +15,7 @@ DROP TABLE IF EXISTS Ticket_User;
 DROP TABLE IF EXISTS User_Department;
 DROP TABLE IF EXISTS FAQ;
 DROP TABLE IF EXISTS Ticket_Files;
+DROP TABLE IF EXISTS Ticket_History;
 /*
  
  ==========================================================
