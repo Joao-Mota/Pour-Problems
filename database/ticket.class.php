@@ -10,9 +10,10 @@ class Ticket
     public string $department;
     public int $status_id;
     public array $files;
+    public array $history;
 
 
-    public function __construct(int $id, string $subject, string $description, string $datetime, string $department, int $status_id, array $files = array())
+    public function __construct(int $id, string $subject, string $description, string $datetime, string $department, int $status_id, array $files = array(), array $history = array())
     {
         $this->id = $id;
         $this->subject = $subject;
@@ -21,6 +22,7 @@ class Ticket
         $this->department = $department;
         $this->status_id = $status_id;
         $this->files = $files;
+        $this->history = $history;
     }
 
     // maybe missing static function getArtistAlbums(PDO $db, int $id) : array
@@ -36,7 +38,11 @@ class Ticket
         $stmt->execute(array($id));
         $files = $stmt->fetchAll();
 
-        return new Ticket($ticket['id'], $ticket['subject'], $ticket['description'], $ticket['datetime'], $ticket['department'], $ticket['status_id'], $files);
+        $stmt = $db->prepare('SELECT * FROM Ticket_History WHERE ticket_id = ?');
+        $stmt->execute(array($id));
+        $history = $stmt->fetchAll();
+
+        return new Ticket($ticket['id'], $ticket['subject'], $ticket['description'], $ticket['datetime'], $ticket['department'], $ticket['status_id'], $files, $history);
     }
 
     static function getAllTickets(PDO $db): array
@@ -53,6 +59,10 @@ class Ticket
             $stmt->execute(array($ticket['id']));
             $files = $stmt->fetchAll();
 
+            $stmt = $db->prepare('SELECT * FROM Ticket_History WHERE ticket_id = ?');
+            $stmt->execute(array($ticket['id']));
+            $history = $stmt->fetchAll();
+
             $tickets[] = new Ticket(
                 $ticket['id'],
                 strval($ticket['subject']),
@@ -60,7 +70,8 @@ class Ticket
                 strval($ticket['datetime']),
                 strval($ticket['department']),
                 $ticket['status_id'],
-                $files
+                $files,
+                $history
             );
         }
         return $tickets;

@@ -41,5 +41,22 @@ class Hashtag
         }
         return $hashtags;
     }
+
+    static function getHashtags(PDO $db): array
+    {
+        $stmt = $db->prepare('SELECT * FROM Hashtag');
+        $stmt->execute();
+
+        $hashtags = array();
+        while ($hashtag = $stmt->fetch()) {
+            $hashtags[] = new Hashtag(
+                $hashtag['id'],
+                $hashtag['name'],
+                $hashtag['ticket_id']
+            );
+        }
+
+        return $hashtags;
+    }
 }
 ?>
