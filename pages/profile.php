@@ -81,18 +81,24 @@ if ($role_num == 1) {
       </tr>
     </table>
 
-  <?php if($user_array->id == $session->getID()) { ?>
+    <?php if ($user_array->id == $session->getID()) { ?>
     </div>
-      <div class="edit_profile">
-        <a href="/pages/profile_edit.php"><i class="fas fa-user-pen"></i></a>
-      </div>
-    </div>    
-  <?php } 
-  else { ?>
+    <div class="edit_profile">
+      <a href="/pages/profile_edit.php"><i class="fas fa-user-pen"></i></a>
     </div>
-      
-    </div> 
+  <?php } else { ?>
+  </div>
+<?php } ?>
+
+</div>
+<section id="messages">
+  <?php foreach ($session->getMessages() as $messsage) { ?>
+    <p class="<?= $messsage['type'] ?>">
+      <?= $messsage['text'] ?>
+    </p>
   <?php } ?>
+</section>
+
 
 
 <?php

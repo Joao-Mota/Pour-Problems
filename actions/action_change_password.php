@@ -46,9 +46,15 @@ if (!password_verify($_POST['old_password'], $user->getPassword())) {
     $update_profile_success = false;
 }
 
-if ($_POST['password'] != $_POST['confirm_password']) {
+if ($_POST['new_password'] != $_POST['confirm_password']) {
     $session->addFieldError('password', 'Passwords do not match!');
     $session->addFieldError('confirm_password', 'Passwords do not match!');
+    $update_profile_success = false;
+}
+
+if($_POST['new_password'] == $_POST['old_password']) {
+    $session->addFieldError('new_password', 'New password cannot be the same as old password!');
+    $session->addFieldError('confirm_password', 'New password cannot be the same as old password!');
     $update_profile_success = false;
 }
 
@@ -57,7 +63,7 @@ if ($_POST['password'] != $_POST['confirm_password']) {
 
 if ($update_profile_success) {
 
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $password = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
 
     try {
         $user->updateUserPassword($db, $password);
