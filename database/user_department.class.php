@@ -65,5 +65,23 @@ class User_Department
         return $user_departments;
     }
 
+    static function getDepartmentsNotFromUser(PDO $db, int $user_id): array{
+            $everything = Department::getDepartments($db);
+            $user_departments = User_Department::getDepartmentsFromUser($db, $user_id);
+            $departments = [];
+            foreach($everything as $department){
+                $flag = true;
+                foreach($user_departments as $user_department){
+                    if($department->id == $user_department->department_id){
+                        $flag = false;
+                    }
+                }
+                if($flag){
+                    $departments[] = $department;
+                }
+            }
+            return $departments;
+        }
+
 }
 ?>
