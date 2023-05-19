@@ -113,6 +113,12 @@ if ($ticket_user->agent_id == NULL) {
   <?php } ?>
 </div>
 
+<h3>Ticket Updates</h3>
+<?php foreach($ticket->history as $update) { ?>
+  <p> <?=$update['updates']?> </p>
+<?php } ?>
+
+
 <?php
 
 // add change status form if user is an agent or admin

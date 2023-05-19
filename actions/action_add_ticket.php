@@ -68,6 +68,7 @@ if ($add_ticket) {
   $department = strval($_POST['department']);
   $status_id = 1;
   $hashtag = strval($_POST['hashtag']);
+  $update = $datetime . ' - Ticket was created';
 
   $new_ticket_id = null;
 
@@ -86,7 +87,7 @@ if ($add_ticket) {
     $stmt = $db->prepare('INSERT INTO Ticket_User (client_id, agent_id) VALUES (?, ?)');
     $stmt->execute(array($client_id, $agent_id));
   } catch (PDOException $e) {
-    $session->addMessage('RIP', 'No ticket!');
+    $session->addMessage('RIP', 'No ticket_user!');
   }
 
   try {
@@ -96,6 +97,13 @@ if ($add_ticket) {
     }
   } catch (PDOException $e) {
     $session->addMessage('RIP', 'Cannot save files!');
+  }
+
+  try {
+    $stmt = $db->prepare('INSERT INTO Ticket_History (updates, ticket_id) VALUES (?, ?)');
+    $stmt->execute(array($update, $new_ticket_id));
+  } catch (PDOException $e) {
+    $session->addMessage('RIP', 'No ticket_history!');
   }
 
   try {

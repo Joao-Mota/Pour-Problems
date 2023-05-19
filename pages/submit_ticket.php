@@ -14,6 +14,7 @@ require_once(__DIR__ . '/../database/ticket_user.class.php');
 require_once(__DIR__ . '/../database/ticket.class.php');
 require_once(__DIR__ . '/../database/status.class.php');
 require_once(__DIR__ . '/../database/department.class.php');
+require_once(__DIR__ . '/../database/hashtag.class.php');
 
 
 $db = getDatabaseConnection();
@@ -21,6 +22,8 @@ $db = getDatabaseConnection();
 drawHeader($session);
 
 $departments = Department::getDepartments($db);
+
+$hashtags = Hashtag::getHashtags($db);
 
 ?>
 
@@ -53,8 +56,13 @@ $departments = Department::getDepartments($db);
       </div>
 
       <div class="input-box">
-        <span> Hashtag: </span>
-        <input type="text" name="hashtag" placeholder="enter hashtags">
+      <span> Hashtag: </span>
+        <input name="hashtag" list="hashtags" placeholder="enter some hashtags">
+        <datalist id="hashtags">
+          <?php foreach ($hashtags as $hashtag) { ?>
+            <option value="<?= $hashtag->name ?>"> <?= $hashtag->name ?> </option>
+          <?php } ?>
+        </datalist>
       </div>
 
       <div class="input-box">

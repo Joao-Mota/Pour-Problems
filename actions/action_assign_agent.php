@@ -11,6 +11,8 @@ $db = getDatabaseConnection();
 
 $ticket_id = $_POST['ticket_id'];
 $agent_username = $_POST['agent'];
+$datetime = date('d/m/y H:i');
+$update = $datetime . ' - Assigned to ' . $agent_username;
 
 $agent = User::getUser_from_username($db, $agent_username);
 
@@ -20,6 +22,10 @@ $stmt->execute(array($agent->id, $ticket_id));
 
 $stmt = $db->prepare('UPDATE Ticket SET status_id = ? WHERE id = ?');
 $stmt->execute(array(2, $ticket_id));
+
+
+$stmt = $db->prepare('INSERT INTO Ticket_History (updates, ticket_id) VALUES (?, ?)');
+$stmt->execute(array($update, $ticket_id));
 
 header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>
