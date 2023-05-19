@@ -33,14 +33,13 @@ $id = base64_decode(($encryptedId));
 
 $id_int = (int) $id;
 
-$department_name = $_POST['name'];
 
 $agents = User_Department::getAgents_from_department($db, $id_int);
 $departments = Department::getDepartments($db);
 
 
 //Get all tickets that are assigned to this department
-$tickets_user = Ticket_User::getTickets_from_department($db, $department_name);
+$tickets_user = Ticket_User::getTickets_from_departmentID($db, $id_int);
 
 
 ?>
@@ -254,30 +253,27 @@ $tickets_user = Ticket_User::getTickets_from_department($db, $department_name);
             </td>
 
             <td>
-              <div class="change-department">
-                <form action="../actions/action_change_department.php" method="post" class="delete">
+              <div>
+                  <?php $departments_not_assigned = User_Department::getDepartmentsNotFromUser($db, $agent->id);
+                  if (!empty($departments_not_assigned)) { ?>
+                  <form action="../actions/action_assign_department.php" method="post" class="delete">
 
-                  <input type="hidden" name="user_id" value="<?= $agent->id ?>">
+                    <input type="hidden" name="user_id" value="<?=$agent->id?>">
 
-                  <select id="departments" name="department">
+                    <select id="departments" name="department">
 
-                    <?php foreach ($departments as $department) { 
-                      
-                      if($department->name == $department_name){
-                        continue;
-                      }
+                      <?php 
+                          foreach($departments_not_assigned as $department) { ?>
+                          <option value="<?=$department->name?>"><?=$department->name?></option>
+                          <?php } ?>
+                    </select>
 
-                      ?>
-                      <option value="<?= $department->name ?>"> <?= $department->name ?> </option>
-                    <?php } ?>
+                    <input type="submit" value="Assign Department"> 
+                    
 
-                  </select>
-
-                  <button type="submit" value="Change Department"><i class="fa fa-check"
-                      aria-hidden="true"></i></i></button>
-
-                </form>
-              </div>
+                  </form>
+                  <?php } ?>
+                </div>
             </td>
             <!--
           <td>

@@ -99,6 +99,24 @@ class Ticket_User
         return $tickets_user;
     }
 
+    static function getTickets_from_departmentID(PDO $db, int $department_id): array
+    {
+        $stmt = $db->prepare('SELECT * FROM Ticket_User WHERE ticket_id IN (SELECT id FROM Ticket WHERE id = ?)');
+
+        $stmt->execute(array($department_id));
+
+        $tickets_user = array();
+
+        while ($ticket_user = $stmt->fetch()) {
+            $tickets_user[] = new Ticket_User(
+                intval($ticket_user['client_id']),
+                intval($ticket_user['agent_id']),
+                intval($ticket_user['ticket_id'])
+            );
+        }
+        return $tickets_user;
+    }
+
     static function getTickets_from_Agent(PDO $db, int $agent_id): array
     {
         $stmt = $db->prepare('SELECT * FROM Ticket_User WHERE agent_id = ?');
