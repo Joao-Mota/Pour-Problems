@@ -82,7 +82,7 @@ if (getUserByEmail($_POST['email']) != null) {
 
 
 if ($registerSuccess) {
-  $fullname = $_POST['first_name'] . ' ' . $_POST['last_name'];
+  $fullname = $_POST['full_name'];
   $username = $_POST['username'];
   $email = $_POST['email'];
   // hash password

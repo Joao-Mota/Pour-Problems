@@ -75,7 +75,7 @@ drawHeader($session);
           <tr>
             <td>
               <div class="ticket-id">
-                <p>
+                <p> #
                   <?= $ticket->id ?>
                 </p>
               </div>
