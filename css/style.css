@@ -501,6 +501,7 @@ section {
     padding-left: 3rem;
     align-items: center;
     padding-bottom: 5rem;
+    padding-top: 5rem;
 }
 
 .login .login-input h2 {
@@ -631,8 +632,20 @@ section {
     width: 100%;
 }
 
-.login .login-input .login-container #messages {
-    display: none;
+#messages {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 0;
+}
+
+#messages p {
+    font-size: 1.5rem;
+    color: var(--main-color);
+    margin: 0;
+    padding: 0;
 }
 
 

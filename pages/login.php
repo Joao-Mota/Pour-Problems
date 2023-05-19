@@ -75,9 +75,9 @@ $errorFields = $session->getFieldErrors();
 
       <section id="messages">
         <?php foreach ($session->getMessages() as $messsage) { ?>
-          <article class="<?= $messsage['type'] ?>">
+          <p class="<?= $messsage['type'] ?>">
             <?= $messsage['text'] ?>
-          </article>
+          </p>
         <?php } ?>
       </section>
 
