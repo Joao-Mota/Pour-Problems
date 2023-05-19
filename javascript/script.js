@@ -51,34 +51,12 @@ const swiper = new Swiper(".home-slider", {
     },
   });
 
-/* Popups for Register */
-const openPopupBtn = document.querySelectorAll('[data-popup-target]');
-const closePopupBtn = document.querySelectorAll('[data-popup-close]');
-const overlay = document.getElementById('popup_overlay');
 
-openPopupBtn.forEach(input => {
-    // input.addEventListener('click', (e) => {
-    //     const messages = document.querySelector(input.dataset.popupTarget);
-    //     openPopup(messages);
-    //     e.preventDefault();
-    // });
-});
+// uploaded image
+let input_img = document.getElementById('file-image');
+let img_name = document.getElementById('file-image-name');
 
-closePopupBtn.forEach(input => {
-    input.addEventListener('click', () => {
-        const messages = input.closest('.messages');
-        closePopup(messages);
-    });
-});
-
-function openPopup(messages) {
-    if (messages == null) return;
-    messages.classList.add('active');
-    overlay.classList.add('active');
-}
-
-function closePopup(messages) {
-    if (messages == null) return;
-    messages.classList.remove('active');
-    overlay.classList.remove('active');
-}
+input_img.addEventListener('change', () => {
+    let inputImage = document.querySelector('input[type=file]').files[0];
+    img_name.innerText = inputImage.name;
+})

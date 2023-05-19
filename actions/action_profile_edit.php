@@ -26,13 +26,13 @@ $update_profile_success = true;
 
 
 //Check for user inputs
-if (empty($_POST['fullname'])) {
-    $session->addFieldError('fullname', 'Full name is required!');
+if (empty($_POST['username'])) {
+    $session->addFieldError('username', 'Username is required!');
     $update_profile_success = false;
 }
 
-if (empty($_POST['username'])) {
-    $session->addFieldError('username', 'Username is required!');
+if (empty($_POST['fullname'])) {
+    $session->addFieldError('fullname', 'Full name is required!');
     $update_profile_success = false;
 }
 
@@ -62,6 +62,13 @@ if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     $update_profile_success = false;
 }
 
+if ($user->email != $_POST['email']) {
+    if (getUserByEmail($_POST['email']) != NULL) {
+        $session->addFieldError('email', 'Email already exists!');
+        $update_profile_success = false;
+    }
+}
+
 
 //Check for image
 function save_in_uploads_profile($temp_name, $name)
@@ -81,7 +88,6 @@ if ($update_profile_success) {
     $fullname = $_POST['fullname'];
     $username = $_POST['username'];
     $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     $image_path = $user->image_path;
 
@@ -96,7 +102,7 @@ if ($update_profile_success) {
     }
 
     try {
-        $user->updateUserProfile($db, $fullname, $username, $email, $password, $image_path);
+        $user->updateUserProfile($db, $fullname, $username, $email, $image_path);
         $session->addMessage('success', 'Profile updated successfully!');
         header('Location: /pages/profile.php?id=' . $encryptedId);
     } catch (Exception $e) {
@@ -104,6 +110,7 @@ if ($update_profile_success) {
         header('Location: /pages/profile.php?id=' . $encryptedId);
     }
 } else {
+    $session->addMessage('error', 'Profile update failed!');
     header('Location: /pages/profile_edit.php');
 }
 

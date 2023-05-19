@@ -58,7 +58,7 @@ $errorFields = $session->getFieldErrors();
       <div class="forgot-password-options">
         <button type="submit"><span class="forgot-password-btn"><i class="fas fa-arrow-right"></i></span></button>
         <div class="forgot-password-links">
-          <a class="go-back" href="/pages/login.php">Go Back <i class="fas fa-arrow-right"></i></a>
+          <a class="go-back" href="/pages/login.php">Back To Login <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
