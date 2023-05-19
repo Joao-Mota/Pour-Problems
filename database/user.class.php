@@ -140,5 +140,7 @@ class User
 
     $stmt->execute(array($fullname, $username, $email, $password, $image_path, $this->id));
   }
+  
+ 
 }
 ?>

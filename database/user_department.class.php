@@ -48,5 +48,22 @@ class User_Department
         return $departments;
     }
 
+    static function getAllUserDepartments(PDO $db): array
+    {
+        $stmt = $db->prepare('SELECT * FROM User_Department');
+
+        $stmt->execute();
+
+        $user_departments = [];
+
+        while ($user_department = $stmt->fetch()) {
+            $user_departments[] = new User_Department(
+                intval($user_department['user_id']),
+                intval($user_department['department_id'])
+            );
+        }
+        return $user_departments;
+    }
+
 }
 ?>

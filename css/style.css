@@ -1296,12 +1296,20 @@ section {
     color: var(--black);
 }
 
+.tickets-table .tickets-body .client {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .tickets-table .tickets-body .client a{
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: left;
     padding: 1rem;
 }
 
@@ -1313,6 +1321,7 @@ section {
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
     display: 1 1 41rem;
     vertical-align: middle;
+    margin-right: 1rem;
 }
 
 .tickets-table .tickets-body .client p {
@@ -1320,6 +1329,7 @@ section {
     padding-left: 1rem;
     padding-right: 1rem;
     color: var(--black);
+    text-align: left;
 }
 
 .tickets-table .tickets-body .status {
@@ -1378,6 +1388,284 @@ section {
 
 
 
+/* Departments */
+
+.new-department {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 1rem;
+    width: 100%;
+    padding-right: 18rem;
+
+}
+
+
+.new-department form input {
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    border: none;
+    margin-right: 1rem;
+    border-bottom: 2px solid var(--main-color);
+}
+
+.new-department form button {
+    padding: 0.3rem 1rem;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--main-color);
+    color: var(--white);
+    cursor: pointer;
+}
+
+.new-department form button:hover {
+    opacity: 0.8;
+}
+
+
+.departments-table {
+    border-collapse: collapse;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.departments-table .departments-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0;
+}
+
+.departments-table .departments-body table,
+.departments-table .departments-body td,
+.departments-table .departments-body th {
+    padding: 1rem;
+}
+
+.departments-table .departments-body table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.4);
+    display: 1 1 41rem;
+}
+
+.departments-table .departments-body table thead {
+    background-color: var(--main-color);
+    color: var(--white);
+}
+
+.departments-table .departments-body table thead th {
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.departments-table .departments-body table tbody tr {
+    border-bottom: 1px solid var(--main-color);
+}
+
+.departments-table .departments-body table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.departments-table .departments-body table tbody tr:hover {
+    background-color: var(--light-bg);
+}
+
+.departments-table .departments-body table tbody tr td {
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.departments-table .departments-body p {
+    font-size: 1.5rem;
+    padding: 1rem;
+    text-align: center;
+    color: var(--black);
+}
+
+.departments-table .departments-body .info, 
+.departments-table .departments-body .delete
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.departments-table .departments-body .info button,
+.departments-table .departments-body .delete button
+{
+    font-size: 2rem;
+    color: var(--main-color);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.departments-table .departments-body .info button:hover,
+.departments-table .departments-body .delete button:hover
+{
+    opacity: 0.8;
+}
+
+
+
+
+/* Agents in a Department */
+
+.department-table-title .top{
+    padding-top: 3rem;
+}
+
+.department-table-title h1{
+    font-size: 2.69rem;
+    color: var(--black);
+    border-bottom: 2px solid var(--main-color);
+
+}
+
+
+.department-agents {
+    border-collapse: collapse;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.department-agents .agents{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.department-agents .agents table,
+.department-agents .agents td,
+.department-agents .agents th {
+    padding: 1rem;
+}
+
+.department-agents .agents table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.4);
+    display: 1 1 41rem;
+}
+
+.department-agents .agents table thead {
+    background-color: var(--main-color);
+    color: var(--white);
+}
+
+.department-agents .agents table thead th {
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.department-agents .agents table tbody tr {
+    border-bottom: 1px solid var(--main-color);
+}
+
+.department-agents .agents table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.department-agents .agents table tbody tr:hover {
+    background-color: var(--light-bg);
+}
+
+.department-agents .agents table tbody tr td {
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.department-agents .agents p {
+    font-size: 1.5rem;
+    padding: 1rem;
+    text-align: center;
+    color: var(--black);
+}
+
+.department-agents .agents .agent a{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.department-agents .agents .agent img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+    display: 1 1 41rem;
+    vertical-align: middle;
+    margin-right: 1rem;
+}
+
+.department-agents .agents .agent p {
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: var(--black);
+    margin-left: 1rem;
+}
+
+.department-agents .agents .change-department {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+
+.department-agents .agents .change-department select{
+    font-size: 1.5rem;
+    padding: 0.3rem;
+    border: 1px solid var(--main-color);
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+    outline: none;
+    color: var(--black);
+    background-color: var(--white);
+    cursor: pointer;
+}
+
+.department-agents .agents .change-department select:hover {
+    opacity: 0.8;
+}
+
+.department-agents .agents .change-department button {
+    font-size: 2rem;
+    color: var(--main-color);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding-left: 3rem;
+}
+
+.department-agents .agents .change-department button:hover {
+    opacity: 0.8;
+}
 
 
 
