@@ -115,16 +115,26 @@ drawHeader($session);
                 </div>
 
                 <div>
-                  <form action="../actions/action_change_to_client.php" method="post" class="delete">
+                  <form action="../actions/action_change_role.php" method="post" class="delete">
 
-                    <input type="hidden" name="user_id" value="<?=$user->id?>">
+                    <input type="hidden" name="user_id" value="<?= $user->id ?>">
+                    <input type="hidden" name="role_id" value="3">
 
-                    
-
-                    <input type="submit" value="Turn Back to client"> 
+                    <input type="submit" value="Make Client">
 
                   </form>
-                </div>
+              </div>
+
+              <div>
+              <form action="../actions/action_change_role.php" method="post" class="delete">
+
+                <input type="hidden" name="user_id" value="<?= $user->id ?>">
+                <input type="hidden" name="role_id" value="1">
+
+                <input type="submit" value="Make Admin">
+
+              </form>
+            </div>
             </div>
         <?php }
        else { ?>
