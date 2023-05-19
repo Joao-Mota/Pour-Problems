@@ -83,6 +83,7 @@ if ($update_profile_success) {
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
+    $image_path = $user->image_path;
 
     if ($_FILES['file'] != NULL) {
         $file_name = $_FILES['file']['name'];
@@ -92,8 +93,6 @@ if ($update_profile_success) {
         if (isset($file_name) && $file_size > 0 && $file_size < 1000000) {
             $image_path = save_in_uploads_profile($temp_name, $file_name);
         }
-    } else {
-        $image_path = $user->image_path;
     }
 
     try {

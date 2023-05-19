@@ -91,7 +91,7 @@ $tickets_user = Ticket_User::getTickets_from_departmentID($db, $id_int);
           <tr>
             <td>
               <div class="ticket-id">
-                <p>
+                <p> #
                   <?= $ticket->id ?>
                 </p>
               </div>
@@ -143,7 +143,7 @@ $tickets_user = Ticket_User::getTickets_from_departmentID($db, $id_int);
                 <?php $status = Status::getStatus($db, $ticket->status_id); ?>
 
                 <?php
-                if ($status->stat == 'Open (Waiting for agent)') {
+                if ($status->stat == 'Open') {
                   echo '<span class="open">' . $status->stat . '</span>';
                 } else if ($status->stat == 'Closed') {
                   echo '<span class="closed">' . $status->stat . '</span>';
@@ -220,7 +220,7 @@ $tickets_user = Ticket_User::getTickets_from_departmentID($db, $id_int);
           <tr>
             <td>
               <div class="user-id">
-                <p>
+                <p> #
                   <?= $agent->id ?>
                 </p>
               </div>

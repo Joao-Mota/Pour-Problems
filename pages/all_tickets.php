@@ -77,7 +77,7 @@ drawHeader($session);
           <tr>
             <td>
               <div class="ticket-id">
-                <p>
+                <p> #
                   <?= $ticket->id ?>
                 </p>
               </div>
@@ -126,9 +126,8 @@ drawHeader($session);
 
             <td>
               <div class="status">
-                <?php $status = Status::getStatus($db, $ticket->status_id); ?>
+                <?php $status = Status::getStatus($db, $ticket->status_id);
 
-                <?php
                 if ($status->stat == 'Open') {
                   echo '<span class="open">' . $status->stat . '</span>';
                 } else if ($status->stat == 'Closed') {

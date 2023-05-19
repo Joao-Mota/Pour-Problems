@@ -24,71 +24,144 @@ drawHeader($session);
 ?>
 
 
-<div class="heading">
+<div class="heading" style="background: url('../sources/heading_bg/mytickets.jpg');">
   <h1>My Tickets</h1>
 </div>
 
-<section class="ticket-form">
+<div class="tickets-table">
 
-  <section class="mytickets">
+  <section class="tickets-body">
 
-    <?php foreach ($tickets_from_user as $ticket_user) {
+    <table>
+      <thead>
+        <tr>
+          <th> Ticket </th>
+          <th> Subject </th>
+          <th> Department </th>
+          <th> Date </th>
+          <th> Status </th>
+          <th> Agent </th>
+          <th> Anexos </th>
+          <th> Hashtag </th>
+          <th> Info </th>
+        </tr>
+      </thead>
 
-      $ticket = Ticket::getTicket($db, $ticket_user->ticket_id) ?>
+      <tbody>
 
-      <div class="ticket">
+        <?php foreach ($tickets_from_user as $ticket_user) {
 
-        <div class="question">
-          <h3>
-            <?= $ticket->subject ?>
-          </h3>
+          $ticket = Ticket::getTicket($db, $ticket_user->ticket_id);
 
-          <span class="icon"><i class="fas fa-sort-down"></i></span>
-        </div>
+          if ($ticket_user->agent_id == NULL) {
+            $agent_username = 'No Agent Assigned';
+          } else {
+            $agent = User::getUser($db, $ticket_user->agent_id);
+            $client = User::getUser($db, $ticket_user->client_id);
 
-        <div class="answer">
-          <p> Department :
-            <?= $ticket->department ?>
-          </p>
-          <p>
-            <?= $ticket->datetime ?>
-          </p>
-          <?php $status = Status::getStatus($db, $ticket->status_id); ?>
-          <p> Ticket Status :
-            <?= $status->stat ?>
-          </p>
-          <p> Anexos:
-            <?= count($ticket->files) ?>
-          </p>
+            $agent_username = $agent->username;
+          } ?>
 
-          <?php $hashtags = Hashtag::getHashtags_from_ticket($db, $ticket->id);
-          foreach ($hashtags as $hashtag) { ?>
-            <p> <?= $hashtag->name ?> </p>
-          <?php } ?>
-        </div>
+          <tr>
+            <td>
+              <div class="ticket-id">
+                <p> #
+                  <?= $ticket->id ?>
+                </p>
+              </div>
+            </td>
 
-        <div>
-          <form action="../actions/action_delete_ticket.php" method="post" class="delete">
-            <input type="hidden" name="ticket_id" value="<?= $ticket_user->ticket_id ?>">
-            <input type="hidden" name="id" value="<?= $ticket->id ?>">
-            <input type="submit" value="Delete">
-          </form>
-        </div>
+            <td>
+              <div class="ticket-subject">
+                <p>
+                  <?= $ticket->subject ?>
+                </p>
+              </div>
+            </td>
 
-        <div>
-          <form action="../pages/ticket.php?id=<?= base64_encode(strval($ticket->id)) ?>" method="post" class="delete">
-            <input type="hidden" name="ticket_id" value="<?= $ticket_user->ticket_id ?>">
-            <input type="hidden" name="id" value="<?= $ticket->id ?>">
-            <input type="submit" value="+Info">
-          </form>
-        </div>
+            <td>
+              <div class="ticket-department">
+                <p>
+                  <?= $ticket->department ?>
+                </p>
+              </div>
+            </td>
 
-      </div>
+            <td>
+              <div class="ticket-date">
+                <p>
+                  <?= $ticket->datetime ?>
+                </p>
+              </div>
+            </td>
 
-    <?php } ?>
+            <td>
+              <div class="status">
+                <?php $status = Status::getStatus($db, $ticket->status_id);
+
+                if ($status->stat == 'Open') {
+                  echo '<span class="open">' . $status->stat . '</span>';
+                } else if ($status->stat == 'Closed') {
+                  echo '<span class="closed">' . $status->stat . '</span>';
+                } else {
+                  echo '<span class="assigned">' . $status->stat . '</span>';
+                }
+
+                ?>
+              </div>
+            </td>
+
+            <td>
+              <div class="ticket-agent">
+                <p>
+                  <?= $agent_username ?>
+                </p>
+              </div>
+            </td>
+
+            <td>
+              <div class="anexos">
+                <p>
+                  <?= count($ticket->files) ?>
+                </p>
+              </div>
+            </td>
+
+            <td>
+              <div class="hashtag">
+                <?php
+
+                $hashtags = Hashtag::getHashtags_from_Ticket($db, $ticket->id);
+
+                if (count($hashtags) == 0) {
+                  echo '<p class="hashtag">No Hashtags</p>';
+                } else {
+                  foreach ($hashtags as $hashtag) {
+                    echo '<p class="hashtag">' . $hashtag->name . '</p>';
+                  }
+                }
+
+                ?>
+              </div>
+            </td>
+
+            <td>
+              <div class="more-info">
+                <form action="../pages/ticket.php?id=<?= base64_encode(strval($ticket->id)) ?>" method="post"
+                  class="info-form">
+                  <input type="hidden" name="ticket_id" value="<?= $ticket_user->ticket_id ?>">
+                  <input type="hidden" name="id" value="<?= $ticket->id ?>">
+                  <input type="submit" value="+">
+                </form>
+              </div>
+            </td>
+          </tr>
+
+        <?php } ?>
+      </tbody>
+    </table>
   </section>
-
-</section>
+</div>
 
 <?php
 drawFooter($session);
