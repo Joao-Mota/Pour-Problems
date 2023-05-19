@@ -18,6 +18,9 @@ require_once(__DIR__ . '/../temp/common.tpl.php');
 require_once(__DIR__ . '/../database/user_department.class.php');
 require_once(__DIR__ . '/../database/user.class.php');
 require_once(__DIR__ . '/../database/department.class.php');
+require_once(__DIR__ . '/../database/ticket_user.class.php');
+require_once(__DIR__ . '/../database/ticket.class.php');
+require_once(__DIR__ . '/../database/status.class.php');
 
 
 $db = getDatabaseConnection();
@@ -32,61 +35,272 @@ $id_int = (int) $id;
 
 $department_name = $_POST['name'];
 
-$users = User_Department::getAgents_from_department($db, $id_int);
+$agents = User_Department::getAgents_from_department($db, $id_int);
 $departments = Department::getDepartments($db);
-?>
 
-<div class="heading">
+
+//Get all tickets that are assigned to this department
+$tickets_user = Ticket_User::getTickets_from_department($db, $department_name);
+
+
+?>
+<div class="heading" style="background: url('../sources/heading_bg/department.jpg');">
   <h1>
     <?= $department_name ?> Department
   </h1>
 </div>
 
-<section class="ticket-form">
 
-  <section class="agents">
+<div class="tickets-table">
 
-    <?php foreach ($users as $user_department) {
+  <div class="department-table-title">
+    <div class="top">
+      <h1> Tickets from this department </h1>
+    </div>
+  </div>
 
-      $user = User::getUser($db, $user_department->user_id);
-      ?>
+  <section class="tickets-body">
 
-      <div class="user">
-        <div class="question">
-          <h3>
-            <?= $user->username ?>
-          </h3>
-        </div>
+    <table>
+      <thead>
+        <tr>
+          <th> Ticket </th>
+          <th> Client </th>
+          <th> Subject </th>
+          <th> Department </th>
+          <th> Date </th>
+          <th> Status </th>
+          <th> Agent </th>
+          <th> Anexos </th>
+          <th> Info </th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($tickets_user as $ticket_user) {
 
-        <div class="answer">
-          <p> Name :
-            <?= $user->fullname ?>
-          </p>
-        </div>
+          $ticket = Ticket::getTicket($db, $ticket_user->ticket_id);
 
-        <div>
-          <form action="../actions/action_assign_department.php" method="post" class="delete">
+          if ($ticket_user->agent_id == NULL) {
+            $agent_username = 'No Agent Assigned';
+          } else {
+            $user = User::getUser($db, $ticket_user->agent_id);
 
-            <input type="hidden" name="user_id" value="<?= $user->id ?>">
+            $agent_username = $user->username;
+          } ?>
 
-            <select id="departments" name="department">
 
-              <?php foreach ($departments as $department) { ?>
-                <option value="<?= $department->name ?>"> <?= $department->name ?> </option>
-              <?php } ?>
+          <tr>
+            <td>
+              <div class="ticket-id">
+                <p>
+                  <?= $ticket->id ?>
+                </p>
+              </div>
+            </td>
 
-            </select>
+            <td>
+              <div class="client">
+                <?php
+                // Get profile image from the user that created the ticket
+                $user = User::getUser($db, $ticket_user->client_id);
+                $profile_image = $user->image_path;
+                ?>
+                <a href="../pages/profile.php?id=<?= base64_encode(strval($user->id)) ?>">
+                  <img src="/uploads/profiles/<?= $profile_image ?>" alt="Profile Image" class="profile-image">
 
-            <input type="submit" value="Assign Department">
+                  <p>
+                    <?= $user->username ?>
+                  </p>
+                </a>
 
-          </form>
-        </div>
-      </div>
+              </div>
+            </td>
 
-    <?php } ?>
+            <td>
+              <div class="subject">
+                <p>
+                  <?= $ticket->subject ?>
+                </p>
+              </div>
+            </td>
+
+            <td>
+              <div class="department">
+                <p>
+                  <?= $ticket->department ?>
+                </p>
+            </td>
+
+            <td>
+              <div class="date">
+                <p>
+                  <?= $ticket->datetime ?>
+                </p>
+              </div>
+            </td>
+
+            <td>
+              <div class="status">
+                <?php $status = Status::getStatus($db, $ticket->status_id); ?>
+
+                <?php
+                if ($status->stat == 'Open (Waiting for agent)') {
+                  echo '<span class="open">' . $status->stat . '</span>';
+                } else if ($status->stat == 'Closed') {
+                  echo '<span class="closed">' . $status->stat . '</span>';
+                } else {
+                  echo '<span class="assigned">' . $status->stat . '</span>';
+                }
+
+                ?>
+
+              </div>
+            </td>
+
+            <td>
+              <div class="agent">
+                <p>
+                  <?= $agent_username ?>
+                </p>
+              </div>
+            </td>
+
+            <td>
+              <div class="anexos">
+                <p>
+                  <?= count($ticket->files) ?>
+                </p>
+              </div>
+            </td>
+
+            <td>
+              <div class="more-info">
+                <form action="../pages/ticket.php?id=<?= base64_encode(strval($ticket->id)) ?>" method="post"
+                  class="info-form">
+                  <input type="hidden" name="ticket_id" value="<?= $ticket_user->ticket_id ?>">
+                  <input type="hidden" name="id" value="<?= $ticket->id ?>">
+                  <input type="submit" value="+">
+                </form>
+              </div>
+            </td>
+          </tr>
+
+        <?php } ?>
+      </tbody>
+    </table>
   </section>
 
-</section>
+</div>
+
+
+
+<div class="department-agents">
+
+  <div class="department-table-title">
+    <h1> Agents from the Department </h1>
+  </div>
+
+  <section class="agents">
+    <table>
+      <thead>
+        <tr>
+          <th> id </th>
+          <th> Agent </th>
+          <th> nº Tickets </th>
+          <th> Change Department </th>
+          <!--<th> Remove </th>-->
+        </tr>
+      </thead>
+      <tbody>
+
+        <?php foreach ($agents as $agent_department) {
+
+          $agent = User::getUser($db, $agent_department->user_id);
+          ?>
+
+          <tr>
+            <td>
+              <div class="user-id">
+                <p>
+                  <?= $agent->id ?>
+                </p>
+              </div>
+            </td>
+
+            <td>
+              <div class="agent">
+                <?php
+                $profile_image = $agent->image_path;
+                ?>
+                <a href="../pages/profile.php?id=<?= base64_encode(strval($agent->id)) ?>">
+                  <img src="/uploads/profiles/<?= $profile_image ?>" alt="Profile Image" class="profile-image">
+
+                  <p>
+                    <?= $agent->username ?>
+                  </p>
+                </a>
+
+              </div>
+            </td>
+
+            <td>
+              <div class="n_tickets">
+                <p>
+                  <?php $number_of_tickets = Ticket_User::getTickets_from_Agent($db, $agent_department->user_id);
+                  echo count($number_of_tickets);
+                  ?>
+                </p>
+              </div>
+            </td>
+
+            <td>
+              <div class="change-department">
+                <form action="../actions/action_change_department.php" method="post" class="delete">
+
+                  <input type="hidden" name="user_id" value="<?= $agent->id ?>">
+
+                  <select id="departments" name="department">
+
+                    <?php foreach ($departments as $department) { 
+                      
+                      if($department->name == $department_name){
+                        continue;
+                      }
+
+                      ?>
+                      <option value="<?= $department->name ?>"> <?= $department->name ?> </option>
+                    <?php } ?>
+
+                  </select>
+
+                  <button type="submit" value="Change Department"><i class="fa fa-check"
+                      aria-hidden="true"></i></i></button>
+
+                </form>
+              </div>
+            </td>
+            <!--
+          <td>
+            <div class="remove">
+              <form action="../actions/action_remove_agent.php" method="post" class="delete">
+
+                <input type="hidden" name="user_id" value="agent->agent_id">
+
+                <button type="submit" value="Remove"><i class="fa fa-times" aria-hidden="true"></i></button>
+
+              </form>
+            </div>
+          </td>
+          -->
+          </tr>
+
+        <?php } ?>
+      </tbody>
+    </table>
+  </section>
+
+</div>
+
 
 <?php
 drawFooter($session);

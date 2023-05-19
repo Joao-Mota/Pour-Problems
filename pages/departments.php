@@ -11,11 +11,15 @@ if (!$session->isLoggedIn()) {
 require_once(__DIR__ . '/../database/connection.db.php');
 require_once(__DIR__ . '/../temp/common.tpl.php');
 require_once(__DIR__ . '/../database/department.class.php');
+require_once(__DIR__ . '/../database/user_department.class.php');
+require_once(__DIR__ . '/../database/user.class.php');
 
 
 $db = getDatabaseConnection();
 
 $departments = Department::getDepartments($db);
+
+$all_user_departments = User_Department::getAllUserDepartments($db);
 
 drawHeader($session);
 ?>
@@ -24,56 +28,95 @@ drawHeader($session);
   <h1>Departments</h1>
 </div>
 
-<section class="ticket-form">
-
-  <section class="users">
-
-    <div>
-      <form action="../actions/action_add_department.php" method="post" class="delete">
-        <input type="submit" value="Create New Department">
-        <input type="text" name="name" placeholder="department's name">
-      </form>
-    </div>
-
-    <?php foreach ($departments as $department) { ?>
-
-      <div class="user">
-        <div class="question">
-          <h3>
-            <?= $department->name ?>
-          </h3>
-
-          <span class="icon"><i class="fas fa-sort-down"></i></span>
-        </div>
-
-        <div class="answer">
-          <p> Id :
-            <?= $department->id ?>
-          </p>
-        </div>
-
-        <div>
-          <form action="../actions/action_delete_department.php" method="post" class="delete">
-            <input type="hidden" name="id" value="<?= $department->id ?>">
-            <input type="submit" value="Delete">
-          </form>
-        </div>
-
-        <div>
-          <form action="../pages/department.php?id=<?= base64_encode(strval($department->id)) ?>" method="post"
-            class="delete">
-            <input type="hidden" name="id" value="<?= $department->id ?>">
-            <input type="hidden" name="name" value="<?= $department->name ?>">
-            <input type="submit" value="+Info">
-          </form>
-        </div>
-
-      </div>
-
-    <?php } ?>
-  </section>
-
+<section class="new-department">
+  <form action="../actions/action_add_department.php" method="post" class="delete">
+    <input type="text" name="name" placeholder="new department name">
+    <button type="submit" name="add" value="add"><i class="fas fa-arrow-right"></i></button>
+  </form>
 </section>
+
+
+<div class="departments-table">
+  
+  <section class="departments-body">
+
+    <table>
+      <thead>
+        <tr>
+          <th> id </th>
+          <th> Department </th>
+          <th> Nº Agents </th>
+          <th> Delete </th>
+          <th> Info </th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <?php foreach ($departments as $department) { ?>
+
+          <tr>
+            <td>
+              <div class="department-id">
+                <p>
+                  <?= $department->id ?>
+                </p>
+              </div>
+            </td>
+
+            <td>
+              <div class="department-name">
+                <p>
+                  <?= $department->name ?>
+                </p>
+              </div>
+            </td>
+
+            <td>
+              <div class="number-of-agents">
+                <p>
+                  <?php
+
+                  $number_of_agents = 0;
+
+                  foreach ($all_user_departments as $user_department) {
+                    if ($user_department->department_id == $department->id) {
+                      $number_of_agents++;
+                    }
+                  }
+                  echo $number_of_agents;
+                  ?>
+                </p>
+              </div>
+            </td>
+
+            <td>
+              <div class="delete">
+                <form action="../actions/action_delete_department.php" method="post" class="delete">
+                  <input type="hidden" name="id" value="<?= $department->id ?>">
+                  <button type="submit" name="delete" value="delete"><i class="fa fa-wheelchair-alt" aria-hidden="true"></i></button>
+                </form>
+              </div>
+            </td>
+
+            <td>
+              <div class="info">
+                <form action="../pages/department.php?id=<?= base64_encode(strval($department->id)) ?>" method="post"
+                  class="delete">
+                  <input type="hidden" name="id" value="<?= $department->id ?>">
+                  <input type="hidden" name="name" value="<?= $department->name ?>">
+                  <button type="submit" name="info" value="info"><i class="fas fa-plus"></i></button>
+                </form>
+              </div>
+            </td>
+
+          </tr>
+        <?php } ?>
+      </tbody>
+    </table>
+  </section>
+</div>
+
+
 
 <?php
 drawFooter($session);
