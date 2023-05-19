@@ -1668,6 +1668,30 @@ section {
 }
 
 
+.department-agents .agents .remove-department{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.department-agents .agents .remove-department button
+{
+    font-size: 2rem;
+    color: var(--main-color);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.department-agents .agents .remove-department button:hover
+{
+    opacity: 0.8;
+}
+
+
+
 
 
 
