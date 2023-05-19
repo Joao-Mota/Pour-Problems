@@ -126,7 +126,7 @@ drawHeader($session);
                 <?php $status = Status::getStatus($db, $ticket->status_id); ?>
 
                 <?php
-                if ($status->stat == 'Open (Waiting for agent)') {
+                if ($status->stat == 'Open') {
                   echo '<span class="open">' . $status->stat . '</span>';
                 } else if ($status->stat == 'Closed') {
                   echo '<span class="closed">' . $status->stat . '</span>';

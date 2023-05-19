@@ -117,6 +117,15 @@ CREATE TABLE Ticket_Files (
   CONSTRAINT ticket_files_user_fk FOREIGN KEY (user_id) REFERENCES User ON UPDATE CASCADE ON DELETE CASCADE,
   CONSTRAINT ticket_files_ticket_fk FOREIGN KEY (ticket_id) REFERENCES Ticket ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+-- Tabela de Ticket Files, relaciona os tickets com os arquivos anexados e seus respectivos usuários
+CREATE TABLE Ticket_History (
+  id INTEGER,
+  updates VARCHAR(255) NOT NULL,
+  ticket_id INTEGER NOT NULL,
+  CONSTRAINT ticket_files_pk PRIMARY KEY (id),
+  CONSTRAINT ticket_files_ticket_fk FOREIGN KEY (ticket_id) REFERENCES Ticket ON UPDATE CASCADE ON DELETE CASCADE
+);
 /*
  
  ==========================================================
@@ -133,9 +142,9 @@ INSERT INTO Role
 VALUES (3, 'CLI');
 -- Insert de Status
 INSERT INTO Status
-VALUES (1, 'Open (Waiting for agent)');
+VALUES (1, 'Open');
 INSERT INTO Status
-VALUES (2, 'Assigned to agent');
+VALUES (2, 'Assigned');
 INSERT INTO Status
 VALUES (3, 'Closed');
 -- Insert de Departamentos
@@ -147,6 +156,15 @@ INSERT INTO Department
 VALUES (3, 'Payment');
 INSERT INTO Department
 VALUES (4, 'Delivery');
+
+-- Insert de Hashtags
+INSERT INTO Hashtag
+VALUES (1, '#Urgent', 0);
+INSERT INTO Hashtag
+VALUES (2, '#Priority', 0);
+INSERT INTO Hashtag
+VALUES (3, '#Important', 0);
+
 /*
  
  ==========================================================
