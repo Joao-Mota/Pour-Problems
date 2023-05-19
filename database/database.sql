@@ -123,8 +123,8 @@ CREATE TABLE Ticket_History (
   id INTEGER,
   updates VARCHAR(255) NOT NULL,
   ticket_id INTEGER NOT NULL,
-  CONSTRAINT ticket_files_pk PRIMARY KEY (id),
-  CONSTRAINT ticket_files_ticket_fk FOREIGN KEY (ticket_id) REFERENCES Ticket ON UPDATE CASCADE ON DELETE CASCADE
+  CONSTRAINT ticket_history_pk PRIMARY KEY (id),
+  CONSTRAINT ticket_history_ticket_fk FOREIGN KEY (ticket_id) REFERENCES Ticket ON UPDATE CASCADE ON DELETE CASCADE
 );
 /*
  
