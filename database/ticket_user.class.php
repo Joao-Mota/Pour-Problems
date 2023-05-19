@@ -99,11 +99,11 @@ class Ticket_User
         return $tickets_user;
     }
 
-    static function getTickets_from_departmentID(PDO $db, int $department_id): array
+    static function getTickets_from_departmentID(PDO $db, string $department): array
     {
-        $stmt = $db->prepare('SELECT * FROM Ticket_User WHERE ticket_id IN (SELECT id FROM Ticket WHERE id = ?)');
+        $stmt = $db->prepare('SELECT * FROM Ticket_User WHERE ticket_id IN (SELECT id FROM Ticket WHERE department = ?)');
 
-        $stmt->execute(array($department_id));
+        $stmt->execute(array($department));
 
         $tickets_user = array();
 

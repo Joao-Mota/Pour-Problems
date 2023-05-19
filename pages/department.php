@@ -33,13 +33,14 @@ $id = base64_decode(($encryptedId));
 
 $id_int = (int) $id;
 
+$department_name = $_POST['name'];
 
 $agents = User_Department::getAgents_from_department($db, $id_int);
 $departments = Department::getDepartments($db);
 
 
 //Get all tickets that are assigned to this department
-$tickets_user = Ticket_User::getTickets_from_departmentID($db, $id_int);
+$tickets_user = Ticket_User::getTickets_from_departmentID($db, $department_name);
 
 
 ?>
@@ -206,8 +207,8 @@ $tickets_user = Ticket_User::getTickets_from_departmentID($db, $id_int);
           <th> id </th>
           <th> Agent </th>
           <th> nº Tickets </th>
-          <th> Change Department </th>
-          <!--<th> Remove </th>-->
+          <th> Add Department </th>
+          <th> Remove Department </th>
         </tr>
       </thead>
       <tbody>
@@ -253,41 +254,44 @@ $tickets_user = Ticket_User::getTickets_from_departmentID($db, $id_int);
             </td>
 
             <td>
-              <div>
-                  <?php $departments_not_assigned = User_Department::getDepartmentsNotFromUser($db, $agent->id);
-                  if (!empty($departments_not_assigned)) { ?>
+              <div class="change-department">
+                <?php $departments_not_assigned = User_Department::getDepartmentsNotFromUser($db, $agent->id);
+                if (!empty($departments_not_assigned)) { ?>
                   <form action="../actions/action_assign_department.php" method="post" class="delete">
 
-                    <input type="hidden" name="user_id" value="<?=$agent->id?>">
+                    <input type="hidden" name="user_id" value="<?= $agent->id ?>">
 
                     <select id="departments" name="department">
 
-                      <?php 
-                          foreach($departments_not_assigned as $department) { ?>
-                          <option value="<?=$department->name?>"><?=$department->name?></option>
-                          <?php } ?>
+                      <?php
+                      foreach ($departments_not_assigned as $department) { ?>
+                        <option value="<?= $department->name ?>"><?= $department->name ?></option>
+                      <?php } ?>
                     </select>
 
-                    <input type="submit" value="Assign Department"> 
-                    
+                    <button type="submit" value="Change Department"><i class="fa fa-check"
+                        aria-hidden="true"></i></i></button>
+
 
                   </form>
-                  <?php } ?>
-                </div>
+                <?php } else {
+                  echo '<p> Agent in all departments </p>';
+                } ?>
+              </div>
             </td>
-            <!--
-          <td>
-            <div class="remove">
-              <form action="../actions/action_remove_agent.php" method="post" class="delete">
 
-                <input type="hidden" name="user_id" value="agent->agent_id">
+            <td>
+              <div class="remove-department">
+                <form action="../actions/action_delete_department_from_user.php" method="post" class="delete">
+                  <input type="hidden" name="user_id" value="<?= $agent->id ?>">
+                  <input type="hidden" name="department_id" value="<?= $department->id ?>">
 
-                <button type="submit" value="Remove"><i class="fa fa-times" aria-hidden="true"></i></button>
+                  <button type="submit" value="Delete"><i class="fa fa-wheelchair-alt" aria-hidden="true"></i></button>
 
-              </form>
-            </div>
-          </td>
-          -->
+                </form>
+              </div>
+            </td>
+
           </tr>
 
         <?php } ?>
