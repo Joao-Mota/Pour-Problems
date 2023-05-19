@@ -13,13 +13,15 @@ require_once(__DIR__ . '/../temp/common.tpl.php');
 require_once(__DIR__ . '/../database/department.class.php');
 require_once(__DIR__ . '/../database/user_department.class.php');
 require_once(__DIR__ . '/../database/user.class.php');
-
+require_once(__DIR__ . '/../database/ticket.class.php');
 
 $db = getDatabaseConnection();
 
 $departments = Department::getDepartments($db);
 
 $all_user_departments = User_Department::getAllUserDepartments($db);
+
+$all_tickets = Ticket::getAllTickets($db);
 
 drawHeader($session);
 ?>
@@ -45,6 +47,7 @@ drawHeader($session);
         <tr>
           <th> id </th>
           <th> Department </th>
+          <th> Nº Tickets </th>
           <th> Nº Agents </th>
           <th> Delete </th>
           <th> Info </th>
@@ -57,7 +60,7 @@ drawHeader($session);
           <tr>
             <td>
               <div class="department-id">
-                <p>
+                <p> #
                   <?= $department->id ?>
                 </p>
               </div>
@@ -67,6 +70,24 @@ drawHeader($session);
               <div class="department-name">
                 <p>
                   <?= $department->name ?>
+                </p>
+              </div>
+            </td>
+
+            <td>
+              <div class="number-of-tickets">
+                <p>
+                  <?php
+
+                  $number_of_tickets = 0;
+
+                  foreach ($all_tickets as $ticket) {
+                    if ($ticket->department == $department->name) {
+                      $number_of_tickets++;
+                    }
+                  }
+                  echo $number_of_tickets;
+                  ?>
                 </p>
               </div>
             </td>
