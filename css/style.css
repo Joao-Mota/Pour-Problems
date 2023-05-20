@@ -2367,3 +2367,7 @@ section {
     }
 
 }
+
+#faq-answers {
+    display: none;
+}

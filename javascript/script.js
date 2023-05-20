@@ -44,12 +44,30 @@ users.forEach(user => {
 
 // Swiper
 const swiper = new Swiper(".home-slider", {
-    loop:true,
+    loop: true,
     navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
     },
-  });
+});
+
+// Mota FAQ
+function toggleOptions() {
+    var customMessageTextarea = document.getElementById("message");
+    var predefinedAnswersSelect = document.getElementById("faq-answers");
+    var faqAnswerInput = document.querySelector('input[name="faq_answer"]');
+
+    if (customMessageTextarea.style.display === "none") {
+        customMessageTextarea.style.display = "block";
+        predefinedAnswersSelect.style.display = "none";
+        faqAnswerInput.value = ""; // Clear the value if switching to custom message
+    } else {
+        customMessageTextarea.style.display = "none";
+        predefinedAnswersSelect.style.display = "block";
+        faqAnswerInput.value = predefinedAnswersSelect.value; // Set the selected option value as the input value
+    }
+}
+
 
 
 // uploaded image
@@ -67,14 +85,14 @@ input_img.addEventListener('change', () => {
 document.getElementById('files').addEventListener('change', handleFileSelect);
 
 function handleFileSelect(event) {
-  let files = event.target.files;
-  let fileList = document.getElementById('file-list');
+    let files = event.target.files;
+    let fileList = document.getElementById('file-list');
 
-  fileList.innerHTML = ''; // Clear existing file list
+    fileList.innerHTML = ''; // Clear existing file list
 
-  for (const i = 0; i < files.length; i++) {
-    let listItem = document.createElement('li');
-    listItem.textContent = files[i].name;
-    fileList.appendChild(listItem);
-  }
+    for (const i = 0; i < files.length; i++) {
+        let listItem = document.createElement('li');
+        listItem.textContent = files[i].name;
+        fileList.appendChild(listItem);
+    }
 }
