@@ -171,6 +171,7 @@ require_once(__DIR__ . '/../utils/session.php');
     <nav class="navbar">
       <form action="../actions/action_logout.php" method="post" class="logout">
         <a href="/pages/about.php">About</a>
+        <a href="/pages/faq.php">FAQ's</a>
         <a href="/pages/mytickets.php">My Tickets</a>
         <a href="/pages/submit_ticket.php">Submit a Ticket</a>
         <a href="/pages/profile.php?id=<?= base64_encode(strval($session->getID()))?>">Profile</a>
@@ -194,6 +195,7 @@ require_once(__DIR__ . '/../utils/session.php');
     <nav class="navbar">
       <form action="../actions/action_logout.php" method="post" class="logout">
         <a href="/pages/about.php">About</a>
+        <a href="/pages/faq.php">FAQ's</a>
         <a href="/pages/users.php">Users</a>
         <a href="/pages/all_tickets.php">Tickets</a>
         <a href="/pages/departments.php">Departments</a>
@@ -218,6 +220,7 @@ require_once(__DIR__ . '/../utils/session.php');
     <nav class="navbar">
       <form action="../actions/action_logout.php" method="post" class="logout">
         <a href="/pages/about.php">About</a>
+        <a href="/pages/faq.php">FAQ's</a>
         <a href="/pages/assigned_tickets.php">Assigned Tickets</a>
         <a href="/pages/all_tickets.php">Tickets</a>
         <a href="/pages/profile.php?id=<?= base64_encode(strval($session->getID()))?>">Profile</a>

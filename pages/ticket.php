@@ -215,13 +215,18 @@ foreach ($messages as $message) {
     <input type="hidden" name="datetime" value="<?= $ticket->datetime ?>">
     <input type="hidden" name="id" value="<?= $encryptedId ?>">
 
-    <select id="faq-answers" name="faq_answer">
-      <option value="" selected disabled hidden>Choose an answer from the faq</option>
+    <?php if($session->isAgent() || $session->isAdmin()) { ?>
 
-      <?php foreach($faqs as $faq) { ?>
-        <option value="<?=$faq->answer?>"><?=$faq->question?> - <?=$faq->answer?></option>
-      <?php } ?>
-    </select>
+      <select id="faq-answers" name="faq_answer">
+        <option value="" selected disabled hidden>Choose an answer from the faq</option>
+
+        <?php foreach($faqs as $faq) { ?>
+          <option value="<?=$faq->answer?>"><?=$faq->question?> - <?=$faq->answer?></option>
+        <?php } ?>
+      </select>
+
+      <button type="button" onclick="toggleOptions()">Change Answer method</button>
+    <?php } ?>
 
     <section id="messages">
       <?php foreach ($session->getMessages() as $messsage) { ?>
@@ -230,8 +235,6 @@ foreach ($messages as $message) {
         </article>
       <?php } ?>
     </section>
-
-    <button type="button" onclick="toggleOptions()">Change Answer method</button>
 
     <input type="submit" value="Send Message" class="btn" name="submit">
 
