@@ -25,9 +25,84 @@ drawHeader($session);
 ?>
 
 
-<div class="heading">
-  <h1>All Users</h1>
+<div class="heading" style="background: url('../sources/heading_bg/users.png');">
+  <h1>Users</h1>
 </div>
+
+
+<div class="users-table">
+
+  <div class="users-tables-titles">
+    <h1> Admins </h1>
+  </div>
+
+  <section class="users">
+
+    <table>
+      <thead>
+        <tr>
+          <th> id </th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+
+  </section>
+
+</div>
+
+<div class="users-table">
+
+  <div class="users-tables-titles">
+    <h1> Agents </h1>
+  </div>
+
+  <section class="users">
+
+    <table>
+      <thead>
+        <tr>
+          <th> id </th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+
+  </section>
+
+</div>
+
+<div class="users-table">
+
+  <div class="users-tables-titles">
+    <h1> Clients </h1>
+  </div>
+
+  <section class="users">
+
+    <table>
+      <thead>
+        <tr>
+          <th> id </th>
+          <th> Client </th>
+          <th> nº Tickets </th>
+          <th> </th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+
+  </section>
+
+</div>
+
+
 
 <section class="ticket-form">
 
@@ -62,70 +137,76 @@ drawHeader($session);
             </form>
           </div>
         </div>
-      <?php } 
-      else if($user->role_id == 2) { ?>
-            <div class="agent">
-                <div class="question">
-                <h3> <?= $user->username ?> </h3>
-                </div>
+      <?php } else if ($user->role_id == 2) { ?>
+          <div class="agent">
+            <div class="question">
+              <h3>
+              <?= $user->username ?>
+              </h3>
+            </div>
 
-                <div class="answer">
-                <p> Name : <?= $user->fullname ?> </p>
-                </div>
+            <div class="answer">
+              <p> Name :
+              <?= $user->fullname ?>
+              </p>
+            </div>
 
-                <div>
-                  <p>This Agent belongs to the following departments:</p>
-                  <ul>
-                    <?php $user_department = User_Department::getDepartmentsFromUser($db, $user->id);
-                       foreach($departments as $department) {
-                        foreach($user_department as $user_dep){
-                        if ($department->id == $user_dep->department_id) {
-                          ?>
-                          <li> <?=$department->name?>
-                          <form action="../actions/action_delete_department_from_user.php" method="post" class="delete">
-                            <input type="hidden" name="user_id" value="<?=$user->id?>">
-                            <input type="hidden" name="department_id" value="<?=$department->id?>">
-                            <input type="submit" value="Delete">
-                          </form>
-                        </li>
-                        <?php }}} ?>
-                  </ul>
-                </div>
+            <div>
+              <p>This Agent belongs to the following departments:</p>
+              <ul>
+              <?php $user_department = User_Department::getDepartmentsFromUser($db, $user->id);
+              foreach ($departments as $department) {
+                foreach ($user_department as $user_dep) {
+                  if ($department->id == $user_dep->department_id) {
+                    ?>
+                      <li>
+                      <?= $department->name ?>
+                        <form action="../actions/action_delete_department_from_user.php" method="post" class="delete">
+                          <input type="hidden" name="user_id" value="<?= $user->id ?>">
+                          <input type="hidden" name="department_id" value="<?= $department->id ?>">
+                          <input type="submit" value="Delete">
+                        </form>
+                      </li>
+                  <?php }
+                }
+              } ?>
+              </ul>
+            </div>
 
-                <div>
-                  <?php $departments_not_assigned = User_Department::getDepartmentsNotFromUser($db, $user->id);
-                  if (!empty($departments_not_assigned)) { ?>
-                  <form action="../actions/action_assign_department.php" method="post" class="delete">
+            <div>
+            <?php $departments_not_assigned = User_Department::getDepartmentsNotFromUser($db, $user->id);
+            if (!empty($departments_not_assigned)) { ?>
+                <form action="../actions/action_assign_department.php" method="post" class="delete">
 
-                    <input type="hidden" name="user_id" value="<?=$user->id?>">
+                  <input type="hidden" name="user_id" value="<?= $user->id ?>">
 
-                    <select id="departments" name="department">
+                  <select id="departments" name="department">
 
-                      <?php 
-                          foreach($departments_not_assigned as $department) { ?>
-                          <option value="<?=$department->name?>"><?=$department->name?></option>
-                          <?php } ?>
-                    </select>
-
-                    <input type="submit" value="Assign Department"> 
-                    
-
-                  </form>
+                    <?php
+                    foreach ($departments_not_assigned as $department) { ?>
+                      <option value="<?= $department->name ?>"><?= $department->name ?></option>
                   <?php } ?>
-                </div>
+                  </select>
 
-                <div>
-                  <form action="../actions/action_change_role.php" method="post" class="delete">
+                  <input type="submit" value="Assign Department">
 
-                    <input type="hidden" name="user_id" value="<?= $user->id ?>">
-                    <input type="hidden" name="role_id" value="3">
 
-                    <input type="submit" value="Make Client">
+                </form>
+            <?php } ?>
+            </div>
 
-                  </form>
-              </div>
+            <div>
+              <form action="../actions/action_change_role.php" method="post" class="delete">
 
-              <div>
+                <input type="hidden" name="user_id" value="<?= $user->id ?>">
+                <input type="hidden" name="role_id" value="3">
+
+                <input type="submit" value="Make Client">
+
+              </form>
+            </div>
+
+            <div>
               <form action="../actions/action_change_role.php" method="post" class="delete">
 
                 <input type="hidden" name="user_id" value="<?= $user->id ?>">
@@ -135,9 +216,8 @@ drawHeader($session);
 
               </form>
             </div>
-            </div>
-        <?php }
-       else { ?>
+          </div>
+      <?php } else { ?>
           <div class="user">
             <div class="question">
               <h3>

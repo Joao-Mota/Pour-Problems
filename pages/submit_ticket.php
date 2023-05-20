@@ -96,19 +96,19 @@ $errorFields = $session->getFieldErrors();
 
 
         <div class="submit-ticket-form-input">
-          <label>Message</label>
-          <textarea name="message" placeholder="Enter your message"></textarea>
-          <?php if (isset($errorFields['message'])) { ?>
+          <label>Description</label>
+          <textarea name="description" placeholder="Enter your message"></textarea>
+          <?php if (isset($errorFields['description'])) { ?>
             <p class="text-danger">
-              <?= $errorFields['message'] ?>
+              <?= $errorFields['description'] ?>
             </p>
           <?php } ?>
         </div>
 
         <div class="submit-ticket-form-input">
-          <label class="upload-files"  for="files">Upload files 
+          <label class="upload-files"  for="up_files">Upload files 
             <i class="far fa-file-alt"></i>
-            <input type="file" name="file[]" id="files" class="files" multiple pattern=".*\.(jpe?g|png|pdf)$"
+            <input type="file" name="file[]" id="up_files" class="files" multiple pattern=".*\.(jpe?g|png|pdf)$"
               accept=".jpg,.jpeg,.png,.pdf">
             <br>
             </label>
