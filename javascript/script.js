@@ -60,3 +60,19 @@ input_img.addEventListener('change', () => {
     let inputImage = document.querySelector('input[type=file]').files[0];
     img_name.innerText = inputImage.name;
 })
+
+function toggleOptions() {
+    var customMessageTextarea = document.getElementById("message");
+    var predefinedAnswersSelect = document.getElementById("faq-answers");
+    var faqAnswerInput = document.querySelector('input[name="faq_answer"]');
+
+    if (customMessageTextarea.style.display === "none") {
+      customMessageTextarea.style.display = "block";
+      predefinedAnswersSelect.style.display = "none";
+      faqAnswerInput.value = ""; // Clear the value if switching to custom message
+    } else {
+      customMessageTextarea.style.display = "none";
+      predefinedAnswersSelect.style.display = "block";
+      faqAnswerInput.value = predefinedAnswersSelect.value; // Set the selected option value as the input value
+    }
+  }
