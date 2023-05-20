@@ -59,4 +59,22 @@ let img_name = document.getElementById('file-image-name');
 input_img.addEventListener('change', () => {
     let inputImage = document.querySelector('input[type=file]').files[0];
     img_name.innerText = inputImage.name;
-})
+});
+
+
+
+// uploaded files
+document.getElementById('files').addEventListener('change', handleFileSelect);
+
+function handleFileSelect(event) {
+  let files = event.target.files;
+  let fileList = document.getElementById('file-list');
+
+  fileList.innerHTML = ''; // Clear existing file list
+
+  for (const i = 0; i < files.length; i++) {
+    let listItem = document.createElement('li');
+    listItem.textContent = files[i].name;
+    fileList.appendChild(listItem);
+  }
+}
