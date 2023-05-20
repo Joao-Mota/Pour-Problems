@@ -2148,9 +2148,19 @@ section {
 
 .submit-ticket .submit-ticket-form-input .upload-files i {
     font-size: 2rem;
-    color: var(--main-color);
     padding-left: 1rem;
 }
+
+.submit-ticket .submit-ticket-form-input ul{
+    list-style-type: none;
+    align-items: center;
+}
+
+.submit-ticket .submit-ticket-form-input li{
+    font-size: 1.5rem;
+    color: var(--main-color);
+}
+
 
 
 

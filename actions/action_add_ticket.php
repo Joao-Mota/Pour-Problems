@@ -13,6 +13,11 @@ $db = getDatabaseConnection();
 
 $add_ticket = true;
 
+if(empty($_POST['department'])) {
+  $session->addFieldError('department', 'Department is required!');
+  $add_ticket = false;
+}
+
 if (empty($_POST['subject'])) {
   $session->addFieldError('subject', 'Subject is required!');
   $add_ticket = false;
@@ -20,6 +25,11 @@ if (empty($_POST['subject'])) {
 
 if (empty($_POST['hashtag'])) {
   $session->addFieldError('hashtag', 'Hashtag is required!');
+  $add_ticket = false;
+}
+
+if (empty($_POST['description'])) {
+  $session->addFieldError('description', 'Description is required!');
   $add_ticket = false;
 }
 
