@@ -33,14 +33,16 @@ $id = base64_decode(($encryptedId));
 
 $id_int = (int) $id;
 
-$department_name = $_POST['name'];
+$department = Department::getDepartment($db, $id_int);
+
+$department_name = $department->name;
 
 $agents = User_Department::getAgents_from_department($db, $id_int);
 $departments = Department::getDepartments($db);
 
 
 //Get all tickets that are assigned to this department
-$tickets_user = Ticket_User::getTickets_from_departmentID($db, $department_name);
+$tickets_user = Ticket_User::getTickets_from_department($db, $department_name);
 
 
 ?>
