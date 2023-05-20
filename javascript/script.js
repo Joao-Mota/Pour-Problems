@@ -96,3 +96,4 @@ function handleFileSelect(event) {
         fileList.appendChild(listItem);
     }
 }
+

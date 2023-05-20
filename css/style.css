@@ -1241,8 +1241,8 @@ section {
 
 
 /* Profile Edit */
-.profile-edit-title{
-  /* Put text align in the middle */
+.profile-edit-title {
+    /* Put text align in the middle */
     text-align: center;
     font-size: 2.5rem;
     padding-bottom: 1rem;
@@ -1250,7 +1250,7 @@ section {
     color: var(--black);
 }
 
-.profile-edit-form{
+.profile-edit-form {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -1263,7 +1263,7 @@ section {
 
 
 
-.profile-edit-form .pform-edit .changes{
+.profile-edit-form .pform-edit .changes {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -1272,7 +1272,7 @@ section {
     padding-bottom: 3rem;
 }
 
-.profile-edit-form .pform-edit .changes .profile-edit-img img{
+.profile-edit-form .pform-edit .changes .profile-edit-img img {
     width: 30rem;
     height: 30rem;
     border-radius: 50%;
@@ -1306,7 +1306,7 @@ section {
     text-align: center;
 }
 
-.profile-edit-form .pform-edit .changes .profile-edit-info{
+.profile-edit-form .pform-edit .changes .profile-edit-info {
     width: 30rem;
     display: 1 1 41rem;
     border-left: var(--main-color) 5px solid;
@@ -1356,7 +1356,7 @@ section {
 }
 
 
-.profile-edit-form .pform-edit .confirm .confirm-passwords{
+.profile-edit-form .pform-edit .confirm .confirm-passwords {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -1365,7 +1365,7 @@ section {
     padding-bottom: 3rem;
 }
 
-.profile-edit-form .pform-edit .confirm .confirm-passwords .input-box{
+.profile-edit-form .pform-edit .confirm .confirm-passwords .input-box {
     width: 30rem;
     display: 1 1 41rem;
     padding-left: 3rem;
@@ -1374,18 +1374,18 @@ section {
     display: block;
 }
 
-.profile-edit-form .pform-edit .confirm .confirm-passwords .input-box label{
+.profile-edit-form .pform-edit .confirm .confirm-passwords .input-box label {
     display: block;
     font-size: 2rem;
     padding-top: 1rem;
     color: var(--black);
 }
 
-.profile-edit-form .pform-edit .confirm .confirm-passwords .input-box label:hover{
+.profile-edit-form .pform-edit .confirm .confirm-passwords .input-box label:hover {
     color: var(--main-color);
 }
 
-.profile-edit-form .pform-edit .confirm .confirm-passwords .input-box input{
+.profile-edit-form .pform-edit .confirm .confirm-passwords .input-box input {
     width: 100%;
     padding: 0.5rem;
     font-size: 1.5rem;
@@ -1396,22 +1396,22 @@ section {
     color: var(--black);
 }
 
-.profile-edit-form .pform-edit .confirm .confirm-passwords .input-box input:focus{
+.profile-edit-form .pform-edit .confirm .confirm-passwords .input-box input:focus {
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.4);
 }
 
-.profile-edit-form .input-box input[data-state="invalid"]{
+.profile-edit-form .input-box input[data-state="invalid"] {
     border-bottom: var(--main-color) 2px solid;
 }
 
-.profile-edit-form .input-box .text-danger{
+.profile-edit-form .input-box .text-danger {
     color: var(--main-color);
     font-size: 1.5rem;
     padding-bottom: 1rem;
     padding-left: 2rem;
 }
 
-.profile-edit-form .pform-edit .confirm .confirm-button{
+.profile-edit-form .pform-edit .confirm .confirm-button {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -1420,7 +1420,7 @@ section {
     padding-bottom: 3rem;
 }
 
-.final-links{
+.final-links {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -1430,17 +1430,17 @@ section {
     margin: 0;
 }
 
-.final-links a{
+.final-links a {
     font-size: 1.5rem;
     color: var(--black);
     text-decoration: none;
 }
 
-.final-links a:hover{
+.final-links a:hover {
     color: var(--main-color);
 }
 
-.final-links a::after{
+.final-links a::after {
     content: '';
     width: 0;
     height: 2px;
@@ -1449,13 +1449,13 @@ section {
     transition: 0.5s;
 }
 
-.final-links a:hover::after{
+.final-links a:hover::after {
     width: 100%;
 }
 
 
 /* Change Password */
-.password-edit{
+.password-edit {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -1464,7 +1464,7 @@ section {
     padding-bottom: 3rem;
 }
 
-.password-edit form{
+.password-edit form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1472,7 +1472,7 @@ section {
     width: 100%;
 }
 
-.password-edit form .input-boxes{
+.password-edit form .input-boxes {
     width: 30rem;
     display: 1 1 41rem;
     padding-left: 3rem;
@@ -1481,18 +1481,18 @@ section {
     display: block;
 }
 
-.password-edit form .input-boxes label{
+.password-edit form .input-boxes label {
     display: block;
     font-size: 2rem;
     padding-top: 1rem;
     color: var(--black);
 }
 
-.password-edit form .input-boxes label:hover{
+.password-edit form .input-boxes label:hover {
     color: var(--main-color);
 }
 
-.password-edit form .input-boxes input{
+.password-edit form .input-boxes input {
     width: 100%;
     padding: 0.5rem;
     font-size: 1.5rem;
@@ -1503,15 +1503,15 @@ section {
     color: var(--black);
 }
 
-.password-edit form .input-boxes input:focus{
+.password-edit form .input-boxes input:focus {
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.4);
 }
 
-.password-edit form .input-boxes input[data-state="invalid"]{
+.password-edit form .input-boxes input[data-state="invalid"] {
     border-bottom: var(--main-color) 2px solid;
 }
 
-.password-edit form .input-boxes .text-danger{
+.password-edit form .input-boxes .text-danger {
     color: var(--main-color);
     font-size: 1.5rem;
     padding-bottom: 1rem;
@@ -1612,7 +1612,7 @@ section {
     justify-content: center;
 }
 
-.tickets-table .tickets-body .client a{
+.tickets-table .tickets-body .client a {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -1800,9 +1800,8 @@ section {
     color: var(--black);
 }
 
-.departments-table .departments-body .info, 
-.departments-table .departments-body .delete
-{
+.departments-table .departments-body .info,
+.departments-table .departments-body .delete {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1811,8 +1810,7 @@ section {
 }
 
 .departments-table .departments-body .info button,
-.departments-table .departments-body .delete button
-{
+.departments-table .departments-body .delete button {
     font-size: 2rem;
     color: var(--main-color);
     border: none;
@@ -1821,8 +1819,7 @@ section {
 }
 
 .departments-table .departments-body .info button:hover,
-.departments-table .departments-body .delete button:hover
-{
+.departments-table .departments-body .delete button:hover {
     opacity: 0.8;
 }
 
@@ -1831,11 +1828,11 @@ section {
 
 /* Agents in a Department */
 
-.department-table-title .top{
+.department-table-title .top {
     padding-top: 3rem;
 }
 
-.department-table-title h1{
+.department-table-title h1 {
     font-size: 2.69rem;
     color: var(--black);
     border-bottom: 2px solid var(--main-color);
@@ -1852,7 +1849,7 @@ section {
     width: 100%;
 }
 
-.department-agents .agents{
+.department-agents .agents {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -1909,7 +1906,7 @@ section {
     color: var(--black);
 }
 
-.department-agents .agents .agent a{
+.department-agents .agents .agent a {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -1946,7 +1943,7 @@ section {
 }
 
 
-.department-agents .agents .change-department select{
+.department-agents .agents .change-department select {
     font-size: 1.5rem;
     padding: 0.3rem;
     border: 1px solid var(--main-color);
@@ -1976,7 +1973,7 @@ section {
 }
 
 
-.department-agents .agents .remove-department{
+.department-agents .agents .remove-department {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1984,8 +1981,7 @@ section {
     padding: 1rem;
 }
 
-.department-agents .agents .remove-department button
-{
+.department-agents .agents .remove-department button {
     font-size: 2rem;
     color: var(--main-color);
     border: none;
@@ -1993,8 +1989,7 @@ section {
     cursor: pointer;
 }
 
-.department-agents .agents .remove-department button:hover
-{
+.department-agents .agents .remove-department button:hover {
     opacity: 0.8;
 }
 
@@ -2045,7 +2040,7 @@ section {
     font-weight: bold;
 }
 
-.submit-ticket .submit-ticket-form{
+.submit-ticket .submit-ticket-form {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -2088,7 +2083,7 @@ section {
 
 .submit-ticket .submit-ticket-form-input textarea::-webkit-scrollbar {
     width: 0.5rem;
-}	
+}
 
 .submit-ticket .submit-ticket-form-input textarea::-webkit-scrollbar-track {
     background: transparent;
@@ -2107,7 +2102,7 @@ section {
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.4);
 }
 
-.submit-ticket .submit-ticket-form-input select{
+.submit-ticket .submit-ticket-form-input select {
     width: 80%;
     font-size: 1.5rem;
     padding: 0.3rem;
@@ -2123,26 +2118,26 @@ section {
     opacity: 0.8;
 }
 
-.submit-ticket .submit-ticket-form-input label{
+.submit-ticket .submit-ticket-form-input label {
     display: block;
     font-size: 2rem;
     padding-top: 1rem;
     color: var(--black);
 }
 
-.submit-ticket .submit-ticket-form-input label:hover{
+.submit-ticket .submit-ticket-form-input label:hover {
     color: var(--main-color);
 }
 
-.submit-ticket .submit-ticket-form-input .air-button{
+.submit-ticket .submit-ticket-form-input .air-button {
     padding: 3rem;
 }
 
-.submit-ticket .submit-ticket-form-input .files{
+.submit-ticket .submit-ticket-form-input .files {
     display: none;
 }
 
-.submit-ticket .submit-ticket-form-input .upload-files{
+.submit-ticket .submit-ticket-form-input .upload-files {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -2151,7 +2146,7 @@ section {
     cursor: pointer;
 }
 
-.submit-ticket .submit-ticket-form-input .upload-files i{
+.submit-ticket .submit-ticket-form-input .upload-files i {
     font-size: 2rem;
     color: var(--main-color);
     padding-left: 1rem;
@@ -2284,7 +2279,7 @@ section {
         font-size: 10vw;
     }
 
-    .submit-ticket .submit-ticket-body{
+    .submit-ticket .submit-ticket-body {
         width: 80%;
     }
 
@@ -2350,7 +2345,7 @@ section {
 }
 
 @media (max-width: 38.438em) {
-    .profile-edit-form .pform-edit .changes .profile-edit-info{
+    .profile-edit-form .pform-edit .changes .profile-edit-info {
         border-left: none;
         padding-left: 0;
     }
@@ -2362,10 +2357,10 @@ section {
         font-size: 50%;
     }
 
-    .submit-ticket .submit-ticket-body{
+
+    .submit-ticket .submit-ticket-body {
         width: 95%;
     }
-
 }
 
 #faq-answers {

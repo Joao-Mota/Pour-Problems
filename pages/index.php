@@ -25,11 +25,10 @@ try {
     $stmt = $db->prepare('INSERT INTO User (fullname, username, email, password, role_id, image_path) VALUES (?, ?, ?, ?, ?, ?)');
     $stmt->execute(array('agent', 'agent1', 'agent1@gmail.com', $password, 2, User::DEFAULT_IMAGE_PATH));
 
-    //$stmt = $db->prepare('INSERT INTO Department (name) VALUES (?)');
-    //$stmt->execute(array('General'));
-    //$stmt->execute(array('Packaging'));
-    //$stmt->execute(array('Payment'));
-    //$stmt->execute(array('Delivery'));
+    $stmt = $db->prepare('INSERT INTO FAQ (question, answer, user_id) VALUES (?, ?, ?)');
+    $stmt->execute(array('Pergunta OP', 'Resposta para tudo!', 2));
+    $stmt->execute(array('Pergunta OP 2', 'Nao sabes mais!', 2));
+    $stmt->execute(array('Pergunta OP 3', 'Estudasses!', 2));
 } catch (PDOException $e) {
 }
 ?>

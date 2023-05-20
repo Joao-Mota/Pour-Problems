@@ -15,6 +15,13 @@ $user_id = strval($_POST['client_id']);
 $datetime = strval($_POST['datetime']);
 $url_id = strval($_POST['id']);
 
+if (isset($_POST['faq_answer'])) {
+    $faqAnswer = strval($_POST['faq_answer']); 
+    if (!empty($faqAnswer)) {
+      $text = $faqAnswer;
+    }
+  }
+
 
 $stmt = $db->prepare('INSERT INTO Message (text, datetime, user_id, ticket_id) VALUES (?, ?, ?, ?)');
 

@@ -27,6 +27,7 @@ require_once(__DIR__ . '/../database/message.class.php');
 require_once(__DIR__ . '/../database/user.class.php');
 require_once(__DIR__ . '/../database/hashtag.class.php');
 require_once(__DIR__ . '/../database/department.class.php');
+require_once(__DIR__ . '/../database/faq.class.php');
 
 
 $db = getDatabaseConnection();
@@ -52,6 +53,8 @@ $all_status = Status::getAll_Status($db);
 $agents = User::getAgents($db, 2);
 
 $departments = Department::getDepartments($db);
+
+$faqs = FAQ::getFAQs($db);
 
 if ($ticket_user->agent_id == NULL) {
   $agent_username = 'No Agent Assigned';
@@ -205,12 +208,20 @@ foreach ($messages as $message) {
 
   <form action="/actions/action_add_message.php" method="post" class="signup-form">
 
-    <div class="input-box"><span> Message: </span><textarea name="message" cols="60" rows="8"></textarea></div>
+    <div class="input-box"><span> Message: </span><textarea id="message" name="message" cols="60" rows="8"></textarea></div>
 
     <input type="hidden" name="ticket_id" value="<?= $ticket->id ?>">
     <input type="hidden" name="client_id" value="<?= $session->getID() ?>">
     <input type="hidden" name="datetime" value="<?= $ticket->datetime ?>">
     <input type="hidden" name="id" value="<?= $encryptedId ?>">
+
+    <select id="faq-answers" name="faq_answer">
+      <option value="" selected disabled hidden>Choose an answer from the faq</option>
+
+      <?php foreach($faqs as $faq) { ?>
+        <option value="<?=$faq->answer?>"><?=$faq->question?> - <?=$faq->answer?></option>
+      <?php } ?>
+    </select>
 
     <section id="messages">
       <?php foreach ($session->getMessages() as $messsage) { ?>
@@ -219,6 +230,8 @@ foreach ($messages as $message) {
         </article>
       <?php } ?>
     </section>
+
+    <button type="button" onclick="toggleOptions()">Change Answer method</button>
 
     <input type="submit" value="Send Message" class="btn" name="submit">
 
