@@ -16,6 +16,7 @@ DROP TABLE IF EXISTS User_Department;
 DROP TABLE IF EXISTS FAQ;
 DROP TABLE IF EXISTS Ticket_Files;
 DROP TABLE IF EXISTS Ticket_History;
+DROP TABLE IF EXISTS Message_Files;
 /*
  
  ==========================================================
@@ -126,6 +127,16 @@ CREATE TABLE Ticket_History (
   ticket_id INTEGER NOT NULL,
   CONSTRAINT ticket_history_pk PRIMARY KEY (id),
   CONSTRAINT ticket_history_ticket_fk FOREIGN KEY (ticket_id) REFERENCES Ticket ON UPDATE CASCADE ON DELETE CASCADE
+);
+-- Tabela de Message Files, relaciona as mensagens com os arquivos anexados e seus respectivos usuários
+CREATE TABLE Message_Files (
+  id INTEGER,
+  file_path VARCHAR(255) NOT NULL,
+  user_id INTEGER NOT NULL,
+  message_id INTEGER NOT NULL,
+  CONSTRAINT message_files_pk PRIMARY KEY (id),
+  CONSTRAINT message_files_user_fk FOREIGN KEY (user_id) REFERENCES User ON UPDATE CASCADE ON DELETE CASCADE,
+  CONSTRAINT message_files_message_fk FOREIGN KEY (message_id) REFERENCES Message ON UPDATE CASCADE ON DELETE CASCADE
 );
 /*
  
