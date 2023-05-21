@@ -2237,16 +2237,275 @@ section {
 
 
 
+.ticket-conteiner {
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+.ticket-conteiner .ticket-content {
+    max-width: 82.5rem;
+    margin: 0 auto;
+}
+
+.ticket-conteiner .ticket-content .ticket-structure{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ticket-conteiner .ticket-content .ticket-structure .ticket-top-bar{
+    width: 80%;
+    margin-left: 20%;
+}
+
+.ticket-conteiner .ticket-content .ticket-structure .ticket-top-bar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.ticket-conteiner .ticket-content .ticket-structure .ticket-top-bar a{
+    font-size: 1.5rem;
+    color: var(--black);
+    text-decoration: none;
+}
+
+.ticket-conteiner .ticket-content .ticket-structure .ticket-top-bar a:hover{
+    color: var(--main-color);
+}
+
+.ticket-conteiner .ticket-content .ticket-structure .ticket-top-bar a::after{
+    content: '';
+    width: 0;
+    height: 2px;
+    background: var(--main-color);
+    display: block;
+    transition: 0.5s;
+}
+
+.ticket-conteiner .ticket-content .ticket-structure .ticket-top-bar a:hover::after{
+    width: 100%;
+}
 
 
 
+.ticket-conteiner .ticket-content .ticket-structure .ticket-side-bar{
+    width: 20%;
+}
+
+.ticket-conteiner .ticket-content .column{
+    float:left;
+    position: relative;
+    min-height: 1px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
 
 
+.ticket-conteiner .ticket-content .ticket-structure .ticket-side-bar ul{
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+.ticket-conteiner .ticket-content .ticket-structure .ticket-side-bar ul li{
+    list-style-type: none;
+    margin: 0 0 0.5rem;
+    padding: 0;
+    display: block;
+}
+
+.ticket-conteiner .ticket-content .ticket-structure .ticket-side-bar .ticket-info-title{
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.65rem;
+    color: var(--main-color);
+    text-transform: uppercase;
+}
+
+.ticket-conteiner .ticket-content .ticket-structure .ticket-side-bar .ticket-info-content{
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.65rem;
+    color: var(--black);
+}
+
+.ticket-conteiner .ticket-content .ticket-structure .ticket-main{
+    width: 60%;
+}
+
+.ticket-conteiner .ticket-content .ticket-structure .ticket-main-header {
+    margin-bottom: 1.875rem;
+    border-bottom: 1px solid var(--main-color);
+    padding: 0 1.875rem 1.875rem 1.875rem;
+    display: block;
+}
+
+.ticket-conteiner .ticket-content .ticket-structure .ticket-main-header h1{
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.65rem;
+    margin-bottom: 0.65rem;
+    color: var(--black);
+}
+
+.ticket-conteiner .ticket-content .ticket-structure .ticket-main-header p{
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.65rem;
+    color: var(--black);
+}
+
+.ticket-conteiner .ticket-content .ticket-structure .ticket-main-header .ticket-main-files{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.ticket-conteiner .ticket-content .ticket-structure .ticket-main-header .ticket-main-files a:hover::after{
+    width: 100%;
+}
+
+.ticket-conteiner .ticket-content .ticket-structure .ticket-main-header .ticket-main-files .files-icon{
+    font-size: 2rem;
+    color: var(--main-color);
+}
+
+.ticket-conteiner .ticket-content .ticket-structure .ticket-main-header .ticket-main-files i,
+.ticket-conteiner .ticket-content .ticket-structure .ticket-main-header .ticket-main-files img{
+    max-width: auto;
+    max-height: 100px;
+}
 
 
+.ticket-conteiner .ticket-content .ticket-structure .ticket-main-header .ticket-main-files i{
+    font-size: 10rem;
+    color: var(--main-color);
+}
+
+.ticket-message-conteiner{
+    padding: 1.65rem;
+    padding-top: 0;
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--main-color);
+}
 
 
+.ticket-main-messages .ticket-message-author{
+    margin-bottom: 1rem;
+    display: flex;
+    overflow: hidden;
+}
 
+.ticket-main-messages .ticket-message-author-img{
+    padding-right: 1rem;
+    display: inline-block;
+}
+
+.ticket-main-messages .ticket-message-author-img img{
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius: 50%;
+}
+
+.ticket-main-messages .ticket-message-info{
+    display: inline-block;
+}
+
+.ticket-main-messages .ticket-message-info .ticket-message-author-name{
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.65rem;
+    color: var(--black);
+}
+
+.ticket-main-messages .ticket-message-info .ticket-message-date{
+    font-size: 1.2rem;
+    line-height: 1.65rem;
+    color: var(--black);
+}
+
+.ticket-main-messages .ticket-message-body{
+    font-size: 1.3rem;
+    line-height: 1.65rem;
+    color: var(--black);
+}
+
+.ticket-main-footer{
+    padding: 1.65rem;
+    padding-top: 0;
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--main-color);
+}
+
+.ticket-main-footer .ticket-main-footer-input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.ticket-main-footer .ticket-main-footer-input label{
+    font-size: 1.7rem;
+    font-weight: 600;
+    line-height: 1.65rem;
+    color: var(--main-color);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.ticket-main-footer .ticket-main-footer-input textarea{
+    width: 80%;
+    font-size: 1.5rem;
+    padding: 0.3rem;
+    border: 2px solid var(--main-color);
+    border-radius: 0.5rem;
+    outline: none;
+    color: var(--black);
+    background-color: transparent;
+    resize: none;
+    height: 25rem;
+    margin-bottom: 1rem;
+}
+
+.ticket-main-footer .ticket-main-footer-input textarea::-webkit-scrollbar{
+    width: 0.5rem;
+}
+
+.ticket-main-footer .ticket-main-footer-input textarea::-webkit-scrollbar-thumb{
+    background-color: var(--main-color);
+    border-radius: 0.5rem;
+}
+
+.ticket-main-footer .ticket-main-footer-input textarea::-webkit-scrollbar-track{
+    background-color: var(--white);
+}
+
+.ticket-main-footer .ticket-main-footer-submit{
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ticket-main-change{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.ticket-main-change-info-property div{
+    padding: 1rem;    
+}
 
 
 
