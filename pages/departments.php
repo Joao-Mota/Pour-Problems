@@ -30,19 +30,24 @@ drawHeader($session);
   <h1>Departments</h1>
 </div>
 
-<section class="new-department">
-  <form action="../actions/action_add_department.php" method="post" class="delete">
-    <input type="text" name="name" placeholder="new department name">
-    <button type="submit" name="add" value="add"><i class="fas fa-arrow-right"></i></button>
-  </form>
-</section>
+<div class="top-of-table">
+  <section class="filter-table">
+    <input type="text" id="filterInput" placeholder="Search table..." title="Type in a name">
+  </section>
+  <section class="new-department">
+    <form action="../actions/action_add_department.php" method="post" class="delete">
+      <input type="text" name="name" placeholder="new department name">
+      <button type="submit" name="add" value="add"><i class="fas fa-arrow-right"></i></button>
+    </form>
+  </section>
 
+</div>
 
 <div class="departments-table">
 
   <section class="departments-body">
 
-    <table class="table-sortable">
+    <table class="table-sortable" id="tableToFilter">
       <thead>
         <tr>
           <th> id </th>

@@ -37,15 +37,21 @@ $users = User::getUsers($db);
 </div>
 
 <div class="tables">
+
+
   <div class="users-table">
 
     <div class="users-tables-titles">
       <h1> Admins </h1>
     </div>
 
+    <section class="filter-table">
+      <input type="text" id="filterInput1" placeholder="Search table..." title="Type in a name">
+    </section>
+
     <section class="users">
 
-      <table class="table-sortable">
+      <table class="table-sortable" id="tableToFilter1">
         <thead>
           <tr>
             <th> id </th>
@@ -114,15 +120,21 @@ $users = User::getUsers($db);
 
   </div>
 
+
+
   <div class="users-table">
 
     <div class="users-tables-titles">
       <h1> Agents </h1>
     </div>
 
+    <section class="filter-table">
+      <input type="text" id="filterInput2" placeholder="Search table..." title="Type in a name">
+    </section>
+
     <section class="users">
 
-      <table class="table-sortable">
+      <table class="table-sortable" id="tableToFilter2">
         <thead>
           <tr>
             <th> id </th>
@@ -277,15 +289,21 @@ $users = User::getUsers($db);
 
   </div>
 
+
+
   <div class="users-table">
 
     <div class="users-tables-titles">
       <h1> Clients </h1>
     </div>
 
+    <section class="filter-table">
+      <input type="text" id="filterInput3" placeholder="Search table..." title="Type in a name">
+    </section>
+
     <section class="users">
 
-      <table class="table-sortable">
+      <table class="table-sortable" id="tableToFilter3">
         <thead>
           <tr>
             <th> id </th>

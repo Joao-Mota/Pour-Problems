@@ -40,6 +40,8 @@ if ($role_num == 1) {
 
 ?>
 
+<div class="custom-space"></div>
+
 <div class="profile">
 
   <div class="profile_pic">
@@ -98,6 +100,8 @@ if ($role_num == 1) {
     </p>
   <?php } ?>
 </section>
+
+<div class="custom-space"></div>
 
 
 

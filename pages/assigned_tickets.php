@@ -40,11 +40,18 @@ drawHeader($session);
   <h1>Assigned Tickets</h1>
 </div>
 
+<div class="custom-space"></div>
+
+<section class="filter-table">
+    <input type="text" id="filterInput" placeholder="Search table..." title="Type in a name">
+  </section>
+
+
 <div class="tickets-table">
 
   <section class="tickets-body">
 
-    <table>
+    <table class="table-sortable" id="tableToFilter">
       <thead>
         <tr>
           <th> Ticket </th>

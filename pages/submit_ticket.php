@@ -106,13 +106,13 @@ $errorFields = $session->getFieldErrors();
         </div>
 
         <div class="submit-ticket-form-input">
-          <label class="upload-files"  for="up_files">Upload files 
+          <label class="upload-files" for="up_files">Upload files
             <i class="far fa-file-alt"></i>
             <input type="file" name="file[]" id="up_files" class="files" multiple pattern=".*\.(jpe?g|png|pdf)$"
               accept=".jpg,.jpeg,.png,.pdf">
             <br>
-            </label>
-            <ul id="file-list"></ul>
+          </label>
+          <ul id="file-list"></ul>
         </div>
 
         <div class="submit-ticket-form-input">
@@ -126,9 +126,9 @@ $errorFields = $session->getFieldErrors();
   </div>
   <section id="messages">
     <?php foreach ($session->getMessages() as $messsage) { ?>
-      <article class="<?= $messsage['type'] ?>">
+      <p class="<?= $messsage['type'] ?>">
         <?= $messsage['text'] ?>
-      </article>
+      </p>
     <?php } ?>
   </section>
 </div>
