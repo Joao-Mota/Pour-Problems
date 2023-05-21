@@ -61,9 +61,13 @@ $tickets_user = Ticket_User::getTickets_from_department($db, $department_name);
     </div>
   </div>
 
+  <section class="filter-table">
+    <input type="text" id="filterInput1" placeholder="Search table..." title="Type in a name">
+  </section>
+
   <section class="tickets-body">
 
-    <table class="table-sortable">
+    <table class="table-sortable" id="tableToFilter1">
       <thead>
         <tr>
           <th> Ticket </th>
@@ -202,8 +206,12 @@ $tickets_user = Ticket_User::getTickets_from_department($db, $department_name);
     <h1> Agents from the Department </h1>
   </div>
 
+  <section class="filter-table">
+    <input type="text" id="filterInput1" placeholder="Search table..." title="Type in a name">
+  </section>
+
   <section class="agents">
-    <table>
+    <table class="table-sortable" id="tableToFilter1">
       <thead>
         <tr>
           <th> id </th>
