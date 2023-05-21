@@ -316,6 +316,36 @@ section {
     color: var(--white);
 }
 
+.home-faq .faq.active .things {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+}
+
+.home-faq .faq .delete{
+    max-height: 0;
+    overflow: hidden;
+    display: flex;
+}
+
+/* Display .delete on the left bottom conner */
+.home-faq .faq .delete button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.home-faq .faq.active .delete{
+    max-height: 100rem;
+    transition: max-height 1.4s ease;
+    animation: fadeIn 0.4s linear backwards 0.2s;
+}
+
+.home-faq .faq.active .delete button:hover {
+    font-size: 2.5rem;
+}
 
 /* About in Home Page */
 .home-about {
@@ -897,269 +927,6 @@ section {
 }
 
 
-
-/* Ticket Submission */
-.ticket-form .signup-title {
-    text-align: center;
-    font-size: 3.5rem;
-    color: var(--black);
-    padding-bottom: 5rem;
-}
-
-.ticket-form .signup-form {
-    padding: 2rem;
-    background: var(--light-bg);
-}
-
-.ticket-form .signup-form .flex {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-}
-
-.ticket .signup-form .flex .input-box {
-    flex: 1 1 41rem;
-}
-
-.ticket-form .signup-form .flex .input-box select {
-    width: 100%;
-    padding: 1.2rem 1.4rem;
-    font-size: 1.6rem;
-    color: var(--light-black);
-    text-transform: none;
-    margin-top: 1.5rem;
-    border: 1px solid var(--light-black);
-}
-
-.ticket-form .signup-form .flex .input-box select:focus {
-    background-color: var(--main-color);
-    color: var(--white);
-}
-
-.ticket-form .signup-form .flex .input-box select:focus::placeholder {
-    color: var(--white);
-}
-
-.ticket-form .signup-form .flex .input-box select::placeholder {
-    color: var(--light-black);
-}
-
-.ticket-form .signup-form .flex .input-box input {
-    width: 100%;
-    padding: 1.2rem 1.4rem;
-    font-size: 1.6rem;
-    color: var(--light-black);
-    text-transform: none;
-    margin-top: 1.5rem;
-    border: 1px solid var(--light-black);
-}
-
-.ticket-form .signup-form .flex .input-box input:focus {
-    background-color: var(--main-color);
-    color: var(--white);
-}
-
-.ticket-form .signup-form .flex .input-box input:focus::placeholder {
-    color: var(--white);
-}
-
-.ticket-form .signup-form .flex .input-box input::placeholder {
-    color: var(--light-black);
-}
-
-.ticket-form .signup-form .flex .input-box span {
-    font-size: 1.5rem;
-    color: var(--light-black);
-}
-
-.ticket-form .signup-form .btn {
-    margin-top: 2rem;
-}
-
-
-.ticket-form .signup-form .messages {
-    padding: 1rem;
-    margin-top: 2rem;
-    text-align: center;
-    font-size: 1.5rem;
-    color: var(--white);
-    background-color: var(--main-color);
-    border-radius: 0.5rem;
-}
-
-
-/* mytickets */
-.mytickets {
-    padding-top: 5rem;
-    padding-bottom: 2rem;
-}
-
-.mytickets .title {
-    text-align: center;
-    padding-bottom: 5rem;
-    font-size: 4rem;
-}
-
-.mytickets .ticket {
-    margin-bottom: 1rem;
-    padding: 1rem;
-    background-color: var(--light-bg);
-}
-
-.mytickets .ticket .question {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.mytickets .ticket .question h3 {
-    font-size: 1.8rem;
-    color: var(--black);
-}
-
-.mytickets .ticket .question .icon {
-    font-size: 2rem;
-    color: var(--black);
-}
-
-.mytickets .ticket .answer {
-    max-height: 0;
-    overflow: hidden;
-}
-
-.mytickets .ticket .answer p {
-    padding-top: 1rem;
-    font-size: 1.4rem;
-    color: var(--black);
-}
-
-.mytickets .ticket.active .answer {
-    max-height: 100rem;
-    transition: max-height 1.4s ease;
-    animation: fadeIn 0.4s linear backwards 0.2s;
-}
-
-.mytickets .ticket.active .icon {
-    transform: rotate(180deg);
-    transition: transform 0.5s ease-in;
-}
-
-.mytickets .ticket .icon {
-    transition: transform 0.5s ease-out;
-}
-
-.mytickets .ticket.active .question h3 {
-    color: var(--white);
-}
-
-.mytickets .ticket.active {
-    background-color: var(--black);
-}
-
-.mytickets .ticket.active .question .icon {
-    color: var(--white);
-}
-
-.mytickets .ticket.active .answer p {
-    color: var(--white);
-}
-
-.mytickets .ticket .delete {
-    max-height: 0;
-    overflow: hidden;
-}
-
-.mytickets .ticket.active .delete {
-    max-height: 100rem;
-    transition: max-height 1.4s ease;
-    animation: fadeIn 0.4s linear backwards 0.2s;
-}
-
-
-/* Users */
-.users .user {
-    margin-bottom: 1rem;
-    padding: 1rem;
-    background-color: var(--light-white);
-}
-
-.users .user .question {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.users .user .question h3 {
-    font-size: 1.8rem;
-    color: var(--black);
-}
-
-.users .user .question .icon {
-    font-size: 2rem;
-    color: var(--black);
-}
-
-.users .user .answer {
-    max-height: 0;
-    overflow: hidden;
-}
-
-.users .user .answer p {
-    padding-top: 1rem;
-    font-size: 1.4rem;
-    color: var(--black);
-}
-
-.users .user.active .answer {
-    max-height: 100rem;
-    transition: max-height 1.4s ease;
-    animation: fadeIn 0.4s linear backwards 0.2s;
-}
-
-.users .user.active .icon {
-    transform: rotate(180deg);
-    transition: transform 0.5s ease-in;
-}
-
-.users .user .icon {
-    transition: transform 0.5s ease-out;
-}
-
-.users .user.active .question h3 {
-    color: var(--white);
-}
-
-.users .user.active {
-    background-color: var(--black);
-}
-
-.users .user.active .question .icon {
-    color: var(--white);
-}
-
-.users .user.active .answer p {
-    color: var(--white);
-}
-
-.users .user .delete {
-    max-height: 0;
-    overflow: hidden;
-}
-
-.users .user.active .delete {
-    max-height: 100rem;
-    transition: max-height 1.4s ease;
-    animation: fadeIn 0.4s linear backwards 0.2s;
-}
-
-
-
-
-
-
-
-
-
 /* Profile */
 .profile {
     display: flex;
@@ -1430,6 +1197,31 @@ section {
     margin: 0;
 }
 
+.final-links button{
+    font-size: 1.5rem;
+    color: var(--black);
+    text-decoration: none;
+    border: none;
+    background: transparent;
+}
+
+.final-links button:hover {
+    color: var(--main-color);
+}
+
+.final-links button::after {
+    content: '';
+    width: 0;
+    height: 2px;
+    background: var(--main-color);
+    display: block;
+    transition: 0.5s;
+}
+
+.final-links button:hover::after {
+    width: 100%;
+}
+
 .final-links a {
     font-size: 1.5rem;
     color: var(--black);
@@ -1517,22 +1309,6 @@ section {
     padding-bottom: 1rem;
     padding-left: 2rem;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* All Tickets */
@@ -1690,12 +1466,6 @@ section {
 }
 
 
-
-
-
-
-
-
 /* Departments */
 
 .new-department {
@@ -1822,7 +1592,6 @@ section {
 .departments-table .departments-body .delete button:hover {
     opacity: 0.8;
 }
-
 
 
 
@@ -1994,6 +1763,253 @@ section {
 }
 
 
+/* Users */
+
+.tables{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 7rem;
+}
+
+.users-table {
+    border-collapse: collapse;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.users-table .users-tables-titles {
+    font-size: 2rem;
+    color: var(--black);
+    padding-top: 4rem;
+    padding-bottom: 1rem;
+}
+
+.users-table .users{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    padding: 0;
+}
+
+.users-table .users thead,
+.users-table .users th,
+.users-table .users td {
+    padding: 1rem;
+}
+
+.users-table .users table{
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.4);
+    display: 1 1 41rem;
+}
+
+.users-table .users table thead {
+    background-color: var(--main-color);
+    color: var(--white);
+}
+
+.users-table .users table thead th {
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.users-table .users table tbody tr {
+    border-bottom: 1px solid var(--main-color);
+}
+
+.users-table .users table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.users-table .users table tbody tr:hover {
+    background-color: var(--light-bg);
+}
+
+.users-table .users table tbody tr td {
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.users-table .users p {
+    font-size: 1.5rem;
+    padding: 1rem;
+    text-align: center;
+    color: var(--black);
+}
+
+.users-table .users .user-info a {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+
+
+.users-table .users .user-info img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+    display: 1 1 41rem;
+    vertical-align: middle;
+    margin-right: 1rem;
+}
+
+.users-table .users p {
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: var(--black);
+}
+
+.users-table .users .user-role {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.users-table .users .user-role select {
+    font-size: 1.5rem;
+    padding: 0.3rem;
+    border: 1px solid var(--main-color);
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+    outline: none;
+    color: var(--black);
+    background-color: var(--white);
+    cursor: pointer;
+}
+
+.users-table .users .user-role select:hover {
+    opacity: 0.8;
+}
+
+.users-table .users .user-role button {
+    font-size: 2rem;
+    color: var(--main-color);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding-left: 1rem;
+}
+
+.users-table .users .user-role button:hover {
+    opacity: 0.8;
+}
+
+.users-table .users .change-department{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.users-table .users .change-department select {
+    font-size: 1.5rem;
+    padding: 0.3rem;
+    border: 1px solid var(--main-color);
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+    outline: none;
+    color: var(--black);
+    background-color: var(--white);
+    cursor: pointer;
+}
+
+.users-table .users .change-department select:hover {
+    opacity: 0.8;
+}
+
+.users-table .users .change-department button {
+    font-size: 2rem;
+    color: var(--main-color);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding-left: 1rem;
+}
+
+.users-table .users .change-department button:hover {
+    opacity: 0.8;
+}
+
+.users-table .users .delete-department{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.users-table .users .delete-department select {
+    font-size: 1.5rem;
+    padding: 0.3rem;
+    border: 1px solid var(--main-color);
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+    outline: none;
+    color: var(--black);
+    background-color: var(--white);
+    cursor: pointer;
+}
+
+.users-table .users .delete-department select:hover {
+    opacity: 0.8;
+}
+
+.users-table .users .delete-department button {
+    font-size: 2rem;
+    color: var(--main-color);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding-left: 1rem;
+}
+
+.users-table .users .delete-department button:hover {
+    opacity: 0.8;
+}
+
+.users-table .users .delete{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.users-table .users .delete button {
+    font-size: 2rem;
+    color: var(--main-color);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding-left: 1rem;
+}
+
+.users-table .users .delete button:hover {
+    opacity: 0.8;
+}
+
+
 
 
 /* Submit a Ticket */
@@ -2160,6 +2176,8 @@ section {
     font-size: 1.5rem;
     color: var(--main-color);
 }
+
+
 
 
 

@@ -73,6 +73,69 @@ try {
     </div>
 </section>
 
+<section class="home-faq">
+    <h2 class="title">FAQ's</h2>
+    <div class="faq">
+        <div class="question">
+            <h3>How do I know if my wine is corked?</h3>
+            <span class="icon"><i class="fas fa-sort-down"></i></span>
+        </div>
+        <div class="answer">
+            <p>
+                If you notice a musty smell or a damp cardboard taste, your wine is probably corked.
+                This is caused by a chemical compound called TCA, which can be found in cork.
+                If you suspect that your wine is corked, you can send it to us for testing.
+                We will determine whether or not it is corked and provide you with a replacement bottle if necessary.
+            </p>
+        </div>
+    </div>
+    <div class="faq">
+        <div class="question">
+            <h3>What is the best way to store wine?</h3>
+            <span class="icon"><i class="fas fa-sort-down"></i></span>
+        </div>
+        <div class="answer">
+            <p>
+                The best way to store wine is in a cool, dark place.
+                This will help preserve the flavor and prevent it from spoiling.
+                If you don't have a cellar or basement, you can store your wine in the refrigerator.
+                Just make sure that it's not too cold or too hot!
+            </p>
+        </div>
+    </div>
+    <div class="faq">
+        <div class="question">
+            <h3>What is the best way to open a bottle of wine?</h3>
+            <span class="icon"><i class="fas fa-sort-down"></i></span>
+        </div>
+        <div class="answer">
+            <p>
+                The best way to open a bottle of wine is by using a corkscrew.
+                This will ensure that the cork doesn't break and that you don't spill any wine.
+                If you don't have a corkscrew, you can use a knife or scissors to cut the foil off the top of the
+                bottle.
+                Then, insert the tip of the knife into the cork and twist it until it comes out.
+                Finally, pour yourself a glass and enjoy!
+            </p>
+        </div>
+    </div>
+    <div class="faq">
+        <div class="question">
+            <h3>What is the best cork for wine?</h3>
+            <span class="icon"><i class="fas fa-sort-down"></i></span>
+        </div>
+        <div class="answer">
+            <p>
+                The best cork for wine is a natural cork.
+                This type of cork is made from the bark of the cork oak tree and has been used for centuries.
+                It's also biodegradable, which means that it can be recycled or composted after use.
+                Natural corks are more expensive than synthetic corks, but they're worth it because they don't affect
+                the taste of your wine!
+            </p>
+        </div>
+    </div>
+</section>
+
 <section class="home-about">
     <div class="image">
         <img src="../sources/heading_bg/home-about-us.jpg" alt="">

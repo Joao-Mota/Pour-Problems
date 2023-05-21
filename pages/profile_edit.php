@@ -37,15 +37,15 @@ $errorFields = $session->getFieldErrors();
         <div class="changes">
             <div class="profile-edit-img">
                 <img src="/uploads/profiles/<?= $user->image_path ?>" alt="Profile Image">
-<div class="files-box">
-    <label for="file-image">Edit Profile Image<br />
-        <i class="fa fa-2x fa-camera"></i>
-        <input type="file" name="file" id="file-image" class="inputfile" multiple
-            pattern=".*\.(jpe?g|png)$" accept=".jpg,.jpeg,.png">
-        <br />
-        <span class="file-name" id="file-image-name"></span>
-    </label>
-</div>
+                <div class="files-box">
+                    <label for="file-image">Edit Profile Image<br />
+                        <i class="fa fa-2x fa-camera"></i>
+                        <input type="file" name="file" id="file-image" class="inputfile" multiple
+                            pattern=".*\.(jpe?g|png)$" accept=".jpg,.jpeg,.png">
+                        <br />
+                        <span class="file-name" id="file-image-name"></span>
+                    </label>
+                </div>
             </div>
 
             <div class="profile-edit-info">
@@ -130,8 +130,10 @@ $errorFields = $session->getFieldErrors();
 
 <div class="final-links">
     <div class="delete">
-        <a href="/actions/action_profile_delete.php" class="delete-account"><i class="fas fa-trash-alt"></i> Delete
-            Account </a>
+        <form action="../actions/action_delete_user.php" method="post" class="delete">
+            <input type="hidden" name="user_id" value="<?= $user->id ?>">
+            <button type="submit" value="Delete User"><i class="fas fa-trash-alt"></i> Delete Account</button>
+        </form>
     </div>
     <div class="password-change">
         <a href="/pages/password_change.php" class="change-password">Change Password</a>
