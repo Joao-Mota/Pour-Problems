@@ -39,7 +39,7 @@ drawHeader($session);
 
 
 <div class="departments-table">
-  
+
   <section class="departments-body">
 
     <table>
@@ -78,15 +78,7 @@ drawHeader($session);
               <div class="number-of-tickets">
                 <p>
                   <?php
-
-                  $number_of_tickets = 0;
-
-                  foreach ($all_tickets as $ticket) {
-                    if ($ticket->department == $department->name) {
-                      $number_of_tickets++;
-                    }
-                  }
-                  echo $number_of_tickets;
+                  echo Department::getAllTicketsFromDepartment($db, $department->name);
                   ?>
                 </p>
               </div>
@@ -114,7 +106,7 @@ drawHeader($session);
               <div class="delete">
                 <form action="../actions/action_delete_department.php" method="post" class="delete">
                   <input type="hidden" name="id" value="<?= $department->id ?>">
-                  <button type="submit" name="delete" value="delete"><i class="fa fa-wheelchair-alt" aria-hidden="true"></i></button>
+                  <button type="submit" name="delete" value="delete"><i class="fas fa-trash-alt"></i></i></button>
                 </form>
               </div>
             </td>

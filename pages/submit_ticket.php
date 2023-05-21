@@ -135,7 +135,7 @@ $errorFields = $session->getFieldErrors();
 
 <div class="final-links">
   <div class="mytickets-back">
-    <a href="/pages/my_tickets.php" class="my-tickets-back"><i class="fas fa-arrow-left"></i> My Tickets</a>
+    <a href="/pages/mytickets.php" class="my-tickets-back"><i class="fas fa-arrow-left"></i> My Tickets</a>
   </div>
   <div class="back">
     <a href="/pages/profile.php?id=<?= base64_encode(strval($session->getID())) ?>" class="back-profile">Profile <i

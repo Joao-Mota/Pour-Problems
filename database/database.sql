@@ -165,13 +165,3 @@ INSERT INTO Hashtag
 VALUES (2, '#Priority', 0);
 INSERT INTO Hashtag
 VALUES (3, '#Important', 0);
-
-/*
- 
- ==========================================================
- |                    -- Triggers --                      |
- ==========================================================
- 
- */
--- Trigger para inserir o usuário que criou o ticket
--- Query para testar o banco de dados

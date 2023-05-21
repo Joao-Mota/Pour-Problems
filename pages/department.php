@@ -288,7 +288,7 @@ $tickets_user = Ticket_User::getTickets_from_department($db, $department_name);
                   <input type="hidden" name="user_id" value="<?= $agent->id ?>">
                   <input type="hidden" name="department_id" value="<?= $department->id ?>">
 
-                  <button type="submit" value="Delete"><i class="fa fa-wheelchair-alt" aria-hidden="true"></i></button>
+                  <button type="submit" value="Delete"><i class="fa fa-user-times" aria-hidden="true"></i></i></button>
 
                 </form>
               </div>

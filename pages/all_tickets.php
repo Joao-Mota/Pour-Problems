@@ -88,6 +88,7 @@ drawHeader($session);
                 <?php
                 // Get profile image from the user that created the ticket
                 $user = User::getUser($db, $ticket_user->client_id);
+
                 $profile_image = $user->image_path;
                 ?>
                 <a href="../pages/profile.php?id=<?= base64_encode(strval($user->id)) ?>">

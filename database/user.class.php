@@ -153,7 +153,36 @@ class User
   {
     return $this->password;
   }
-  
- 
+
+  public function getNumberOfTickets(PDO $db, int $user_id, int $role): int
+  {
+    if ($role == 2) {
+      $stmt = $db->prepare('SELECT COUNT(*) FROM Ticket_User WHERE agent_id = ?');
+      $stmt->execute(array($user_id));
+      $count = $stmt->fetchColumn();
+      return $count;
+    } else {
+      $stmt = $db->prepare('SELECT COUNT(*) FROM Ticket_User WHERE client_id = ?');
+      $stmt->execute(array($user_id));
+      $count = $stmt->fetchColumn();
+      return $count;
+    }
+  }
+
+  public function getNumberOfTicketsByStatus(PDO $db, int $user_id, string $status_id, int $role): int
+  {
+    if ($role == 2) {
+      $stmt = $db->prepare('SELECT COUNT(*) FROM Ticket_User JOIN Ticket ON Ticket_User.ticket_id = Ticket.id JOIN Status ON Ticket.status_id = Status.id WHERE Ticket_User.agent_id = ? AND Status.stat = ?');
+      $stmt->execute(array($user_id, $status_id));
+      $count = $stmt->fetchColumn();
+      return $count;
+    } else {
+      $stmt = $db->prepare('SELECT COUNT(*) FROM Ticket_User JOIN Ticket ON Ticket_User.ticket_id = Ticket.id JOIN Status ON Ticket.status_id = Status.id WHERE Ticket_User.client_id = ? AND Status.stat = ?');
+      $stmt->execute(array($user_id, $status_id));
+      $count = $stmt->fetchColumn();
+      return $count;
+    }
+  }
+
 }
 ?>

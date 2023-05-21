@@ -48,5 +48,14 @@ class Department
         return new Department($department['id'], $department['name']);
     }
 
+    static function getAllTicketsFromDepartment(PDO $db, string $department): int
+    {
+        $stmt = $db->prepare('SELECT COUNT(*) FROM Ticket WHERE department = ?');
+        $stmt->execute(array($department));
+        $tickets = $stmt->fetch();
+
+        return $tickets['COUNT(*)'];
+    }
+
 }
 ?>
