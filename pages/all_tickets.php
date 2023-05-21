@@ -46,7 +46,7 @@ drawHeader($session);
 
   <section class="tickets-body">
 
-    <table>
+    <table class="table-sortable">
       <thead>
         <tr>
           <th> Ticket </th>

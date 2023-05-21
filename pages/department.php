@@ -63,7 +63,7 @@ $tickets_user = Ticket_User::getTickets_from_department($db, $department_name);
 
   <section class="tickets-body">
 
-    <table>
+    <table class="table-sortable">
       <thead>
         <tr>
           <th> Ticket </th>
