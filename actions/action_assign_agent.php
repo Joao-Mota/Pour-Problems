@@ -11,7 +11,9 @@ $db = getDatabaseConnection();
 
 $ticket_id = $_POST['ticket_id'];
 $agent_username = $_POST['agent'];
-$datetime = date('d/m/y H:i');
+$datetime = new DateTime();
+$datetime = $datetime->format('d-m-Y H:i');
+$datetime = strval($datetime);
 $update = $datetime . ' - Assigned to ' . $agent_username;
 
 $agent = User::getUser_from_username($db, $agent_username);

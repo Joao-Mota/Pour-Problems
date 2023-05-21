@@ -10,7 +10,9 @@ $db = getDatabaseConnection();
 
 $ticket_id = $_POST['ticket_id'];
 $department_name = $_POST['department'];
-$datetime = date('d/m/y H:i');
+$datetime = new DateTime();
+$datetime = $datetime->format('d-m-Y H:i');
+$datetime = strval($datetime);
 $update = $datetime . ' - Changed to ' . $department_name . ' department';
 
 $stmt = $db->prepare('UPDATE Ticket SET department = ? WHERE id = ?');
