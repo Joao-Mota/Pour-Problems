@@ -78,7 +78,21 @@ if ($ticket_user->agent_id == NULL) {
 
       <div class="ticket-top-bar">
         <div class="see-all-tickets">
-          <a href="../pages/mytickets.php"><i class="fas fa-arrow-left"></i> See all tickets</a>
+          <?php
+          if ($session->isAgent()) {
+            ?>
+            <a href="../pages/assigned_tickets.php"><i class="fas fa-arrow-left"></i> Assigned tickets</a>
+            <?php
+          } else if ($session->isAdmin()) {
+            ?>
+              <a href="../pages/tickets.php"><i class="fas fa-arrow-left"></i> All tickets</a>
+            <?php
+          } else {
+            ?>
+              <a href="../pages/mytickets.php"><i class="fas fa-arrow-left"></i> My tickets</a>
+            <?php
+          }
+          ?>
         </div>
       </div>
 
@@ -141,7 +155,7 @@ if ($ticket_user->agent_id == NULL) {
             <p>
               <?= $ticket->description ?>
             </p>
-            
+
             <div>
               <p>
                 <?php if (count($ticket->files) == 0) {
@@ -267,8 +281,7 @@ if ($ticket_user->agent_id == NULL) {
                         <option value="<?= $agent->username ?>"> <?= $agent->username ?> </option>
                       <?php } ?>
                     </select>
-                    <button type="submit" value="Change Agent"><i class="fa fa-check"
-                        aria-hidden="true"></i></i></button>
+                    <button type="submit" value="Change Agent"><i class="fa fa-check" aria-hidden="true"></i></i></button>
 
                   </form>
                 </div>
