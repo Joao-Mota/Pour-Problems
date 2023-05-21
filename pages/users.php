@@ -45,7 +45,7 @@ $users = User::getUsers($db);
 
     <section class="users">
 
-      <table>
+      <table class="table-sortable">
         <thead>
           <tr>
             <th> id </th>
@@ -122,7 +122,7 @@ $users = User::getUsers($db);
 
     <section class="users">
 
-      <table>
+      <table class="table-sortable">
         <thead>
           <tr>
             <th> id </th>
@@ -285,7 +285,7 @@ $users = User::getUsers($db);
 
     <section class="users">
 
-      <table>
+      <table class="table-sortable">
         <thead>
           <tr>
             <th> id </th>

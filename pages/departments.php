@@ -42,7 +42,7 @@ drawHeader($session);
 
   <section class="departments-body">
 
-    <table>
+    <table class="table-sortable">
       <thead>
         <tr>
           <th> id </th>
