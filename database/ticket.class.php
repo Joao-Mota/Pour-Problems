@@ -77,6 +77,76 @@ class Ticket
         return $tickets;
     }
 
-    //maybe missing function save(PDO $db)
+    // get last update to the ticket (last datetime entry from Message table)
+    static function getLastUpdate(PDO $db, int $id): string
+    {
+        $stmt = $db->prepare('SELECT datetime FROM Message WHERE ticket_id = ? ORDER BY datetime DESC LIMIT 1');
+
+        $stmt->execute(array($id));
+        $last_update = $stmt->fetch();
+
+        if(!$last_update){
+            //return the day the ticket was created
+            $stmt = $db->prepare('SELECT datetime FROM Ticket WHERE id = ?');
+
+            $stmt->execute(array($id));
+
+            $ticket = $stmt->fetch();
+
+            return $ticket['datetime'];
+        }
+
+        return $last_update['datetime'];
+    }
+
+    static function getDiffFromLastUpdateAndNow(PDO $db, int $id): string
+    {
+        $last_update = Ticket::getLastUpdate($db, $id);
+
+        $last_update = date("d-m-Y H:i", strtotime($last_update));
+
+        $now = date("d-m-Y H:i");
+
+        $diff = abs(strtotime($now) - strtotime($last_update));
+
+
+        if($diff > 60*60*24*30*12){
+            $diff = round($diff / (60*60*24*30*12));
+            if($diff == 1){
+                return $diff . ' year ago';
+            }
+            return $diff . ' years ago';
+        }
+        if($diff > 60*60*24*30){
+            $diff = round($diff / (60*60*24*30));
+            if($diff == 1){
+                return $diff . ' month ago';
+            }
+            return $diff . ' months ago';
+        }
+        if($diff > 60*60*24){
+            $diff = round($diff / (60*60*24));
+            if($diff == 1){
+                return $diff . ' day ago';
+            }
+            return $diff . ' days ago';
+        }
+        if($diff > 60*60){
+            $diff = round($diff / (60*60));
+            if($diff == 1){
+                return $diff . ' hour ago';
+            }
+            return $diff . ' hours ago';
+        }
+        if($diff > 60){
+            $diff = round($diff / (60));
+            if($diff == 1){
+                return $diff . ' minute ago';
+            }
+            return $diff . ' minutes ago';
+        }
+
+        return 'just now';
+    }
 }
 ?>

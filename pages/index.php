@@ -19,12 +19,6 @@ $creates = create_users::create($db);
 
 
 drawHeader($session);
-
-
-
-
-
-
 ?>
 
 <section class="home">

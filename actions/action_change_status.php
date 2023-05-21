@@ -11,7 +11,9 @@ $db = getDatabaseConnection();
 
 $ticket_id = $_POST['ticket_id'];
 $status_stat = $_POST['status'];
-$datetime = date('d/m/y H:i');
+$datetime = new DateTime();
+$datetime = $datetime->format('d-m-Y H:i');
+$datetime = strval($datetime);
 $update = $datetime . ' - Changed status to ' . $status_stat;
 
 

@@ -74,11 +74,16 @@ if ($add_ticket) {
 
   $subject = strval($_POST['subject']);
   $description = strval($_POST['description']);
-  $datetime = date('d/m/y H:i');
   $department = strval($_POST['department']);
   $status_id = 1;
   $hashtag = strval($_POST['hashtag']);
-  $update = $datetime . ' - Ticket was created';
+  
+  $datetime = new DateTime();
+  $datetime = $datetime->format('d-m-Y H:i');
+  $datetime = strval($datetime);
+
+
+  $update = strval($datetime) . ' - Ticket was created';
 
   $new_ticket_id = null;
 
